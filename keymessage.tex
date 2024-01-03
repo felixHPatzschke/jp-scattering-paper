@@ -1,0 +1,229 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper, total={170mm, 257mm}]{geometry}
+
+\usepackage[
+backend=biber,
+style=nature,
+sorting=none
+]{biblatex}
+\addbibresource{References.bib}
+%\bibliographystyle{unsrt}
+
+\input{preamble}
+
+\graphicspath{{figures/}}
+
+\usepackage{lipsum} 
+
+% referencing commands
+\newcommand{\seefig}[2]{\mbox{\sffamily($\rightarrow$ Fig. \ref{#1}#2)}}
+\newcommand{\reffig}[2]{\mbox{\sffamily{Figure \ref{#1}#2}}}
+
+
+\title{\sffamily\bfseries\color{Maroon} Fourier Plane Scattering Spectroscopy\\of Plasmonic Janus Particles}
+\author{Felix H. Patzschke, A. Markus Anton and *Frank Cichos}
+%\date{November 2023}
+\date{}
+
+
+
+\begin{document}
+%\allsectionsfont{\sffamily}
+
+\maketitle
+
+\begin{abstract}\sffamily \vspace{-1em} \input{abstract} \\ \end{abstract}
+
+
+
+
+
+\section*{Key Message}
+
+\subsection*{Motivation}
+We consider JPs with a plasmonically active cap. 
+The \textbf{light-matter interaction} of the cap is 
+\begin{itemize}
+    \item \textbf{interesting:} 
+    Enhanced absorption leads to heating.
+    Together with the anisotropy of the particle, it leads to directed propulsion.
+    Enhanced scattering leads to good visibility in imaging (tracking etc.).
+    Propulsion and tracking leads to usefulness in active matter research. 
+    \item \textbf{non-trivial:}
+    Particle size and wavelength are roughly equal, therefore there are no easy approximations to describe the interaction (ray optics for large particle, dipole for small particle).
+    Anisotropy of the particle leads to orientation-dependence of the light-matter interaction. 
+
+    Some purely numerical studies suggest that a linearly polarized light field can transfer angular momentum in a really weird way. 
+\end{itemize}
+
+To our knowledge, this light-matter interaction has not yet been systematically studied. 
+Orientation-dependent scattering studies of plasmonic nanostructures\footnote{specifically Au nano-rods and -triangles, sized between 100 and 150 nm} \emph{have} been performed, \cite{Islam2021} but with a limited capability for spectral resolution\footnote{literally just RGB}. 
+Also, the angular distribution of the scattered light was entirely neglected. 
+\\ 
+
+This was a valid mode of operation for the particles they worked with all of which were smaller than any wavelength considered. 
+But if the particles of interest are approximately the same size as the wavelengths considered, ...? 
+
+\subsection*{Theory of scattering}
+We have a good point of comparison in Mie theory: 
+It models the LMI for particles on this very same length scale, provided they are maximally symmetric. 
+Here, light is scattered in all kinds of directions at different intensities.
+
+\subsection*{We present a new experimental method}
+In order to measure the dependence of the scattering intensity on wavelength, direction of illumination and scattering angle, \textbf{we devised this experimental procedure:}
+
+\textbf{Selective Illumination Multiplexed Fourier Plane Spectroscopy}
+\begin{figure*}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] setup (placeholder).jpg}
+    \caption{(Placeholder) 
+    {\sffamily\bfseries A:} Schematics of all apertures in the optical path. 
+    {\sffamily\bfseries C:} Schematic of the imaging optics. 
+    {\sffamily\bfseries D:} The virtually constant refractive index in the region surrounding the particle under observation. 
+    {\sffamily\bfseries E:} Parameters describing the orientation of the system.
+    }
+    \label{fig:setup}
+\end{figure*}
+
+It's a combination of dark-field microscopy, Fourier plane imaging, confocal imaging and visible light spectroscopy. 
+\begin{figure*}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] selective illumination}
+    \caption{(Placeholder) Selective Illumination:   
+    {\sffamily\bfseries A:} By rotating the aperture A.1 the direction of illumination on the particle can be controlled within the range permitted by its out-of-plane orientation. 
+    {\sffamily\bfseries B-I:} Dark-field images of a JP under restricted illumination. 
+    The arrows signify the in-plane angle of the illumination.  
+    {\sffamily\bfseries J:} The same JP under unrestricted (normal) dark-field illumination. 
+    }
+    \label{fig:selective-illumination}
+\end{figure*}
+(Description of the procedure)
+
+\subsection*{We find these results}
+%We present spectra of scattered light from the JPs, resolved for different parameters.\\
+
+The \textbf{sideways profiles} of the scattering intensity for a fixed wavelength produce something akin to \textbf{Mie plots}. 
+\begin{figure*}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] cartesian mieplots (3, placeholder)}
+    \caption{Scattering intensity of the JP versus scattering angle. 
+    The points signify measured intensities while the lines are simulation results.  
+    {\sffamily\bfseries A} and {\sffamily\bfseries B} show the cylindrically symmetric cases of illumination from the PS side and from the Au side, respectively, i.e. where $\hat{k}\parallel\hat{z}$. 
+    In {\sffamily\bfseries C}, the light is incident side-on ($\hat{k}\perp\hat{z}$, $\zeta=\pi/2$). 
+    Disregarding the local extrema, qualitatively distinct large-scale behaviour is apparent: Under illumination from the PS side {\sffamily\bfseries (A)}, the scattering intensity becomes globally minimal in the sideways direction. 
+    Meanwhile, under illumination from the Au side {\sffamily\bfseries (B)}, it reaches a plateau and under side-on illumination {\sffamily\bfseries (C)}, the scattering intensity drops consistently between forwards and backwards.  
+    }
+    \label{fig:jp-mieplots-oneline}
+\end{figure*}
+
+To our knowledge, this has never been done experimentally for individual particles. \\
+
+%In general, most light is re-emitted in roughly the same direction that the illuminating light was propagating in. 
+%If the particle is illuminated from the PS side, there is significantly more backward scattering and less sideways as compared to Au-side illumination. 
+%Under side-on illumination, there is significantly less backward scattering than in either of the other cases. 
+%Here, the small-scale peaks and valleys of the scattering intensity are much closer together. 
+%This is similar to the shift from a smaller to a larger Mie-particle - when the illumination is incident from the side, the path length along which the light wave traverses the particle is longer (the diameter of the JP) than when the k-vector is in line with the particle's axis (in that case, it's the radius). \\
+
+The large-scale shape of these Mie plots is appreciably different between the illumination direction. 
+The small-scale shape (frequency of peaks and valleys) is also different for side-on versus Au-side or PS-side illumination. This, however is not resolved well in the experiment.\footnote{you can kind of see it, but you really need to squint your eyes}  \\
+
+Even though the measurements can only show us an angular range of about 105° (because of the limited collection angle of the objective aperture), they match the simulation results well.\\
+
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics{[fig] spectra.PDF}
+    \caption{{\sffamily\bfseries A:} simulated scattering spectrum of the JP under illumination from the Au side (yellow), from the PS side (blue) and from the equatorial side (black). {\sffamily\bfseries B:} measured scattering spectra (orange) atop value range as determined by simulation + emulation (blue).}
+    \label{fig:spectra}
+\end{figure*}
+
+%One can also record a spectrum with an otherwise normal dark-field microscope. 
+%Therein, the intensities are accumulated over all scattering angles within the collection range of the objective. 
+%Moreover, the angles of illumination are also accumulated over the whole range that the out-of-plane angle of the particle and the NA of the dark-field condenser allow. 
+%This accumulation can, of course, also be done with the simulation data. 
+%They match. 
+
+
+
+\subsection*{The Point}
+
+We demonstrate a \textbf{versatile method} for the spectral analysis of optical scattering of plasmonic nanostructures. We apply this technique to plasmonic JPs, measuring scattering spectra with various orientation-dependencies. 
+
+In addition, we complement these results with \textbf{numerical simulations}. Through the analysis of simulation data, we \textbf{correlate peaks} in the scattering spectra \textbf{to orientation-dependent surface plasmon modes}.
+
+The experimental and numerical results match. 
+
+
+\subsection*{Outlook}
+
+The optical / visual detection of the out-of-plane angle of small JPs presents a problem. We expect that, based on our method, this can be done spectroscopically, in the future. \\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\printbibliography
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Supplement starts here
+\newpage
+
+
+\section*{Supplementary Material}
+
+\subsection*{Validation with Au NPs}
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] AuNP (placeholder).jpg}
+    \caption{(Placeholder) 
+    {\sffamily\bfseries A:} Scattering spectrum of 65 nm Au NPs. The shaded area corresponds to the SNR. 
+    {\sffamily\bfseries B:} Scattering intensity of a spherical Au NP, $d=\SI{250}{\nano\meter}$ versus the scattering angle for various wavelengths. The lines show the predictions of GLMT \cite{GouesbetGrehan}, the points show measurement results.
+    }
+    \label{fig:AuNP}
+\end{figure*}
+
+
+\subsection*{Angular distributions for the JP, simulations only}
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] cartesian mieplots (placeholder).jpg}
+    \caption{Scattering intensity of the JP versus scattering angle. 
+    {\sffamily\bfseries A} and {\sffamily\bfseries B} show the cylindrically symmetric cases of illumination from the PS side and from the Au side, respectively, i.e. where $\hat{k}\parallel\hat{z}$. 
+    In {\sffamily\bfseries C} and {\sffamily\bfseries D}, the light is incident side-on ($\hat{k}\perp\hat{z}$, $\zeta=\pi/2$).
+    The scattering intensities are taken from the $(\hat{k},\hat{y})$ plane in {\sffamily\bfseries C} (note, that the system is still symmetric under inversion of $y$) and from the $(\hat{k},\hat{z})$ plane, where spatial symmetry is entirely broken, in {\sffamily\bfseries D}.
+    Here, the Au side lies in the positive $\theta$ direction.  
+    }
+    \label{fig:jp-mieplots}
+\end{figure*}
+
+
+\end{document}
