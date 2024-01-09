@@ -87,26 +87,70 @@ Through the analysis of the simulation results, we correlate peaks in the scatte
     \label{fig:setup}
 \end{figure*}
 
-\section*{Orientation Definition}
-The orientation of the system is characterised by the angles between three unit vectors;
-\begin{itemize}
-    \item[$\hat{k},$] the propagation direction of the incident light, with respect to which scattering angles are defined, 
-    \item[$\hat{o},$] the "forward" direction along the optical axis, equivalent to the central axis of the objective's collection cone and
-    \item[$\hat{z},$] the symmetry axis of the particle, oriented such that the Au cap lies in the positive and the PS side in the negative $z$-direction.
-\end{itemize}
-In terms of these, the out-of-plane orientation of the JP is defined as
-$\alpha := \measuredangle( \hat{o}, \hat{z} )$.
-Similarly, we define the illumination angle 
-$\zeta := \measuredangle( \hat{k}, \hat{z} )$, 
-which, in this model, is the only orientation parameter needed to define the light-matter interaction of the JP. 
+\section*{Simulations}
+Numerically, the properties of the scattered light field were obtained using COMSOL Multiphysics. 
+\todo{Intro to the geometric model. The COMSOL model is qualitatively the same as in \cite{BA}. } 
+The surrounding medium was modelled with a refractive index of $1.51$. 
 
-Scattering angles are defined for each plane-wave contribution to the scattered field: 
-Let that contribution have a propagation direction $\hat{k}'$. 
-Then, \mbox{$\theta := \measuredangle( \hat{k}', \hat{k} )$} is the polar component of the scattering angle. 
-Additionally, there is an azimuthal component $\phi$, the choice of reference point for which being somewhat arbitrary. 
-In the following, it will be chosen such that if $\hat{k}'$ lies in the $(\hat{k},\hat{z})$ plane, then $\phi=0$.
+Given a plane wave 
+$$
+    \vec{E}_\mathrm{incident}(\vec{x},t) = \vec{E}_0 \cdot \exp\!\left( \mathfrak{i}\ \vec{k}\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)
+$$
+as the incident field, the solver produced a point-wise solution 
+$$
+    \vec{E}(\vec{x},t) = \vec{E}_\mathrm{incident}(\vec{x},t) + \vec{E}_\mathrm{sca}(\vec{x},t)
+$$ 
+to Maxwell's field equations on the defined geometry, where $\vec{E}_\mathrm{sca}(\vec{x},t)$ is the scattered field. 
 
-These definitions are illustrated in \reffig{fig:setup}{E}.  
+The scattering cross-section of the particle was calculated from the scattered field as 
+$$
+    \sigma_\mathrm{sca} = \frac{2 \mu_0 \mu_r}{ {\bigl\Vert \vec{E}_0 \bigr\Vert}^2 } \cdot \oint_{\partial V} {\left\langle \vec{S}_\mathrm{sca} \right\rangle}_t \cdot\mathrm{d}\vec{A} \ ,
+$$
+where $\vec{S}_\mathrm{sca}$ is the Poynting vector of the scattered field and $\langle\cdot\rangle_t$ denotes the time average. 
+
+\todo{Explanation on how the scattering intensity is resolved for $\hat{k}$} 
+The scattered field can, according to Fourier's theorem, be decomposed into plane-wave components
+$$
+    \mathrm{d}\vec{E}(\vec{x},t) := \vec{\mathcal{E}}(\vec{k}) 
+    \cdot 
+    \exp{\!\left(\mathfrak{i}\ \vec{k}\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)}
+    \ \mathrm{d}^3 k
+    \ , 
+$$
+such that $ \vec{E}_\mathrm{sca} = \iiint_{\mathds{R}^3}\ \mathrm{d}\vec{E}$. 
+The amplitudes $\vec{\vec{\mathcal{E}}}(\vec{k})$ of the components are given by the Fourier transform of $\vec{E}(\vec{x},t)$. 
+The intensities of the components are given by 
+$$
+    \mathrm{d}\mathcal{I}(\vec{k}) = \frac{ \left\langle {\left\Vert \vec{\mathcal{E}}(\vec{k}) \right\Vert}^2 \right\rangle_t }{ 2\mu_0 \mu_r } \ \mathrm{d}^3k
+    \ .
+$$
+
+With any fixed wavelength $\lambda$, the wavevectors are conveniently expressed as $ \vec{k} = 2 \pi \lambda^{-1} \cdot \hat{k} $, where \mbox{$\hat{k} \in \mathcal{S}^2$} is a unit vector. 
+One obtains the spectral and angular distribution of scattered light, $\mathrm{d}\mathcal{I}(\lambda, \Omega)$, where $\Omega$ parametrizes the 2-sphere. 
+
+
+
+\section*{Simulation Results}
+
+\todo{A summary figure of sim results: scattering spectra, Mie plots and the like}
+
+\todo{We find that the scattering cross-section heavily depends on the orientation of the JP.}
+
+Over the spectral range that we analyzed, though decidedly not in general, the scattering efficiency of the particle was ... greater if it was illuminated from either the Au or the PS side than if it was illuminated side-on. 
+In both cases, the scattering spectra have multiple peaks. 
+Between axial and side-on illumination, though, there is no clear correspondence between these peaks. 
+
+E.g., for side-on illumination, there is a scattering peak at $\lambda\approx\SI{540}{\nano\meter}$, that has no counterpart in the spectra for axial illumination. 
+We ascribe this peak to the nanostructure plasmon resonance of gold: 
+It sits right around that wavelength and it is only under side-on illumination that the incident electric field may be perpendicular to the surface of the Au cap at its points of highest curvature, that being the cap's perimeter. 
+
+The more immediately noticeable feature of the scattering spectra is the pair of peaks at $\lambda\approx\SI{1000}{\nano\meter}$,\footnote{precisely, they are at 996.9 nm and 998.9 nm, respectively.} which only appears under axial illumination. 
+
+
+
+
+
+
 
 \section*{Experiments}
 
