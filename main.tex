@@ -68,26 +68,51 @@ Through the analysis of the simulation results, we correlate peaks in the scatte
 
 
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\textwidth]{[fig] setup}
-    %\includegraphics[width=\textwidth]{(fig) optics}
-    \caption{
-    Schematics of the imaging optics: 
-    {\sffamily\bfseries (top)} The dark-field condenser directs the illumination (yellow light path) onto the sample {\sffamily (S)}; the apertures {\sffamily A1} and {\sffamily A2} restrict the direction of illumination. 
-    In the immediate surroundings of the particle under observation {\sffamily\bfseries (bottom center)}, the ambient refractive index is virtually homogenous, due to the usage of immersion oil inside the sample.  
-    The illuminating light is intercepted by the objective's aperture {\sffamily (A3)}, while scattered light from objects in the sample is allowed through. 
-    The lens {\sffamily L1} produces an image of the sample in the plane of the aperture {\sffamily A4} and an image of the back aperture of the objective (Fourier plane) behind {\sffamily A4}, in the plane marked by the red dashed line. 
-    The lens {\sffamily L2} can be moved between the real-space imaging ({\sffamily RSI}, blue) and the Fourier plane imaging ({\sffamily FPI}, red) position, each propagating an image of the corresponding plane onto the slit {\sffamily A5}, which functions as the entrance aperture of the spectrograph. 
-    Inside the spectrograph, the image from {\sffamily A5} is propagated onto the camera sensor. 
-    A diffraction grating produces a spectrally dispersed image, from which spectral data can be read. 
-    An optional optical long-pass filter {\sffamily LPF} can be used to remove overlap between the first- and second-order 
-    %{\sffamily\bfseries A1-A5:} Schematics of all apertures in the optical path. 
-    }
-    \label{fig:setup}
-\end{figure*}
+\section*{Definitions}
 
-\section*{Simulations}
+The geometry of the system of interest is as follows: 
+A polystyrene (PS) sphere ($r=\SI{0.5}{\micro\meter}$), centered at the origin, represents the core of the JP. 
+The gold cap is modelled as half of an ellipsoidal shell (semi major axis: $\SI{0.55}{\micro\meter}$, semi minor axes: $\SI{0.51}{\micro\meter}$) around the PS sphere. 
+It is cut off in the plane of the minor axes, its major axis coincides with the symmetry axis of the JP. 
+This construct is surrounded by an ambient medium with a constant, real-valued refractive index.  
+
+The orientation of the system is characterised by the angles between three unit vectors;
+\begin{itemize}
+    \item[$\hat{z},$] the symmetry axis of the particle, oriented such that the Au cap lies in the positive and the PS side in the negative $z$-direction, 
+    \item[$\hat{k},$] the propagation direction of the incident light, with respect to which scattering angles are defined and
+    \item[$\hat{o},$] the "forward" direction along the optical axis, equivalent to the central axis of the objective's collection cone. 
+\end{itemize}
+In terms of these, the out-of-plane orientation of the JP is defined as
+$\alpha := \measuredangle( \hat{o}, \hat{z} )$.
+Similarly, we define the illumination angle 
+$\zeta := \measuredangle( \hat{k}, \hat{z} )$, 
+which, in this model, is the only orientation parameter needed to define the light-matter interaction of the JP. 
+
+Scattering angles are defined for each plane-wave contribution to the scattered field: 
+Let that contribution have a propagation direction $\hat{k}'$. 
+Then, \mbox{$\theta := \measuredangle( \hat{k}', \hat{k} )$} is the polar component of the scattering angle. 
+Additionally, there is an azimuthal component $\phi$, the choice of reference point for which being somewhat arbitrary. 
+In the following, it will be chosen such that if $\hat{k}'$ lies in the $(\hat{k},\hat{z})$ plane, then $\phi=0$.
+
+These definitions are illustrated in \todo{Figure}. 
+
+
+
+\section*{Methods}
+
+\subsection*{Finite-Element Simulations}
+
+The finite-element simulations were performed in COMSOL \mbox{Multiphysics 6.1}. 
+%The simulation per se is ignorant of real-world optical devices and.
+%Therefore, the geometric definition of the model does not depend on \mbox{$\hat{o}$-direction} or the objective aperture. 
+The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis. 
+
+As parameters, the simulation takes in the \emph{illumination angle}, 
+$$
+    \zeta := \measuredangle\left( \hat{z}, \hat{k} \right) \ ,
+$$
+and the incident (vacuum-) wavelength $\lambda$. 
+
 Numerically, the properties of the scattered light field were obtained using COMSOL Multiphysics. 
 \todo{Intro to the geometric model. The COMSOL model is qualitatively the same as in \cite{BA}. } 
 The surrounding medium was modelled with a refractive index of $1.51$. 
@@ -121,7 +146,7 @@ such that $ \vec{E}_\mathrm{sca} = \iiint_{\mathds{R}^3}\ \mathrm{d}\vec{E}$.
 The amplitudes $\vec{\vec{\mathcal{E}}}(\vec{k})$ of the components are given by the Fourier transform of $\vec{E}(\vec{x},t)$. 
 The intensities of the components are given by 
 $$
-    \mathrm{d}\mathcal{I}(\vec{k}) = \frac{ \left\langle {\left\Vert \vec{\mathcal{E}}(\vec{k}) \right\Vert}^2 \right\rangle_t }{ 2\mu_0 \mu_r } \ \mathrm{d}^3k
+    \mathrm{d}\mathcal{I}(\vec{k}) = \frac{ {\left\langle {\left\Vert \vec{\mathcal{E}}(\vec{k}) \right\Vert}^2 \right\rangle}_t }{ 2\mu_0 \mu_r } \ \mathrm{d}^3k
     \ .
 $$
 
@@ -130,38 +155,40 @@ One obtains the spectral and angular distribution of scattered light, $\mathrm{d
 
 
 
-\section*{Simulation Results}
-
-\todo{A summary figure of sim results: scattering spectra, Mie plots and the like}
-
-\todo{We find that the scattering cross-section heavily depends on the orientation of the JP.}
-
-Over the spectral range that we analyzed, though decidedly not in general, the scattering efficiency of the particle was ... greater if it was illuminated from either the Au or the PS side than if it was illuminated side-on. 
-In both cases, the scattering spectra have multiple peaks. 
-Between axial and side-on illumination, though, there is no clear correspondence between these peaks. 
-
-E.g., for side-on illumination, there is a scattering peak at $\lambda\approx\SI{540}{\nano\meter}$, that has no counterpart in the spectra for axial illumination. 
-We ascribe this peak to the nanostructure plasmon resonance of gold: 
-It sits right around that wavelength and it is only under side-on illumination that the incident electric field may be perpendicular to the surface of the Au cap at its points of highest curvature, that being the cap's perimeter. 
-
-The more immediately noticeable feature of the scattering spectra is the pair of peaks at $\lambda\approx\SI{1000}{\nano\meter}$,\footnote{precisely, they are at 996.9 nm and 998.9 nm, respectively.} which only appears under axial illumination. 
-As $\hat{k}$ is parallel to the symmetry axis of the JP, the perimeter of the Au cap is coplanar to the electric field and a resonant surface plasmon is excited in it. 
-
-Neither of these peaks is present\footnote{discernable?} in the scattering spectrum of an equivalently sized Au sphere. 
 
 
 
 
-\section*{Experiments}
 
-\subsection*{Sample Preparation}
+\subsection*{Experiments}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] setup}
+    %\includegraphics[width=\textwidth]{(fig) optics}
+    \caption{
+    Schematics of the imaging optics: 
+    {\sffamily\bfseries (top)} The dark-field condenser directs the illumination (yellow light path) onto the sample {\sffamily (S)}; the apertures {\sffamily A1} and {\sffamily A2} restrict the direction of illumination. 
+    In the immediate surroundings of the particle under observation {\sffamily\bfseries (bottom center)}, the ambient refractive index is virtually homogenous, due to the usage of immersion oil inside the sample.  
+    The illuminating light is intercepted by the objective's aperture {\sffamily (A3)}, while scattered light from objects in the sample is allowed through. 
+    The lens {\sffamily L1} produces an image of the sample in the plane of the aperture {\sffamily A4} and an image of the back aperture of the objective (Fourier plane) behind {\sffamily A4}, in the plane marked by the red dashed line. 
+    The lens {\sffamily L2} can be moved between the real-space imaging ({\sffamily RSI}, blue) and the Fourier plane imaging ({\sffamily FPI}, red) position, each propagating an image of the corresponding plane onto the slit {\sffamily A5}, which functions as the entrance aperture of the spectrograph. 
+    Inside the spectrograph, the image from {\sffamily A5} is propagated onto the camera sensor. 
+    A diffraction grating produces a spectrally dispersed image, from which spectral data can be read. 
+    An optional optical long-pass filter {\sffamily LPF} can be used to remove overlap between the first- and second-order 
+    %{\sffamily\bfseries A1-A5:} Schematics of all apertures in the optical path. 
+    }
+    \label{fig:setup}
+\end{figure*}
+
+\subsubsection*{Sample Preparation}
 
 The JPs were produced by \todo{cite production from Nic's work} and consist of spherical PS beads, coated with a layer of gold, $\SI{50}{\nano\meter}$ thick on average, on one side, with a $\SI{5}{\nano\meter}$ thick layer of chromium as a binding agent in between. 
 A $\SI{30}{\micro\litre}$ droplet was placed on a cover slip and the JPs in solution were left to sediment for \mbox{10 minutes}. 
 Afterwards, the solvent was blown off using nitrogen gas, leaving the remaining JPs stuck on the coverslide. 
 A second cover slip was placed on top, with a droplet of $\SI{1.5}{\micro\litre}$ of immersion oil\footnote{TO DO: serial number} in between, such as to keep the ambient refractive index constant in the vicinity of the particles.   
 
-\subsection*{Setup}
+\subsubsection*{Setup}
 
 The imaging setup is sketched in \reffig{fig:setup}{C}. 
 Its basis was formed by a standard dark-field microscope. 
@@ -199,9 +226,7 @@ For the samples, a drop of the JP solution was placed on a cover slip and the pa
 Then, the solvent was blown off the cover slip with compressed air. 
 A second cover slip was placed atop the first one, with a drop \mbox{$(\sim 1.5\,\mathrm{\upmu l})$} of immersion oil in between, ensuring no significant changes in the ambient refractive index in the vicinity of the JPs. 
 
-\subsection*{Global Illumination}
-
-[...]
+\subsubsection*{Validation}
 
 For validation, the scattering spectra of $\SI{65}{\nano\meter}$ AuNPs were measured. 
 Such small particles were chosen for two reasons: 
@@ -218,29 +243,21 @@ In the comparison of the measured spectra to the predictions of Mie theory \cite
     \label{fig:AuNP}
 \end{figure*}
 
-Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
 
-\subsection*{Orientation Dependent}
 
-\begin{figure*}[t!]
-    \centering
-    \includegraphics[width=\textwidth]{[fig] cartesian mieplots (3, placeholder)}
-    \caption{Scattering intensity of the JP versus scattering angle. 
-    The points signify measured intensities while the lines are simulation results.  
-    {\sffamily\bfseries A} and {\sffamily\bfseries B} show the cylindrically symmetric cases of illumination from the PS side and from the Au side, respectively, i.e. where $\hat{k}\parallel\hat{z}$. 
-    In {\sffamily\bfseries C}, the light is incident side-on ($\hat{k}\perp\hat{z}$, $\zeta=\pi/2$). 
-    Disregarding the local extrema, qualitatively distinct large-scale behaviour is apparent: Under illumination from the PS side {\sffamily\bfseries (A)}, the scattering intensity becomes globally minimal in the sideways direction. 
-    Meanwhile, under illumination from the Au side {\sffamily\bfseries (B)}, it reaches a plateau and under side-on illumination {\sffamily\bfseries (C)}, the scattering intensity drops consistently between forwards and backwards.  
-    }
-    \label{fig:jp-mieplots-oneline}
-\end{figure*}
 
-\section*{Simulation \& Emulation}
 
-The finite-element simulations were performed in COMSOL \mbox{Multiphysics 6.1}. 
-%The simulation per se is ignorant of real-world optical devices and.
-%Therefore, the geometric definition of the model does not depend on \mbox{$\hat{o}$-direction} or the objective aperture. 
-The model geometry was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis. \cite{BA} 
+
+
+
+\subsection*{Emulation}
+
+In order to be able compare the simulation results to the measurements, the the limited collection angle of the objective has to be taken into account. 
+Thus, while the "true" scattering intensity is the integral over the angular distribution of scattered light, 
+$$
+    P_\mathrm{sca}(\lambda) = \oiint_{\mathcal{S}^2} \mathcal{I}(\lambda, \Omega) \mathrm{d}\Omega \ ,
+$$
+the measured value corresponds to the integration over a certain angular range $\mathcal{D} \subset \mathcal{S}^2$. 
 
 Essentially, the solver is provided with an analytic expression for the incident electric field
 $\vec{E}_\mathrm{inc}(\vec{x},t)$
@@ -269,8 +286,6 @@ $$I_0 = \frac{1}{2\mu_0 \mu_r} {E_0}^2 \ .$$
 
 
 
-\subsection*{Measurement Emulation}
-
 To emulate the unpolarised light that the measurements were conducted with, $\chi$ was sampled as \mbox{$\in\left\lbrace0, \pi/2\right\rbrace$} and, in the evaluation, intensities were averaged.\footnote{This is allowed because $I\propto\left\Vert \hat{E} \right\Vert^2$.}
 
 Through a Fourier transform, the scattered field is decomposed into plane-wave components:
@@ -297,10 +312,14 @@ $$\theta_\mathrm{NA} = \mathrm{asin}\frac{\mathrm{NA}}{n} \ .$$
 \end{itemize}
 
 
-Both the experiment and the simulations show that, in asymmetric cases, light is preferentially scattered in the direction of the Au cap.
 
 
 
+
+
+
+
+\section*{Results \& Discussion}
 
 
 \begin{figure*}[t]
@@ -310,7 +329,56 @@ Both the experiment and the simulations show that, in asymmetric cases, light is
     \label{fig:spectra}
 \end{figure*}
 
-\section*{Discussion}
+
+Both the experiment and the simulations show that, in asymmetric cases, light is preferentially scattered in the direction of the Au cap. 
+
+
+
+
+
+\subsection*{Global Illumination}
+
+\todo{...}
+
+Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
+
+\subsection*{Orientation Dependent}
+
+\begin{figure*}[t!]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] cartesian mieplots (3, placeholder)}
+    \caption{Scattering intensity of the JP versus scattering angle. 
+    The points signify measured intensities while the lines are simulation results.  
+    {\sffamily\bfseries A} and {\sffamily\bfseries B} show the cylindrically symmetric cases of illumination from the PS side and from the Au side, respectively, i.e. where $\hat{k}\parallel\hat{z}$. 
+    In {\sffamily\bfseries C}, the light is incident side-on ($\hat{k}\perp\hat{z}$, $\zeta=\pi/2$). 
+    Disregarding the local extrema, qualitatively distinct large-scale behaviour is apparent: Under illumination from the PS side {\sffamily\bfseries (A)}, the scattering intensity becomes globally minimal in the sideways direction. 
+    Meanwhile, under illumination from the Au side {\sffamily\bfseries (B)}, it reaches a plateau and under side-on illumination {\sffamily\bfseries (C)}, the scattering intensity drops consistently between forwards and backwards.  
+    }
+    \label{fig:jp-mieplots-oneline}
+\end{figure*}
+
+
+
+\section*{Simulation Results}
+
+\todo{A summary figure of sim results: scattering spectra, Mie plots and the like}
+
+\todo{We find that the scattering cross-section heavily depends on the orientation of the JP.}
+
+Over the spectral range that we analyzed, though decidedly not in general, the scattering efficiency of the particle was ... greater if it was illuminated from either the Au or the PS side than if it was illuminated side-on. 
+In both cases, the scattering spectra have multiple peaks. 
+Between axial and side-on illumination, though, there is no clear correspondence between these peaks. 
+
+E.g., for side-on illumination, there is a scattering peak at $\lambda\approx\SI{540}{\nano\meter}$, that has no counterpart in the spectra for axial illumination. 
+We ascribe this peak to the nanostructure plasmon resonance of gold: 
+It sits right around that wavelength and it is only under side-on illumination that the incident electric field may be perpendicular to the surface of the Au cap at its points of highest curvature, that being the cap's perimeter. 
+
+The more immediately noticeable feature of the scattering spectra is the pair of peaks at $\lambda\approx\SI{1000}{\nano\meter}$,\footnote{precisely, they are at 996.9 nm and 998.9 nm, respectively.} which only appears under axial illumination. 
+As $\hat{k}$ is parallel to the symmetry axis of the JP, the perimeter of the Au cap is coplanar to the electric field and a resonant surface plasmon is excited in it. 
+
+Neither of these peaks is present\footnote{discernable?} in the scattering spectrum of an equivalently sized Au sphere. 
+This implies that the associated surface plasmon mode is one that does not exist on a closed sphere.  
+
 
 Notable findings are...
 \begin{itemize}
