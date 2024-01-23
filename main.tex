@@ -49,19 +49,27 @@ Through the absorption of visible light, the cap can be heated efficiently.
 In conjunction with the anisotropy of the particle, this facilitates directed self-propulsion. 
 Meanwhile, the enhanced optical scattering of the cap leads to good visibility in microscopy, particularly in the dark field, which, in turn, allows for accurate tracking of the motile particles. 
 
+\todo{However, orientation studies are usually performed in 2D, as ...}
+
 As widely applicable as these particles' light-matter interactions (LMIs) may be, the are certainly not trivial: 
 The length scales of the surface curvature are in the same order of magnitude as the wavelengths of light in the interaction, such that approximations along the lines of ray optics or dipole scattering are invalid. 
 In addition, the asymmetry of the particles leads to orientation-dependency of the LMI. 
 These orientation-dependencies may manifest in counter-intuitive ways: 
 Some purely numerical studies suggest that plasmonic JPs can stably rotate, powered by a linearly polarized light field. \cite{Ilic2017,BA}
 
-To our knowledge, this manner of LMIs has not yet been systematically studied. 
-Orientation-dependent scattering studies of plasmonic nanostructures\footnote{specifically, Au nano-rods and -triangles, sized between 100 and 150 nm} \emph{have} been performed, \cite{Islam2021} but neither on JPs nor with a capacity for spectral resolution beyond RGB-decomposition. 
-Moreover, no regard was given to the angular distribution of the scattered light.\footnote{which on such small objects isn't necessary - the angular distribuions look pretty much the same - but for larger particles, the differences in the shapes of the Mie plots can lead to drastic differences between the "true" scattering spectra and the measured ones.} 
+As a first step towards an understanding of such effects, we study the scattered light from these JPs. 
+We measure scattering spectra of individual JPs while varying the direction of illumination as well as resolving for the scattering angle. 
+%To our knowledge, this manner of LMIs has not yet been systematically studied. 
+While orientation-dependent scattering studies of plasmonic nanostructures%\footnote{specifically, Au nano-rods and -triangles, sized between 100 and 150 nm} 
+\emph{have} been performed, \cite{Islam2021} %neither has that been the case on JPs nor with a capacity for spectral resolution beyond RGB-decomposition. 
+that has only been the case for Au nanostructures significantly smaller than the observation wavelengths. 
+As such, no regard was given to the angular distribution of the scattered light.%\footnote{which on such small objects isn't necessary - the angular distribuions look pretty much the same - but for larger particles, the differences in the shapes of the Mie plots can lead to drastic differences between the "true" scattering spectra and the measured ones.} 
+In our studies of micrometre-sized JPs in visible and NIR light though, we find that the difference in shape of these distributions can lead to drastic, qualitative differences in measured scattering spectra. 
 
 We present an experimental method, which we use to study the LMI of plasmonic JPs consisting of a spherical polystyrene (PS) particle, $\SI{1}{\micro\meter}$ in diameter, with a $\SI{50}{\nano\meter}$ thick gold layer as the cap. 
 We resolve the intensity of scattered light for wavelength and scattering angle. 
 Though the theory of Mie \cite{Mie1908} only makes predictions for maximally symmetric particles, it serves well as reference in the characterization of the LMI of plasmonic JPs. 
+
 We complement the measurement results with numerical simulations and find a good match between both methods' results. 
 Through the analysis of the simulation results, we correlate peaks in the scattering spectra to orientation-dependent surface plasmon modes. 
 
@@ -69,6 +77,8 @@ Through the analysis of the simulation results, we correlate peaks in the scatte
 
 
 \section*{Definitions}
+
+\todo{Introduction of the real, physical sample: Mathematical formalization should go after.}
 
 The geometry of the system of interest is as follows: 
 A polystyrene (PS) sphere ($r=\SI{0.5}{\micro\meter}$), centered at the origin, represents the core of the JP. 
@@ -319,8 +329,18 @@ $$\theta_\mathrm{NA} = \mathrm{asin}\frac{\mathrm{NA}}{n} \ .$$
 
 
 
-\section*{Results \& Discussion}
+\section*{Results}
 
+\todo{Measurements first, then Simulations}
+
+\subsection*{Experiment, Global Illumination}
+
+
+The spectra show an upward kink at $\SI{500}{\nano\meter}$ and a bump at $\SI{550}{\nano\meter}$, followed by an approximately linear increase of the scattering intensity over the spectral range up to $\SI{950}{\nano\meter}$. 
+Beyond, the measured spectra drop off, though this is merely an artifact of the signal processing. 
+\todo{Other accumulated measurments don't have the drop-offs at 950ish.}
+
+Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
 
 \begin{figure*}[t]
     \centering
@@ -330,15 +350,28 @@ $$\theta_\mathrm{NA} = \mathrm{asin}\frac{\mathrm{NA}}{n} \ .$$
 \end{figure*}
 
 
-Both the experiment and the simulations show that, in asymmetric cases, light is preferentially scattered in the direction of the Au cap. 
+\subsection*{Experiment, Restricted Illumination}
+
+\todo{Particle appears much brighter when illuminated from the Au side. It stands to reason that its out-of-plane orientation made it such that when the aperture was rotated such that the PS side would be illuminated, the light \emph{actually} hit side-on. (I.e. cap pointing ca. 30° up towards the condenser)}
 
 
+
+
+
+\subsection*{Experiment, Back Focal Plane}
+
+\todo{Tighter focusing vs. isotropic baseline for Au- vs. PS side illumination + simulation shows the same}
+
+In asymmetric cases, light is preferentially scattered in the direction of the Au cap. 
+The simulations arrive at the same result. 
+
+
+
+
+\subsection*{Simulations}
 
 The measured intensity increase through the visible range coincides with the increase of the scattering cross-section. 
 In the NIR range, the measured brightness increases further; here it is due to the broadening of the forward scattering peak. 
-
-
-
 
 For wavelengths beyond $\SI{700}{\nano\meter}$, the scattering cross-sections, between illumination from the Au side and from the PS side, are virtually the same. 
 They are, moreover, on average significantly larger than that for side-on illumination. 
@@ -350,13 +383,24 @@ This points at a polar plasmon mode that is being excited out-of-phase.
 
 
 
-\subsection*{Global Illumination}
 
-\todo{...}
 
-Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
+\section*{Discussion}
 
-\subsection*{Orientation Dependent}
+
+Notable findings are...
+\begin{itemize}
+    \item The spectral bump at $\lambda\approx\SI{550}{\nano\meter}$. It's discernable in both real and emulated measurements, though in the raw simulation data it only appears for side-on illumination. 
+    It's likely the same peak as would show up for an arbitrarily small Au NP. 
+    The plasmon mode is excited in the rim of the cap by electric fields that are perpendicular to the Au surface at its point(s) of highest curvature. (i.e. $\vec{E} \parallel \hat{z}$, which can only happen if $\hat{k} \perp \hat{z}$)
+    \item The clearly discernable peak at $\lambda\approx\SI{1000}{\nano\meter}$ is present under the opposite circumstances, i.e. when $\hat{k}\parallel\hat{z}$. 
+    It corresponds to a surface plasmon resonance of the Au cap. (Polar/Azimuthal?\footnote{Rim modes can, when $\hat{k}\parallel\hat{z}$, only really be excited in the fundamental mode. The same should go for azimuthal modes. right?})
+    \item Comparing the angular distributions to those of a Mie particle, there is clear similarity: 
+    Non-global maxima become more well-distinguished and over-all fewer as wavelength increases. 
+    The same happens as the direction of illumination is changed from $\hat{k}\perp\hat{z}$ to $\hat{k}\parallel\hat{z}$: Both transitions can, from a Mie-theoretical point of view, be understood as a decreasing size parameter. (consider the ratio of the effective diameter\footnote{"depth"?} of the plasmonic structure in the direction of the wave propagation to the wavelength)  
+    \item The out-of-plane orientation of the JP is not easy to infer: 
+\end{itemize}
+
 
 \begin{figure*}[t!]
     \centering
@@ -373,8 +417,6 @@ Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
 
 
 
-\section*{Simulation Results}
-
 \todo{A summary figure of sim results: scattering spectra, Mie plots and the like}
 
 \todo{We find that the scattering cross-section heavily depends on the orientation of the JP.}
@@ -385,12 +427,18 @@ Between axial and side-on illumination, though, there is no clear correspondence
 
 E.g., for side-on illumination, there is a scattering peak at $\lambda\approx\SI{540}{\nano\meter}$, that has no counterpart in the spectra for axial illumination. 
 We ascribe this peak to the nanostructure plasmon resonance of gold: 
+%It would be analogous to the spectrum of a small\footnote{tens of nanometres} Au particle added on top of the otherwise quite featureless spectrum of the JP. 
 It sits right around that wavelength and it is only under side-on illumination that the incident electric field may be perpendicular to the surface of the Au cap at its points of highest curvature, that being the cap's perimeter. 
 
-The more immediately noticeable feature of the scattering spectra is the pair of peaks at $\lambda\approx\SI{1000}{\nano\meter}$,\footnote{precisely, they are at 996.9 nm and 998.9 nm, respectively.} which only appears under axial illumination. 
-As $\hat{k}$ is parallel to the symmetry axis of the JP, the perimeter of the Au cap is coplanar to the electric field and a resonant surface plasmon is excited in it. 
+\todo{(check whether actually true) Note that this is not the azimuthal analogue to the polar plasmon modes described later. 
+The scattering peaks associated with these modes are (?) visible at greater wavelengths, though only for side-on illumination as well.}
 
-\begin{figure*}[h!]
+The more immediately noticeable feature of the scattering spectra is the pair of peaks at $\lambda\approx\SI{1000}{\nano\meter}$,\footnote{precisely, they are at 996.9 nm and 998.9 nm, respectively.} which only appears under axial illumination. 
+%As $\hat{k}$ is parallel to the symmetry axis of the JP, the perimeter of the Au cap is coplanar to the electric field and a resonant surface plasmon is excited in it. 
+The distribution of charge in the Au cap, as taken from the simulations for this wavelength, as well as for other peaks in these spectra, are rotationally symmetric and oscillate in the polar coordinate. 
+The relation between excitation wavelength and the number of half oscillations of the charge density between the apex and the rim of the cap is illustrated in \reffig{fig:polar-plasmon-modes}{}. 
+
+\begin{figure*}[b!]
     \centering
     \includegraphics[width=\columnwidth]{polar plasmon orders (inverse, toporder=2)}
     \caption{
@@ -399,24 +447,30 @@ As $\hat{k}$ is parallel to the symmetry axis of the JP, the perimeter of the Au
     \label{fig:polar-plasmon-modes}
 \end{figure*}
 
+For peaks in scattering intensity, the surface plasmon is reflected off the rim of the cap to constructively interfere with itself, producing a standing wave of the charge distribution. 
+Similarly for valleys, the reflected surface plasmon desructively interferes with itself.  
+
 Neither of these peaks is present\footnote{discernable?} in the scattering spectrum of an equivalently sized Au sphere. 
-This implies that the associated surface plasmon mode is one that does not exist on a closed sphere.  
+This implies that the associated surface plasmon modes do not exist on a closed sphere in this form. 
+\todo{Is it due to the rim making plasmon reflection possible or the inside of the cap being available, or both?}
 
 
-Notable findings are...
-\begin{itemize}
-    \item The spectral bump at $\lambda\approx\SI{550}{\nano\meter}$. It's discernable in both real and emulated measurements, though in the raw simulation data it only appears for side-on illumination. 
-    It's likely the same peak as would show up for an arbitrarily small Au NP. 
-    The plasmon mode is excited in the rim of the cap by electric fields that are perpendicular to the Au surface at its point(s) of highest curvature. (i.e. $\vec{E} \parallel \hat{z}$, which can only happen if $\hat{k} \perp \hat{z}$)
-    \item The clearly discernable peak at $\lambda\approx\SI{1000}{\nano\meter}$ is present under the opposite circumstances, i.e. when $\hat{k}\parallel\hat{z}$. 
-    It corresponds to a surface plasmon resonance of the Au cap. (Polar/Azimuthal?\footnote{Rim modes can, when $\hat{k}\parallel\hat{z}$, only really be excited in the fundamental mode. The same should go for azimuthal modes. right?})
-    \item Comparing the angular distributions to those of a Mie particle, there is clear similarity: 
-    Non-global maxima become more well-distinguished and over-all fewer as wavelength increases. 
-    The same happens as the direction of illumination is changed from $\hat{k}\perp\hat{z}$ to $\hat{k}\parallel\hat{z}$: Both transitions can, from a Mie-theoretical point of view, be understood as a decreasing size parameter. (consider the ratio of the effective diameter\footnote{"depth"?} of the plasmonic structure in the direction of the wave propagation to the wavelength)  
-    \item The out-of-plane orientation of the JP is not easy to infer: 
-\end{itemize}
+
+\todo{For side-on illumination but arbitrary polarization, there is also something happening on the cap, not just on the rim. 
+Would that be an extra class of modes? (let's call 'em longitudinal to distinguish them from the polar and azimuthal modes)
+And are those the tiny peaks in the side-on scattering spectrum between 650 and 850 nm?}
+
+
 
 It is notable that the bump at \mbox{$\lambda \approx \SI{550}{\nano\meter}$} that is discernible in both the real and the emulated measurements \seefig{fig:spectra}{A}, appears in the raw simulation data \seefig{fig:spectra}{B} only under side-on illumination, i.e. \mbox{$\zeta\approx\pi/2$}. 
+
+
+
+
+The spectral peaks that are characteristic to each orientation are not recognizeable in a measurement. 
+\todo{how to make them visible?}
+
+
 
 \section*{Conclusion \& Outlook}
 
