@@ -60,7 +60,7 @@ Some purely numerical studies suggest that plasmonic JPs can stably rotate, powe
 As a first step towards an understanding of such effects, we study the scattered light from these JPs. 
 We measure scattering spectra of individual JPs while varying the direction of illumination as well as resolving for the scattering angle. 
 %To our knowledge, this manner of LMIs has not yet been systematically studied. 
-While orientation-dependent scattering studies of plasmonic nanostructures%\footnote{specifically, Au nano-rods and -triangles, sized between 100 and 150 nm} 
+While orientation-dependent scattering studies of plasmonic nanostructures %\footnote{specifically, Au nano-rods and -triangles, sized between 100 and 150 nm} 
 \emph{have} been performed, \cite{Islam2021} %neither has that been the case on JPs nor with a capacity for spectral resolution beyond RGB-decomposition. 
 that has only been the case for Au nanostructures significantly smaller than the observation wavelengths. 
 As such, no regard was given to the angular distribution of the scattered light.%\footnote{which on such small objects isn't necessary - the angular distribuions look pretty much the same - but for larger particles, the differences in the shapes of the Mie plots can lead to drastic differences between the "true" scattering spectra and the measured ones.} 
@@ -109,61 +109,6 @@ These definitions are illustrated in \todo{Figure}.
 
 
 \section*{Methods}
-
-\subsection*{Finite-Element Simulations}
-
-The finite-element simulations were performed in COMSOL \mbox{Multiphysics 6.1}. 
-%The simulation per se is ignorant of real-world optical devices and.
-%Therefore, the geometric definition of the model does not depend on \mbox{$\hat{o}$-direction} or the objective aperture. 
-The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis. 
-
-As parameters, the simulation takes in the \emph{illumination angle}, 
-$$
-    \zeta := \measuredangle\left( \hat{z}, \hat{k} \right) \ ,
-$$
-and the incident (vacuum-) wavelength $\lambda$. 
-
-Numerically, the properties of the scattered light field were obtained using COMSOL Multiphysics. 
-\todo{Intro to the geometric model. The COMSOL model is qualitatively the same as in \cite{BA}. } 
-The surrounding medium was modelled with a refractive index of $1.51$. 
-
-Given a plane wave 
-$$
-    \vec{E}_\mathrm{incident}(\vec{x},t) = \vec{E}_0 \cdot \exp\!\left( \mathfrak{i}\ \vec{k}\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)
-$$
-as the incident field, the solver produced a point-wise solution 
-$$
-    \vec{E}(\vec{x},t) = \vec{E}_\mathrm{incident}(\vec{x},t) + \vec{E}_\mathrm{sca}(\vec{x},t)
-$$ 
-to Maxwell's field equations on the defined geometry, where $\vec{E}_\mathrm{sca}(\vec{x},t)$ is the scattered field. 
-
-The scattering cross-section of the particle was calculated from the scattered field as 
-$$
-    \sigma_\mathrm{sca} = \frac{2 \mu_0 \mu_r}{ {\bigl\Vert \vec{E}_0 \bigr\Vert}^2 } \cdot \oint_{\partial V} {\left\langle \vec{S}_\mathrm{sca} \right\rangle}_t \cdot\mathrm{d}\vec{A} \ ,
-$$
-where $\vec{S}_\mathrm{sca}$ is the Poynting vector of the scattered field and $\langle\cdot\rangle_t$ denotes the time average. 
-
-\todo{Explanation on how the scattering intensity is resolved for $\hat{k}$} 
-The scattered field can, according to Fourier's theorem, be decomposed into plane-wave components
-$$
-    \mathrm{d}\vec{E}(\vec{x},t) := \vec{\mathcal{E}}(\vec{k}) 
-    \cdot 
-    \exp{\!\left(\mathfrak{i}\ \vec{k}\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)}
-    \ \mathrm{d}^3 k
-    \ , 
-$$
-such that $ \vec{E}_\mathrm{sca} = \iiint_{\mathds{R}^3}\ \mathrm{d}\vec{E}$. 
-The amplitudes $\vec{\vec{\mathcal{E}}}(\vec{k})$ of the components are given by the Fourier transform of $\vec{E}(\vec{x},t)$. 
-The intensities of the components are given by 
-$$
-    \mathrm{d}\mathcal{I}(\vec{k}) = \frac{ {\left\langle {\left\Vert \vec{\mathcal{E}}(\vec{k}) \right\Vert}^2 \right\rangle}_t }{ 2\mu_0 \mu_r } \ \mathrm{d}^3k
-    \ .
-$$
-
-With any fixed wavelength $\lambda$, the wavevectors are conveniently expressed as $ \vec{k} = 2 \pi \lambda^{-1} \cdot \hat{k} $, where \mbox{$\hat{k} \in \mathcal{S}^2$} is a unit vector. 
-One obtains the spectral and angular distribution of scattered light, $\mathrm{d}\mathcal{I}(\lambda, \Omega)$, where $\Omega$ parametrizes the 2-sphere. 
-
-
 
 
 
@@ -254,6 +199,61 @@ In the comparison of the measured spectra to the predictions of Mie theory \cite
 \end{figure*}
 
 
+
+
+
+\subsection*{Finite-Element Simulations}
+
+The finite-element simulations were performed in COMSOL \mbox{Multiphysics 6.1}. 
+%The simulation per se is ignorant of real-world optical devices and.
+%Therefore, the geometric definition of the model does not depend on \mbox{$\hat{o}$-direction} or the objective aperture. 
+The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis. 
+
+As parameters, the simulation takes in the \emph{illumination angle}, 
+$$
+    \zeta := \measuredangle\left( \hat{z}, \hat{k} \right) \ ,
+$$
+and the incident (vacuum-) wavelength $\lambda$. 
+
+Numerically, the properties of the scattered light field were obtained using COMSOL Multiphysics. 
+\todo{Intro to the geometric model. The COMSOL model is qualitatively the same as in \cite{BA}. } 
+The surrounding medium was modelled with a refractive index of $1.51$. 
+
+Given a plane wave 
+$$
+    \vec{E}_\mathrm{incident}(\vec{x},t) = \vec{E}_0 \cdot \exp\!\left( \mathfrak{i}\ \vec{k}\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)
+$$
+as the incident field, the solver produced a point-wise solution 
+$$
+    \vec{E}(\vec{x},t) = \vec{E}_\mathrm{incident}(\vec{x},t) + \vec{E}_\mathrm{sca}(\vec{x},t)
+$$ 
+to Maxwell's field equations on the defined geometry, where $\vec{E}_\mathrm{sca}(\vec{x},t)$ is the scattered field. 
+
+The scattering cross-section of the particle was calculated from the scattered field as 
+$$
+    \sigma_\mathrm{sca} = \frac{2 \mu_0 \mu_r}{ {\bigl\Vert \vec{E}_0 \bigr\Vert}^2 } \cdot \oint_{\partial V} {\left\langle \vec{S}_\mathrm{sca} \right\rangle}_t \cdot\mathrm{d}\vec{A} \ ,
+$$
+where $\vec{S}_\mathrm{sca}$ is the Poynting vector of the scattered field and $\langle\cdot\rangle_t$ denotes the time average. 
+
+\todo{Explanation on how the scattering intensity is resolved for $\hat{k}$} 
+The scattered field can, according to Fourier's theorem, be decomposed into plane-wave components
+$$
+    \mathrm{d}\vec{E}(\vec{x},t) := \vec{\mathcal{E}}(\vec{k}) 
+    \cdot 
+    \exp{\!\left(\mathfrak{i}\ \vec{k}\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)}
+    \ \mathrm{d}^3 k
+    \ , 
+$$
+such that $ \vec{E}_\mathrm{sca} = \iiint_{\mathds{R}^3}\ \mathrm{d}\vec{E}$. 
+The amplitudes $\vec{\vec{\mathcal{E}}}(\vec{k})$ of the components are given by the Fourier transform of $\vec{E}(\vec{x},t)$. 
+The intensities of the components are given by 
+$$
+    \mathrm{d}\mathcal{I}(\vec{k}) = \frac{ {\left\langle {\left\Vert \vec{\mathcal{E}}(\vec{k}) \right\Vert}^2 \right\rangle}_t }{ 2\mu_0 \mu_r } \ \mathrm{d}^3k
+    \ .
+$$
+
+With any fixed wavelength $\lambda$, the wavevectors are conveniently expressed as $ \vec{k} = 2 \pi \lambda^{-1} \cdot \hat{k} $, where \mbox{$\hat{k} \in \mathcal{S}^2$} is a unit vector. 
+One obtains the spectral and angular distribution of scattered light, $\mathrm{d}\mathcal{I}(\lambda, \Omega)$, where $\Omega$ parametrizes the 2-sphere. 
 
 
 
