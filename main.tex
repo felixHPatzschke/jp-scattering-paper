@@ -76,6 +76,7 @@ Through the analysis of the simulation results, we correlate peaks in the scatte
 
 
 
+
 \section*{Definitions}
 
 \todo{Introduction of the real, physical sample: Mathematical formalization should go after.}
@@ -144,7 +145,7 @@ A $\SI{30}{\micro\litre}$ droplet was placed on a cover slip and the JPs in solu
 Afterwards, the solvent was blown off using nitrogen gas, leaving the remaining JPs stuck on the coverslide. 
 A second cover slip was placed on top, with a droplet of $\SI{1.5}{\micro\litre}$ of immersion oil\footnote{TO DO: serial number} in between, such as to keep the ambient refractive index constant in the vicinity of the particles.   
 
-\subsubsection*{Setup}
+\subsubsection*{Optical Setup}
 
 The imaging setup is sketched in \reffig{fig:setup}{C}. 
 Its basis was formed by a standard dark-field microscope. 
@@ -357,15 +358,8 @@ $$\theta_\mathrm{NA} = \mathrm{asin}\frac{\mathrm{NA}}{n} \ .$$
 
 \section*{Results}
 
-\todo{Measurements first, then Simulations}
+\subsection*{Dark-Field Spectra}
 
-\subsection*{Experiment, Global Illumination}
-
-
-The spectra show a sharp upward bend at $\SI{500}{\nano\meter}$ and a bump at $\SI{550}{\nano\meter}$, followed by an approximately linear increase of the scattering intensity over the spectral range up to $\SI{950}{\nano\meter}$. 
-Beyond, the measured spectra diverge from one another, some dropping off, others continuing the trend of linear increase. 
-This is an artifact of the signal processing in conjunction with the low efficiency of the setup at wavelengths beyond $\SI{1000}{\nano\meter}$. 
-%\todo{Other accumulated measurments don't have the drop-offs at 950ish.}
 
 Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
 
@@ -376,30 +370,69 @@ Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
     \label{fig:spectra}
 \end{figure*}
 
-The emulated spectra show the same behaviour between $500$ and $\SI{950}{\nano\meter}$, though their average\footnote{The average was weighted for the likelihood of the particular out-of-plane orientation of the particle as well as for the NA setting of the objective, both of which influence the integration sub-domain.} derivative is consistently \todo{check!} lower. 
+\todo{Broad behaviour: Intensity of the scattering signal increases with wavelength.}
+
+All spectra show a sharp upward bend at $\SI{500}{\nano\meter}$, the same as can be seen in the scattering spectra of similar-sized Au spheres. 
+
+The cumulative spectra show an monotonous increase of the scattering intensity over the spectral range up to $\SI{950}{\nano\meter}$. 
+Beyond, the measured spectra diverge from one another, some dropping off, others continuing the trend of linear increase. \todo{plot} 
+This is an artifact of the signal processing in conjunction with the low efficiency of the setup at wavelengths beyond $\SI{1000}{\nano\meter}$. 
+
+%In the simulated measurements, the continued trend can be seen in the overwhelming majority of sampled cases. 
+
+The emulated spectra show the same qualititive behaviour between $500$ and $\SI{950}{\nano\meter}$, though their average\footnote{The average was weighted for the likelihood of the particular out-of-plane orientation of the particle as well as for the NA setting of the objective, both of which influence the integration sub-domain.} derivative is consistently \todo{check!} lower. 
 No obvious features can be resolved in this spectral range. 
 In the NIR, all emulated spectra continue the increasing trend. 
 
 
-\subsection*{Experiment, Restricted Illumination}
+Consistent between all measurements, there is a bump at $\SI{550}{\nano\meter}$. 
+This is, notably, the same wavelength as the main peak of an arbitrarily small AuNP's scattering spectrum. 
+
+%\todo{Other accumulated measurments don't have the drop-offs at 950ish.}
+
+
+
+\subsection*{Dark-Field Spectra, Selective Illumination}
 
 \todo{Particle appears much brighter when illuminated from the Au side. It stands to reason that its out-of-plane orientation made it such that when the aperture was rotated such that the PS side would be illuminated, the light \emph{actually} hit side-on. (I.e. cap pointing ca. 30° up towards the condenser)}
 
+With the selective illumination mode, we demonstrate the dependence of the JP's scattering intensity on the propagation direction of the incident light. 
+\todo{need to have another look at the data} 
 
 
 
 
-\subsection*{Experiment, Back Focal Plane}
+\subsection*{Fourier Plane Spectra}
 
-\todo{Tighter focusing vs. isotropic baseline for Au- vs. PS side illumination + simulation shows the same}
+In the multiplexed Fourier plane spectroscopy, the angular distributions of the scattering intensity became visible. 
+We considered three settings of the selective illumination: 
+\begin{itemize}
+    \item illumination from the Au side, i.e. maximal $\zeta$,
+    \item illumination from the PS side, i.e. minimal $\zeta$ and
+    \item side-on illumination, i.e. $\zeta \approx \pi/2$.
+\end{itemize}
 
-In asymmetric cases, light is preferentially scattered in the direction of the Au cap. 
-The simulations arrive at the same result. 
+For all illumination directions, most of the scattered light is only lightly deflected off of the propagation direction of the incident light. 
+However, there were qualitative distinctions between the distributions that hold over the entire spectral range under consideration:
+The peak brightness was highest for illumination from the Au side, while a wider peak and significant sideways scattering accumulated into a greater absolute brightness under illumination from the PS side. 
+
+Unsurprisingly, the distributions were symmetric about the axis of illumination. 
+This was not the case for the side-on illumination, where light was preferentially scattered in the direction of the Au side. 
+
+
+
+%\todo{Tighter focusing vs. isotropic baseline for Au- vs. PS side illumination + simulation shows the same}
+
+%In addition to dependencies on the illumination angle and wavelength, 
 
 
 
 
-\subsection*{Simulations}
+\subsection*{Numerical Results, Far-Field Patterns}
+
+The simulated far-field patterns show the same results. 
+
+\subsection*{Numerical Results, Dark-Field Spectra}
 
 The measured intensity increase through the visible range coincides with the increase of the scattering cross-section. 
 In the NIR range, the measured brightness increases further; here it is due to the broadening of the forward scattering peak. 
@@ -410,6 +443,8 @@ However, at $\lambda=\SI{1210}{\nano\meter}$, they have a local minimum where th
 This points at a polar plasmon mode that is being excited out-of-phase. 
 \todo{Explain better what I mean.}
 \todo{Also: I would expect a peak in the absorption cross-section there. Motivate why and check if it's there.}
+
+\subsection*{Numerical Results, Scattering Spectra}
 
 
 
