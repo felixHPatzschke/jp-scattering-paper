@@ -358,7 +358,9 @@ $$\theta_\mathrm{NA} = \mathrm{asin}\frac{\mathrm{NA}}{n} \ .$$
 
 \section*{Results}
 
-\subsection*{Dark-Field Spectra}
+\subsection*{Experimental Results}
+
+\subsubsection*{Dark-Field Spectra}
 
 
 Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
@@ -392,7 +394,7 @@ This is, notably, the same wavelength as the main peak of an arbitrarily small A
 
 
 
-\subsection*{Dark-Field Spectra, Selective Illumination}
+\subsubsection*{Dark-Field Spectra under Selective Illumination}
 
 \todo{Particle appears much brighter when illuminated from the Au side. It stands to reason that its out-of-plane orientation made it such that when the aperture was rotated such that the PS side would be illuminated, the light \emph{actually} hit side-on. (I.e. cap pointing ca. 30° up towards the condenser)}
 
@@ -402,7 +404,7 @@ With the selective illumination mode, we demonstrate the dependence of the JP's 
 
 
 
-\subsection*{Fourier Plane Spectra}
+\subsubsection*{Fourier Plane Spectra}
 
 In the multiplexed Fourier plane spectroscopy, the angular distributions of the scattering intensity became visible. 
 We considered three settings of the selective illumination: 
@@ -428,11 +430,27 @@ This was not the case for the side-on illumination, where light was preferential
 
 
 
-\subsection*{Numerical Results, Far-Field Patterns}
+\subsection*{Numerical Results}
+
+%We conducted numerical simulations of the scattering of light by an individual JP. 
+%From the solutions for the electromagnetic field, we computed observable quantities that correspond to those measured in the experiments. 
+
+\subsubsection*{Far-Field Patterns}
 
 The simulated far-field patterns show the same results. 
 
-\subsection*{Numerical Results, Dark-Field Spectra}
+\subsubsection*{Scattering Spectra}
+
+Integrating the far-field patterns for each illumination angle and wavelength yields a family of scattering spectra. 
+Each curve $\lambda\mapsto\sigma_\mathrm{sca}$ corresponds to a specific illumination angle. 
+\todo{We only consider the scattering spectra for illumination directly from the Au side, from the PS side and side-on, for now. (And possibly the orientation-average curve)}
+
+The scattering spectra differ signifiantly from the measured dark-field spectra, though some correspondences between features can be inferred: 
+\todo{
+    General upward trend is given, and sharp upward bend at 500 nm, but... 
+    distinct wobbles for $\lambda > \SI{600}{\nano\meter}$, 
+    decrease of scattering cross-section up to the minimum at 500 nm
+}
 
 The measured intensity increase through the visible range coincides with the increase of the scattering cross-section. 
 In the NIR range, the measured brightness increases further; here it is due to the broadening of the forward scattering peak. 
@@ -442,9 +460,21 @@ They are, moreover, on average significantly larger than that for side-on illumi
 However, at $\lambda=\SI{1210}{\nano\meter}$, they have a local minimum where the scattering cross-section is less than that for side-on illumination. 
 This points at a polar plasmon mode that is being excited out-of-phase. 
 \todo{Explain better what I mean.}
-\todo{Also: I would expect a peak in the absorption cross-section there. Motivate why and check if it's there.}
+\todo{Curiously, the peaks in the absorption spectra don't line up with either the valleys or the peaks in the scattering spectra.}
 
-\subsection*{Numerical Results, Scattering Spectra}
+This is due to the measurements only taking into account scattered light which is emitted in such a direction that it is collected by the objective, while the simulated scattering spectra take into account the energy flow density of the scattered field itself. 
+
+
+\subsubsection*{Dark-Field Spectra}
+
+By integrating the angular distributions over appropriately-chosen subsets of $\mathcal{S}^2$, this part of the measurement is accurately modelled. 
+These subsets depend on the numerical aperture of the virtual objective and the out-of-plane orientation of the JP in the virtual sample. 
+
+\todo{The average of }\footnote{\todo{I mean most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
+The thus computed spectra reproduce the measured dark-field spectra well. 
+Meanwhile, details such as the local maxima of the full scattering spectra are lost. 
+Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
+
 
 
 
@@ -453,6 +483,7 @@ This points at a polar plasmon mode that is being excited out-of-phase.
 
 \section*{Discussion}
 
+\subsubsection*{Spectra}
 
 \todo{We find that the scattering cross-section heavily depends on the orientation of the JP.}
 Over the spectral range that we analyzed, though decidedly not in general, the scattering efficiency of the particle was ... greater if it was illuminated from either the Au or the PS side than if it was illuminated side-on. 
@@ -487,7 +518,7 @@ For the $\SI{996}{\nano\meter}$ peaks, this means $\tilde{k}=\pm3$.
 \end{figure*}
 
 Neither of these peaks is present\footnote{discernable?} in the scattering spectrum of an equivalently sized Au sphere. 
-This implies that the associated surface plasmon modes do not exist on a closed sphere in this form. 
+This implies that \todo{either} the associated surface plasmon modes do not exist on a closed sphere in this form \todo{or the $\mathrm{Au}\mathcal{S}$ spectrum is more closely related to the orientation-average of the JP spectra than it is to any single one of them}. 
 \todo{The way the electric fields look, it's due to interference of the outer and inner surface plasmons, so perhaps something similar could be seen on a CoreShell?}
 %\todo{Is it due to the rim making plasmon reflection possible or the inside of the cap being available, or both?}
 
@@ -540,7 +571,7 @@ The spectral peaks that are characteristic to each orientation are not recognize
 %For peaks in scattering intensity, the surface plasmon is reflected off the rim of the cap to constructively interfere with itself, producing a standing wave of the charge distribution. 
 %Similarly for valleys, the reflected surface plasmon desructively interferes with itself.  
 
-
+\subsubsection*{Distributions} 
 
 \todo{Discussion about the angular distributions - Lift something from the MA.}
 
@@ -570,6 +601,8 @@ Interesting things to do with this in the future might be...
     Decomposition of the tangential electric field in an appropriate basis (vector hemispherical harmonics?) to find relative excitation of every (important) surface plasmon mode, depending on wavelength and illumination angle.
     \item Real-time spectroscopy to track a JP's out-of-plane angle. 
 \end{itemize}
+
+\todo{Further investigation of the angular distributions could help develop a computationally inexpensive theory of the pressure cross-section of JPs.}
 
 
 
