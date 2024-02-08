@@ -79,6 +79,8 @@ Through the analysis of the simulation results, we correlate peaks in the scatte
 
 \section*{Definitions}
 
+
+
 \todo{Introduction of the real, physical sample: Mathematical formalization should go after.}
 
 The geometry of the system of interest is as follows: 
@@ -442,7 +444,7 @@ The simulated far-field patterns show the same results.
 \subsubsection*{Scattering Spectra}
 
 Integrating the far-field patterns for each illumination angle and wavelength yields a family of scattering spectra. 
-Each curve $\lambda\mapsto\sigma_\mathrm{sca}$ corresponds to a specific illumination angle. 
+Each spectrum $\lambda\mapsto\sigma_\mathrm{sca}$ corresponds to a specific illumination angle. 
 \todo{We only consider the scattering spectra for illumination directly from the Au side, from the PS side and side-on, for now. (And possibly the orientation-average curve)}
 
 The scattering spectra differ signifiantly from the measured dark-field spectra, though some correspondences between features can be inferred: 
@@ -462,7 +464,7 @@ This points at a polar plasmon mode that is being excited out-of-phase.
 \todo{Explain better what I mean.}
 \todo{Curiously, the peaks in the absorption spectra don't line up with either the valleys or the peaks in the scattering spectra.}
 
-This is due to the measurements only taking into account scattered light which is emitted in such a direction that it is collected by the objective, while the simulated scattering spectra take into account the energy flow density of the scattered field itself. 
+This is due to only scattered light which is emitted in such a direction that it is collected by the objective contributing to the measured scattering intensity, while the simulated scattering spectra take into account the energy flow density of the scattered field itself. 
 
 
 \subsubsection*{Dark-Field Spectra}
@@ -472,7 +474,7 @@ These subsets depend on the numerical aperture of the virtual objective and the 
 
 \todo{The average of }\footnote{\todo{I mean most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
 The thus computed spectra reproduce the measured dark-field spectra well. 
-Meanwhile, details such as the local maxima of the full scattering spectra are lost. 
+Meanwhile, details such as the local maxima of the full scattering spectra are lost. \todo{with the possible exception of a small wobble at 850 nm, but it's unclear how exactly it arises. Maybe it's the $k=\pm 4$-peak?}
 Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
 
 
@@ -586,14 +588,21 @@ The spectral peaks that are characteristic to each orientation are not recognize
 
 \section*{Conclusion \& Outlook}
 
-In summary, we conducted spectroscopic studies of the light scattering behaviour of individual, micrometre-sized Janus particles. 
+
+\todo{Method} 
+In summary, we have demonstrated \emph{Selective Illumination Multiplexed Fourier Plane Spectroscopy}, a technique by use of which the optical scattering from individual micrometre-sized plasmonic structures can be measured w.r.t. wavelength and scattering angle. 
+This technique was applied to probe the orientation-dependent light scattering of Au-coated Janus particles.  
+\todo{make it this sound less like an exact copy from \cite{Islam2021}} 
+
+\todo{Results} 
+%In summary, we conducted spectroscopic studies of the light scattering behaviour of individual, micrometre-sized Janus particles. 
 We find that the anisotropy of the JP causes certain features to appear in and disappear from its scattering spectrum under certain orientations, particularly in the NIR range. 
 
 The scattering spectrum of the JP is qualitatively different from that of equivalently-sized Au spheres for all directions of illumination, though correspondences between some features exist.   
 
 Coarse-grained simulations for longer wavelengths (up to $\SI{1400}{\nano\meter}$) suggest that the drop-off that was originally inferred in \cite*{MA} does not manifest in actuality. 
 
-An experimental setup that can detect these features, possibly even in real time, is feasible.
+An experimental setup that can detect these features, possibly even track them in real time, is feasible.
 
 Interesting things to do with this in the future might be...
 \begin{itemize}
