@@ -72,37 +72,7 @@ Through the analysis of the simulation results, we correlate peaks in the scatte
 
 
 
-\section*{Definitions}
 
-
-
-\todo{Introduction of the real, physical sample: Mathematical formalization should go after.}
-
-The geometry of the system of interest is as follows: 
-A polystyrene (PS) sphere ($r=\SI{0.5}{\micro\meter}$), centered at the origin, represents the core of the JP. 
-The gold cap is modelled as half of an ellipsoidal shell (semi major axis: $\SI{0.55}{\micro\meter}$, semi minor axes: $\SI{0.51}{\micro\meter}$) around the PS sphere. 
-It is cut off in the plane of the minor axes, its major axis coincides with the symmetry axis of the JP. 
-This construct is surrounded by an ambient medium with a constant, real-valued refractive index.  
-
-The orientation of the system is characterised by the angles between three unit vectors;
-\begin{itemize}
-    \item[$\hat{z},$] the symmetry axis of the particle, oriented such that the Au cap lies in the positive and the PS side in the negative $z$-direction, 
-    \item[$\hat{k},$] the propagation direction of the incident light, with respect to which scattering angles are defined and
-    \item[$\hat{o},$] the "forward" direction along the optical axis, equivalent to the central axis of the objective's collection cone. 
-\end{itemize}
-In terms of these, the out-of-plane orientation of the JP is defined as
-$\alpha := \measuredangle( \hat{o}, \hat{z} )$.
-Similarly, we define the illumination angle 
-$\zeta := \measuredangle( \hat{k}, \hat{z} )$, 
-which, in this model, is the only orientation parameter needed to define the light-matter interaction of the JP. 
-
-Scattering angles are defined for each plane-wave contribution to the scattered field: 
-Let that contribution have a propagation direction $\hat{k}'$. 
-Then, \mbox{$\theta := \measuredangle( \hat{k}', \hat{k} )$} is the polar component of the scattering angle. 
-Additionally, there is an azimuthal component $\phi$, the choice of reference point for which being somewhat arbitrary. 
-In the following, it will be chosen such that if $\hat{k}'$ lies in the $(\hat{k},\hat{z})$ plane, then $\phi=0$.
-
-These definitions are illustrated in \todo{Figure}. 
 
 
 
@@ -140,13 +110,13 @@ These definitions are illustrated in \todo{Figure}.
 The JPs were produced by \todo{cite production from Nic's work} and consist of spherical PS beads, coated with a layer of gold, $\SI{50}{\nano\meter}$ thick on average, on one side, with a $\SI{5}{\nano\meter}$ thick layer of chromium as a binding agent in between. 
 A $\SI{30}{\micro\litre}$ droplet was placed on a cover slip and the JPs in solution were left to sediment for \mbox{10 minutes}. 
 Afterwards, the solvent was blown off using nitrogen gas, leaving the remaining JPs stuck on the coverslide. 
-A second cover slip was placed on top, with a droplet of $\SI{1.5}{\micro\litre}$ of immersion oil\footnote{TO DO: serial number} in between, such as to keep the ambient refractive index constant in the vicinity of the particles.   
+A second cover slip was placed on top, with a droplet of $\SI{1.5}{\micro\litre}$ of immersion oil\footnote{\sffamily Immersol 518 F, Carl Zeiss Jena GmbH} in between, such as to keep the ambient refractive index constant in the vicinity of the particles.   
 
 \subsubsection*{Optical Setup}
 
 The imaging setup is sketched in \reffig{fig:setup}{C}. 
-Its basis was formed by a standard dark-field microscope. 
-A confocal aperture in the image plane of the dark-field microscope was used to isolate the scattered light from a single particle. 
+Its basis was formed by a standard dark-field microscope, constructed around an {\sffamily OLYMPUS IX71} microscope base. 
+A confocal aperture in the image plane of the dark-field microscope was used to isolate an individual particle. 
 A homebuilt spectrograph was used to extract spectral information from the microscope image. 
 It consisted of 
 %At the other end of the optical path stood a homebuilt spectrograph, consisting of 
@@ -156,8 +126,7 @@ It consisted of
     \item[{\sffamily(A5)}] a tunable slit to select only a thin vertical line from an image in order to prevent overlap of spectrally dispersed signals from different points in the original image and
     \item a lens to propagate the image from the plane of the slit onto the camera sensor.  
 \end{itemize}
-
-Both sub-assemblies were linked by a propagating optic, with which either the image plane wherein the aperture lay or the back focal plane (BFP) of the microscope objective could be chosen to be projected onto the slit. 
+The microscope and spectrograph sub-assemblies were linked by a simple propagating optic, with which either the image plane wherein the aperture lay or the back focal plane (BFP) of the microscope objective could be chosen to be projected onto the slit {\sffamily(A5)}. 
 
 \begin{figure*}[t!]
     \centering
@@ -172,53 +141,67 @@ Both sub-assemblies were linked by a propagating optic, with which either the im
 \end{figure*}
 
 The real-space-imaging mode was used to select particles for measurement as well as for spectral measurements in which the scattering angle was not resolved. 
-The BFP-imaging mode was used to align the dark-field illumination and to record spectrally resolved Fourier-space images of the JP under observation. 
+The BFP-imaging mode was used to check the alignment of the dark-field illumination and to record spectrally resolved Fourier-space images of the JP under observation. 
 To that end, the front aperture of the spectrograph (i.e. the slit {\sffamily{A5}}) was slowly translated across the BFP image while recording, such that the camera would record one spectrally dispersed vertical line of the BFP image at a time. 
-The accumulation time for one such dataset was approximately \mbox{15 minutes}.  
+The accumulation time for one such dataset was approximately \mbox{15 minutes}. 
 
 %The calibration data for the wavelength-dependent sensitivity of the optics was collected by allowing the illumination light to pass through the entire assembly and recording its spectrum. 
 Measurements had to be corrected for the spectral response function of the setup. 
 This was recorded by opening the objective's back aperture {\sffamily(A3)} fully, allowing the illumination light to pass through the entire assembly. 
+\todo{figure of correction spectrum}
 
-%For the samples, a drop of the JP solution was placed on a cover slip and the particles were allowed to sediment for at least \mbox{5 minutes}. 
-%Then, the solvent was blown off the cover slip with compressed air. 
-%A second cover slip was placed atop the first one, with a drop \mbox{$(\sim 1.5\,\mathrm{\upmu l})$} of immersion oil in between, ensuring no significant changes in the ambient refractive index in the vicinity of the JPs. 
-
-\subsubsection*{Validation}
-
-%In order to validate the experimental setup, we recorded scattering data that could be compared to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan}. 
+\note{I'm leaving out the laser for position calibration stuff.}
 
 
-For validation, the scattering spectra of $\SI{65}{\nano\meter}$ AuNPs were measured. 
-Such small particles were chosen for two reasons: 
-a) The resonance in the expected scattering spectrum would be as narrow as possible and b) the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor. 
-In the comparison of the measured spectra to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan} using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold shows a strong agreement. 
 
-\begin{figure*}[t]
+
+
+\subsection*{Numerical Methods}
+
+\subsubsection*{Definitions}
+
+
+
+The geometry of the system of interest is as follows: 
+A polystyrene (PS) sphere ($r=\SI{0.5}{\micro\meter}$), centered at the origin, represents the core of the JP. 
+The gold cap is modelled as half of an ellipsoidal shell (semi major axis: $\SI{0.55}{\micro\meter}$, semi minor axes: $\SI{0.51}{\micro\meter}$) around the PS sphere. 
+It is cut off in the plane of the minor axes, its major axis coincides with the symmetry axis of the JP. 
+This construct is surrounded by an ambient medium with a constant, real-valued refractive index.  
+
+The orientation of the system is characterised by the angles between three unit vectors;
+\begin{itemize}
+    \item[$\hat{z},$] the symmetry axis of the particle, oriented such that the Au cap lies in the positive and the PS side in the negative $z$-direction, 
+    \item[$\hat{k},$] the propagation direction of the incident light, with respect to which scattering angles are defined and
+    \item[$\hat{o},$] the "forward" direction along the optical axis, equivalent to the central axis of the objective's collection cone. 
+\end{itemize}
+In terms of these, the out-of-plane orientation of the JP is defined as
+$\alpha := \measuredangle( \hat{o}, \hat{z} )$.
+Similarly, we define the illumination angle 
+$\zeta := \measuredangle( \hat{k}, \hat{z} )$, 
+which, in this model, is the only orientation parameter needed to define the light-matter interaction of the JP. 
+
+Scattering angles are defined for each plane-wave contribution to the scattered field: 
+Let that contribution have a propagation direction $\hat{k}'$. 
+Then, \mbox{$\theta := \measuredangle( \hat{k}', \hat{k} )$} is the polar component of the scattering angle. 
+Additionally, there is an azimuthal component $\phi$, the choice of reference point for which being somewhat arbitrary. 
+In the following, it will be chosen such that if $\hat{k}'$ lies in the $(\hat{k},\hat{z})$ plane, then $\phi=0$.
+
+These definitions are illustrated in \reffig{fig:vectors-and-angles}{}. 
+
+\begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{[fig] AuNP (placeholder).jpg}
-    \caption{(Placeholder) 
-    {\sffamily\bfseries A:} Scattering spectrum of 65 nm Au NPs. The shaded area corresponds to the SNR. 
-    {\sffamily\bfseries B:} Scattering intensity of a spherical Au NP, $d=\SI{250}{\nano\meter}$ versus the scattering angle for various wavelengths. The lines show the predictions of GLMT \cite{GouesbetGrehan}, the points show measurement results.
-    }
-    \label{fig:AuNP}
-\end{figure*}
-
-We find a good match between the measured and theoretical spectra. 
-This is, in part, due to our choice of particles: 
-As they were significantly smaller than any wavelength considered, the scattered field is well-approximated by a dipole field. 
-The approximately constant shape of the angular intensity distributions meant that the fraction of scattered light being collected by the objective would also be approximately constant over the measured spectral range.
-
-%For the larger JPs, it would be necessary to correct for the differing distributions. 
-For the larger JPs, the comparison of measured and simulated spectra would necessitate a correction for the differing distributions. 
+    \includegraphics[width=\columnwidth]{angles_sketch_v0}
+    \caption{Unit vectors and angles defining the orientation of the system.}
+    \label{fig:vectors-and-angles}
+\end{figure}
 
 
-\subsection*{Finite-Element Simulations}
+\subsubsection*{Finite-Element Simulation}
 
 The finite-element simulations were performed in COMSOL \mbox{Multiphysics 6.1}. 
 %The simulation per se is ignorant of real-world optical devices and.
 %Therefore, the geometric definition of the model does not depend on \mbox{$\hat{o}$-direction} or the objective aperture. 
-\todo{Intro to the geometric model. The COMSOL model is qualitatively the same as in \cite{BA}. } 
+\todo{Intro to the geometric model. The COMSOL model is qualitatively the same as in \cite{BA}.} 
 The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis and $\hat{k}$ lies in the $x,z$ plane. 
 
 As parameters, the simulation takes in the \emph{illumination angle}, 
@@ -277,7 +260,7 @@ One obtains the spectral and angular distribution of scattered light, $\mathrm{d
 
 
 
-\subsection*{Emulation}
+\subsubsection*{Selective Integration}
 
 In order to be able compare the simulation results to the measurements, the the limited collection angle of the objective has to be taken into account. 
 Thus, while the "true" scattering intensity is the integral over the angular distribution of scattered light, 
@@ -318,7 +301,7 @@ according to the Abbe sine condition. \cite{MONA-BFP-photonic-crystals,MONA-BFP-
 
 
 
-\todo{I'm leaving out anything to do with polarization, because I'm only looking at unpolarized measurements and the description of how I define polarization in the simulation and subsequently get rid of it in the emulation feels redundant.}
+\note{I'm leaving out anything to do with polarization, because I'm only looking at unpolarized measurements and the description of how I define polarization in the simulation and subsequently get rid of it in the emulation feels redundant.}
 
 %To emulate the unpolarised light that the measurements were conducted with, $\chi$ was sampled as \mbox{$\in\left\lbrace0, \pi/2\right\rbrace$} and, in the evaluation, intensities were averaged.\footnote{This is allowed because $I\propto\left\Vert \hat{E} \right\Vert^2$.}
 %
@@ -356,6 +339,34 @@ $$\theta_\mathrm{NA} = \mathrm{asin}\frac{\mathrm{NA}}{n} \ .$$
 \section*{Results}
 
 \subsection*{Experimental Results}
+
+\subsubsection*{Validation}
+
+%In order to validate the experimental setup, we recorded scattering data that could be compared to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan}. 
+
+
+For validation, the scattering spectra of $\SI{65}{\nano\meter}$ AuNPs were measured. 
+Such small particles were chosen for two reasons: 
+a) The resonance in the expected scattering spectrum would be as narrow as possible and b) the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor. 
+In the comparison of the measured spectra to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan} using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold shows a strong agreement. 
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] AuNP (placeholder).jpg}
+    \caption{(Placeholder) 
+    {\sffamily\bfseries A:} Scattering spectrum of 65 nm Au NPs. The shaded area corresponds to the SNR. 
+    {\sffamily\bfseries B:} Scattering intensity of a spherical Au NP, $d=\SI{250}{\nano\meter}$ versus the scattering angle for various wavelengths. The lines show the predictions of GLMT \cite{GouesbetGrehan}, the points show measurement results.
+    }
+    \label{fig:AuNP}
+\end{figure*}
+
+We find a good match between the measured and theoretical spectra. 
+This is, in part, due to our choice of particles: 
+As they were significantly smaller than any wavelength considered, the scattered field is well-approximated by a dipole field. 
+The approximately constant shape of the angular intensity distributions meant that the fraction of scattered light being collected by the objective would also be approximately constant over the measured spectral range.
+
+%For the larger JPs, it would be necessary to correct for the differing distributions. 
+For the larger JPs, the comparison of measured and simulated spectra would necessitate a correction for the differing distributions. 
 
 \subsubsection*{Dark-Field Spectra}
 
@@ -467,7 +478,7 @@ This is due to only scattered light which is emitted in such a direction that it
 By integrating the angular distributions over appropriately-chosen subsets of $\mathcal{S}^2$, this part of the measurement is accurately modelled. 
 These subsets depend on the numerical aperture of the virtual objective and the out-of-plane orientation of the JP in the virtual sample. 
 
-\todo{The average of }\footnote{\todo{I mean most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
+\note{The average of }\footnote{\todo{I mean most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
 The thus computed spectra reproduce the measured dark-field spectra well. 
 Meanwhile, details such as the local maxima of the full scattering spectra are lost. \todo{with the possible exception of a small wobble at 850 nm, but it's unclear how exactly it arises. Maybe it's the $k=\pm 4$-peak?}
 Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
