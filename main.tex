@@ -30,15 +30,10 @@ sorting=none
 \begin{document}
 %\allsectionsfont{\sffamily}
 
-\maketitle
 
-\begin{abstract}\sffamily \vspace{-1em} \input{abstract} \\ \end{abstract}
+\twocolumn[\maketitle \begin{abstract}\sffamily \vspace{-1em} \input{abstract} \\ \end{abstract}]
+%\begin{multicols}{2}
 
-
-
-
-
-\begin{multicols}{2}
 
 \section*{Introduction}
 
@@ -117,7 +112,7 @@ These definitions are illustrated in \todo{Figure}.
 
 
 
-\begin{figure*}[t!]
+\begin{figure*}[htbp]
     \centering
     \includegraphics[width=\textwidth]{[fig] setup}
     %\includegraphics[width=\textwidth]{(fig) optics}
@@ -510,14 +505,14 @@ For the $\SI{996}{\nano\meter}$ peaks, this means $\tilde{k}=\pm3$.
 
 \todo{Proper analysis of the surface plasmon wavevector stuff.}
 
-\begin{figure*}[b!]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\columnwidth]{polar plasmon orders (inverse, toporder=2)}
     \caption{
         Excitation wavelengths of peaks and valleys in the axial illumination scattering spectra vs. spatial frequency of the electric field on the surface of the Au cap. 
     }
     \label{fig:polar-plasmon-modes}
-\end{figure*}
+\end{figure}
 
 Neither of these peaks is present\footnote{discernable?} in the scattering spectrum of an equivalently sized Au sphere. 
 This implies that \todo{either} the associated surface plasmon modes do not exist on a closed sphere in this form \todo{or the $\mathrm{Au}\mathcal{S}$ spectrum is more closely related to the orientation-average of the JP spectra than it is to any single one of them}. 
@@ -648,8 +643,8 @@ The authors have no competing interests to declare.
 
 
 
-\end{multicols}
-
+%\end{multicols}
+\onecolumn
 
 
 
