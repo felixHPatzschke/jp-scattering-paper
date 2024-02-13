@@ -128,17 +128,19 @@ It consisted of
 \end{itemize}
 The microscope and spectrograph sub-assemblies were linked by a simple propagating optic, with which either the image plane wherein the aperture lay or the back focal plane (BFP) of the microscope objective could be chosen to be projected onto the slit {\sffamily(A5)}. 
 
-\begin{figure*}[t!]
-    \centering
-    \includegraphics[width=\textwidth]{[fig] selective illumination}
-    \caption{Selective Illumination:   
-    {\sffamily\bfseries A:} By rotating the aperture {\sffamily{A1}} the direction of illumination on the particle can be controlled within the range permitted by its out-of-plane orientation. 
-    {\sffamily\bfseries B-I:} Dark-field images of a JP under restricted illumination. 
-    The arrows signify the in-plane angle of the illumination.  
-    {\sffamily\bfseries J:} The same JP under unrestricted (normal) dark-field illumination. 
-    }
-    \label{fig:selective-illumination}
-\end{figure*}
+%\begin{figure*}[t!]
+%    \centering
+%    \includegraphics[width=\textwidth]{[fig] selective illumination}
+%    \caption{Selective Illumination:   
+%    {\sffamily\bfseries A:} By rotating the aperture {\sffamily{A1}} the direction of illumination on the particle can be controlled within the range permitted by its out-of-plane orientation. 
+%    {\sffamily\bfseries B-I:} Dark-field images of a JP under restricted illumination. 
+%    The arrows signify the in-plane angle of the illumination.  
+%    {\sffamily\bfseries J:} The same JP under unrestricted (normal) dark-field illumination. 
+%    }
+%    \label{fig:selective-illumination}
+%\end{figure*}
+
+
 
 The real-space-imaging mode was used to select particles for measurement as well as for spectral measurements in which the scattering angle was not resolved. 
 The BFP-imaging mode was used to check the alignment of the dark-field illumination and to record spectrally resolved Fourier-space images of the JP under observation. 
@@ -148,7 +150,9 @@ The accumulation time for one such dataset was approximately \mbox{15 minutes}.
 %The calibration data for the wavelength-dependent sensitivity of the optics was collected by allowing the illumination light to pass through the entire assembly and recording its spectrum. 
 Measurements had to be corrected for the spectral response function of the setup. 
 This was recorded by opening the objective's back aperture {\sffamily(A3)} fully, allowing the illumination light to pass through the entire assembly. 
-\todo{figure of correction spectrum}
+
+The spectral efficiency of the setup, being the accumulated product of the lamps's emission spectrum, the camera's quantum efficiency and the optics' transmittivities, is illustrated in \todo{figure of correction spectrum}. 
+We deem this sufficient for wavelengths between $\SI{420}{\nano\meter}$ and $\SI{1000}{\nano\meter}$. 
 
 \note{I'm leaving out the laser for position calibration stuff.}
 
@@ -188,24 +192,28 @@ In the following, it will be chosen such that if $\hat{k}'$ lies in the $(\hat{k
 
 These definitions are illustrated in \reffig{fig:vectors-and-angles}{}. 
 
-\begin{figure}[h]
+\begin{figure}[t]
     \centering
     \begin{overpic}[width=0.5\columnwidth]{angles_sketch}
+    % subplot label
+    \put (0,96) {{\sffamily\textbf{A}}}
     % vector labels
     \put (42,3) {$\hat{o}$}
     \put (2,39) {\textcolor{ts_y}{$\hat{z}$}}
-    \put (-1,68) {\textcolor{ts_b}{$\hat{k}_0$}}
-    \put (76,8) {\textcolor{ts_r}{$\hat{k}'$}}
+    \put (-1,67.5) {\textcolor{ts_b}{$\hat{k}_0$}}
+    \put (77,6) {\textcolor{ts_r}{$\hat{k}'$}}
     % angle labels
-    \put (59,85) {$\zeta$}
+    \put (59,85.5) {$\zeta$}
     \put (24,18) {\textcolor{ts_y}{$\alpha$}}
     \put (23,85) {\textcolor{ts_b}{$\theta_o$}}
     \put (77,24) {\textcolor{ts_r}{$\theta$}}
     \end{overpic}
-    \caption{Unit vectors and angles defining the orientation of the system.}
+    \caption{
+        {\sffamily\textbf{A:}} Unit vectors and angles defining the orientation of the system. 
+        %{\sffamily\textbf{B:}} \todo{Integration domain corresponding to the objective aperture.} 
+    }
     \label{fig:vectors-and-angles}
 \end{figure}
-
 
 
 \subsubsection*{Finite-Element Simulation}
@@ -214,7 +222,7 @@ The finite-element simulations were performed in COMSOL \mbox{Multiphysics 6.1}.
 %The simulation per se is ignorant of real-world optical devices and.
 %Therefore, the geometric definition of the model does not depend on \mbox{$\hat{o}$-direction} or the objective aperture. 
 \todo{Intro to the geometric model. The COMSOL model is qualitatively the same as in \cite{BA}.} 
-The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis and $\hat{k}$ lies in the $x,z$ plane. 
+The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis and $\hat{k}$ lies in the $xz$ plane. 
 
 As parameters, the simulation takes in the \emph{illumination angle}, 
 $$
@@ -410,11 +418,31 @@ In the NIR, all emulated spectra continue the increasing trend.
 Consistent between all measurements, there is a bump at $\SI{550}{\nano\meter}$. 
 This is, notably, the same wavelength as the main peak of an arbitrarily small AuNP's scattering spectrum. 
 
-%\todo{Other accumulated measurments don't have the drop-offs at 950ish.}
+%\todo{Other accumulated measurements don't have the drop-offs at 950ish.}
 
 
 
 \subsubsection*{Dark-Field Spectra under Selective Illumination}
+
+\begin{figure}[h]
+    \centering
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography 165deg}  \put (-2,75) {\sffamily\textbf{A}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography 113deg}  \put (-3,75) {\sffamily\textbf{D}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography -121deg} \put (-2,75) {\sffamily\textbf{E}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography 7deg}    \put (-1,75) {\sffamily\textbf{J}} \end{overpic}
+    % next line
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography 172deg}  \put (-2,75) {\sffamily\textbf{B}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography 85deg}   \put (-2,75) {\sffamily\textbf{F}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography -88deg}  \put (-2,75) {\sffamily\textbf{G}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography -8deg}   \put (-3,75) {\sffamily\textbf{K}} \end{overpic}
+    % next line
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography -157deg} \put (-2,75) {\sffamily\textbf{C}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography -41deg}  \put (-3,75) {\sffamily\textbf{H}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography 32deg}   \put ( 0,75) {\sffamily\textbf{I}} \end{overpic}
+    \begin{overpic}[width=0.2425\columnwidth]{[subfig] tomography -27deg}  \put (-2,75) {\sffamily\textbf{L}} \end{overpic}
+    \caption{Dark-field images of a JP illuminated under different in-plane angles.}
+    \label{fig:tomography}
+\end{figure}
 
 \todo{Particle appears much brighter when illuminated from the Au side. It stands to reason that its out-of-plane orientation made it such that when the aperture was rotated such that the PS side would be illuminated, the light \emph{actually} hit side-on. (I.e. cap pointing ca. 30° up towards the condenser)}
 
