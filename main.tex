@@ -190,10 +190,22 @@ These definitions are illustrated in \reffig{fig:vectors-and-angles}{}.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\columnwidth]{angles_sketch}
+    \begin{overpic}[width=0.5\columnwidth]{angles_sketch}
+    % vector labels
+    \put (42,3) {$\hat{o}$}
+    \put (2,39) {\textcolor{ts_y}{$\hat{z}$}}
+    \put (-1,68) {\textcolor{ts_b}{$\hat{k}_0$}}
+    \put (76,8) {\textcolor{ts_r}{$\hat{k}'$}}
+    % angle labels
+    \put (59,85) {$\zeta$}
+    \put (24,18) {\textcolor{ts_y}{$\alpha$}}
+    \put (23,85) {\textcolor{ts_b}{$\theta_o$}}
+    \put (77,24) {\textcolor{ts_r}{$\theta$}}
+    \end{overpic}
     \caption{Unit vectors and angles defining the orientation of the system.}
     \label{fig:vectors-and-angles}
 \end{figure}
+
 
 
 \subsubsection*{Finite-Element Simulation}
