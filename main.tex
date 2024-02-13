@@ -371,21 +371,22 @@ $$\theta_\mathrm{NA} = \mathrm{asin}\frac{\mathrm{NA}}{n} \ .$$
 
 %In order to validate the experimental setup, we recorded scattering data that could be compared to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan}. 
 
-
 For validation, the scattering spectra of $\SI{65}{\nano\meter}$ AuNPs were measured. 
 Such small particles were chosen for two reasons: 
 a) The resonance in the expected scattering spectrum would be as narrow as possible and b) the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor. 
 In the comparison of the measured spectra to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan} using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold shows a strong agreement. 
 
-\begin{figure*}[t]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{[fig] AuNP (placeholder).jpg}
-    \caption{(Placeholder) 
+    %\includegraphics[width=\textwidth]{[fig] AuNP (placeholder).jpg}
+    \begin{overpic}[width=\columnwidth]{AuNP Spectra}                           \put (6.5,50) {{\sffamily\textbf{A}}} \end{overpic}
+    \begin{overpic}[width=\columnwidth]{[subfig] Mieplots-rect-thcomp-Au250-SP} \put (8,50) {{\sffamily\textbf{B}}} \end{overpic}
+    \caption{Validation measurements. 
     {\sffamily\bfseries A:} Scattering spectrum of 65 nm Au NPs. The shaded area corresponds to the SNR. 
     {\sffamily\bfseries B:} Scattering intensity of a spherical Au NP, $d=\SI{250}{\nano\meter}$ versus the scattering angle for various wavelengths. The lines show the predictions of GLMT \cite{GouesbetGrehan}, the points show measurement results.
     }
     \label{fig:AuNP}
-\end{figure*}
+\end{figure}
 
 We find a good match between the measured and theoretical spectra. 
 This is, in part, due to our choice of particles: 
