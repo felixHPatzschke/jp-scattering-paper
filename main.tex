@@ -278,7 +278,7 @@ such that $ \vec{E}_\mathrm{sca} = \iiint_{\mathds{R}^3}\,\mathrm{d}\vec{E}$.
 The amplitudes $\vec{\mathcal{E}}(\vec{k})$ of the components are given by the Fourier transform of $\vec{E}(\vec{x},t)$. 
 The intensities of the components are given by \cite{Griffiths-ED,MA} 
 $$
-    \mathrm{d}\mathcal{I}(\vec{k}) = \frac{ {\left\langle {\left\Vert \vec{\mathcal{E}}(\vec{k}) \right\Vert}^2 \right\rangle}_t }{ 2\mu_0 \mu_r } \ \mathrm{d}^3k
+    \mathrm{d}\mathcal{I}(\vec{k}) = \frac{ 1 }{ 2\mu_0 \mu_r }\,{\left\langle {\left\Vert \vec{\mathcal{E}}(\vec{k}) \right\Vert}^2 \right\rangle}_t \ \mathrm{d}^3k
     \ .
 $$
 
@@ -303,11 +303,11 @@ One obtains the spectral and angular distribution of scattered light, $\mathrm{d
 In the experiment, scattered light can only contribute to recorded scattering signals if it is collected by the objective. 
 While the "true" scattering intensity is the integral over the angular distribution of scattered light, 
 $$
-    P_\mathrm{sca}(\lambda) = \oiint_{\mathcal{S}^2} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , % \ \mathrm{d}\Omega \ ,
+    I_\mathrm{sca}(\lambda) = \oiint_{\mathcal{S}^2} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , % \ \mathrm{d}\Omega \ ,
 $$
 the measured value corresponds to the integration over a certain angular range, % $\mathcal{D} \subset \mathcal{S}^2$: 
 $$
-    P_\mathrm{sca,measured}(\lambda) = \iint_{\mathcal{D}} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , 
+    I_\mathrm{sca,measured}(\lambda) = \iint_{\mathcal{D}} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , 
 $$
 where $\mathcal{D} \subseteq \mathcal{S}^2$ is the set of propagation directions $\hat{k}'$, for which a plane wave component will pass through the objective aperture. %contribute to the signal on the detector. 
 Specifically, $\mathcal{D}$ is the interior of a small circle which is centered around $\hat{o}$ and whose angular radius $\rho$ is defined by the numerical aperture of the objective, 
@@ -334,9 +334,9 @@ We then choose the simulations corresponding to the illumination angles defined 
 
 The end result of the selective integration is a sampled map 
 $$
-    \alpha,\mathrm{NA} \mapsto \Bigl[ \lambda \mapsto \sigma_\mathrm{sca,measured} \Bigr] \ ,
+    \alpha,\mathrm{NA} \mapsto \bigl[ \lambda \mapsto I_\mathrm{sca,measured} \bigr] \ ,
 $$
-i.e. a scattering spectrum $\lambda \mapsto \sigma_\mathrm{sca,measured}$ as measured for each sampled $\alpha,\ \mathrm{NA}$. 
+i.e. a scattering spectrum $\lambda \mapsto I_\mathrm{sca,measured}$ as measured for each sampled $\alpha,\ \mathrm{NA}$. 
 
 %\begin{itemize}
 %    \item The simulation provides values of the scattered field for sampled values of $\zeta$.
@@ -360,10 +360,13 @@ i.e. a scattering spectrum $\lambda \mapsto \sigma_\mathrm{sca,measured}$ as mea
 
 %In order to validate the experimental setup, we recorded scattering data that could be compared to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan}. 
 
-For validation, the scattering spectra of $\SI{65}{\nano\meter}$ AuNPs were measured. 
+In order to validate the experimental setup, the scattering spectra of $\SI{65}{\nano\meter}$ AuNPs were measured. 
 Such small particles were chosen for two reasons: 
-a) The resonance in the expected scattering spectrum would be as narrow as possible and b) the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor. 
-In the comparison of the measured spectra to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan} using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold shows a strong agreement. 
+\begin{enumerate}[label=(\alph*)]
+    \item The resonance in the expected scattering spectrum would be as narrow as possible and
+    \item the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor.
+\end{enumerate}
+In \reffig{fig:AuNP}{A}, the measured scattering spectra are shown together with the prediction from Mie theory \cite{Mie1908}, computed using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold. 
 
 \begin{figure}[htbp]
     \centering
@@ -380,14 +383,27 @@ In the comparison of the measured spectra to the predictions of Mie theory \cite
     \label{fig:AuNP}
 \end{figure}
 
+%In the comparison of the measured spectra to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan} using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold shows a strong agreement. 
+
 We find a good match between the measured and theoretical spectra. 
-Nonetheless, there is a perceptible and systematic shift of the measured scattering peaks towards the red end of the spectrum. 
-This is, in part, due to our choice of particles: 
-As they were significantly smaller than any wavelength considered, the scattered field is well-approximated by a dipole field. 
+%This is, in part, due to our choice of particles: 
+As the particles were significantly smaller than any wavelength considered, the scattered field is well-approximated by a dipole field. 
 The approximately constant shape of the angular intensity distributions meant that the fraction of scattered light being collected by the objective would also be approximately constant over the measured spectral range.
 
+Nonetheless, there is a perceptible and systematic shift of the measured scattering peaks towards the red end of the spectrum, caused by the slightly flatter intensity distribution that results from longer incident wavelengths.
+
+%For the larger JPs, the comparison of measured and simulated spectra would necessitate a correction for the differing distributions. 
+
 %For the larger JPs, it would be necessary to correct for the differing distributions. 
-For the larger JPs, the comparison of measured and simulated spectra would necessitate a correction for the differing distributions. 
+To test the BFP spectroscopy, we chose larger Au particles ($d=\SI{250}{\nano\meter}$), because
+\begin{enumerate}[label=(\alph*)]
+    \item as, in the BFP measurement, the scattered light is distributed over a larger area on the sensor, lowering the SNR. The greater scattering cross-section of larger particles remedies that issue. 
+    \item Moreover, with a size close to the wavelengths under consideration, a perceptible change to the angular intensity distributions could be expected. 
+    \item Nevertheless, the scattering cross-section of one such AuNP could be expected to be smaller than that of a JP as used later-on, implying that if the measurement was valid for the AuNPs, it would also be for the JPs. 
+\end{enumerate}
+
+The results are shown and compared to the predictions of GLMT\footnote{Generalized Lorentz-Mie Theory}\cite{BohrenHuffman, GouesbetGrehan} in \reffig{fig:AuNP}{B}. 
+Again, we find good agreement between experiment and theory. 
 
 \subsubsection*{Dark-Field Spectra}
 
