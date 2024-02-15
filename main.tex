@@ -161,7 +161,7 @@ This was recorded by opening the objective's back aperture {\sffamily(A3)} fully
 The spectral efficiency of the setup, being the accumulated product of the lamps's emission spectrum, the camera's quantum efficiency and the optics' transmittivities, is illustrated in \reffig{fig:corrections}{}. 
 We deem this sufficient for wavelengths between $\SI{400}{\nano\meter}$ and $\SI{1000}{\nano\meter}$. 
 
-\note{I'm leaving out the laser for position calibration stuff.}
+\note{I'm leaving out the laser for position calibration stuff. $\rightarrow$ supplement?}
 
 
 
@@ -169,55 +169,52 @@ We deem this sufficient for wavelengths between $\SI{400}{\nano\meter}$ and $\SI
 
 \subsection*{Numerical Methods}
 
-\subsubsection*{Definitions}
+\subsubsection*{Definition of the Orientation}
+ 
 
-
-
-The geometry of the system of interest is as follows: 
-A polystyrene (PS) sphere ($r=\SI{0.5}{\micro\meter}$), centered at the origin, represents the core of the JP. 
-The gold cap is modelled as half of an ellipsoidal shell (semi major axis: $\SI{0.55}{\micro\meter}$, semi minor axes: $\SI{0.51}{\micro\meter}$) around the PS sphere. 
-It is cut off in the plane of the minor axes, its major axis coincides with the symmetry axis of the JP. 
-This construct is surrounded by an ambient medium with a constant, real-valued refractive index.  
-
-The orientation of the system is characterised by the angles between three unit vectors;
+In order to assure comparability between experimental and numerical results in terms of the orientation of the system, we define three unit vectors;  
+%The orientation of the system is characterised by the angles between three unit vectors;
 \begin{itemize}
     \item[$\hat{z},$] the symmetry axis of the particle, oriented such that the Au cap lies in the positive and the PS side in the negative $z$-direction, 
-    \item[$\hat{k},$] the propagation direction of the incident light, with respect to which scattering angles are defined and
+    \item[$\hat{k}_0,$] the propagation direction of the incident light, with respect to which scattering angles are defined and
     \item[$\hat{o},$] the "forward" direction along the optical axis, equivalent to the central axis of the objective's collection cone. 
 \end{itemize}
-In terms of these, the out-of-plane orientation of the JP is defined as
+In terms of these, the \emph{out-of-plane orientation} of the JP is defined as
 $\alpha := \measuredangle( \hat{o}, \hat{z} )$.
-Similarly, we define the illumination angle 
-$\zeta := \measuredangle( \hat{k}, \hat{z} )$, 
-which, in this model, is the only orientation parameter needed to define the light-matter interaction of the JP. 
+Similarly, we define the \emph{illumination angle} 
+$\zeta := \measuredangle( \hat{k}, \hat{z} )$. 
+%, which, in this model, is the only orientation parameter needed to define the light-matter interaction of the JP. 
 
 Scattering angles are defined for each plane-wave contribution to the scattered field: 
 Let that contribution have a propagation direction $\hat{k}'$. 
-Then, \mbox{$\theta := \measuredangle( \hat{k}', \hat{k} )$} is the polar component of the scattering angle. 
+Then, \mbox{$\theta := \measuredangle( \hat{k}', \hat{k} )$} is the \emph{polar} component of the \emph{scattering angle}. 
 Additionally, there is an azimuthal component $\phi$, the choice of reference point for which being somewhat arbitrary. 
 In the following, it will be chosen such that if $\hat{k}'$ lies in the $(\hat{k},\hat{z})$ plane, then $\phi=0$.
 
 These definitions are illustrated in \reffig{fig:vectors-and-angles}{}. 
 
-\begin{figure}[b]
+\begin{figure}[htbp]
     \centering
-    \begin{overpic}[width=0.5\columnwidth]{angles_sketch}
+    \begin{overpic}[width=1.0\columnwidth]{angles_sketch_larger}
     % subplot label
-    \put (0,96) {{\sffamily\textbf{A}}}
+    %\put (0,96) {{\sffamily\textbf{A}}}
     % vector labels
-    \put (42,3) {$\hat{o}$}
-    \put (2,39) {\textcolor{ts_y}{$\hat{z}$}}
-    \put (-1,67.5) {\textcolor{ts_b}{$\hat{k}_0$}}
+    \put (44,4) {$\hat{o}$}
+    \put (0,31.5) {\textcolor{ts_y}{$\hat{z}$}}
+    \put (0,67.5) {\textcolor{ts_b}{$\hat{k}_0$}}
     \put (77,6) {\textcolor{ts_r}{$\hat{k}'$}}
     % angle labels
-    \put (59,85.5) {$\zeta$}
-    \put (24,18) {\textcolor{ts_y}{$\alpha$}}
-    \put (23,85) {\textcolor{ts_b}{$\theta_o$}}
-    \put (77,24) {\textcolor{ts_r}{$\theta$}}
+    \put (60,74.5) {$\zeta$}
+    \put (33.5,27) {\textcolor{ts_y}{$\alpha$}}
+    \put (30,80
+    ) {\textcolor{ts_b}{$\theta_o$}}
+    \put (69,32) {\textcolor{ts_r}{$\theta$}}
     \end{overpic}
     \caption{
-        {\sffamily\textbf{A:}} Unit vectors and angles defining the orientation of the system. 
-        %{\sffamily\textbf{B:}} \todo{Integration domain corresponding to the objective aperture.} 
+        %{\sffamily\textbf{A:}} 
+        Unit vectors and angles defining the orientation of the system. 
+        %{\sffamily\textbf{B:}} 
+        %\todo{Integration domain corresponding to the objective aperture.} 
     }
     \label{fig:vectors-and-angles}
 \end{figure}
@@ -225,30 +222,42 @@ These definitions are illustrated in \reffig{fig:vectors-and-angles}{}.
 
 \subsubsection*{Finite-Element Simulation}
 
+
+
 The finite-element simulations were performed in COMSOL \mbox{Multiphysics 6.1}. 
 %The simulation per se is ignorant of real-world optical devices and.
 %Therefore, the geometric definition of the model does not depend on \mbox{$\hat{o}$-direction} or the objective aperture. 
-\todo{Intro to the geometric model. The COMSOL model is qualitatively the same as in \cite{BA}.} 
-The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis and $\hat{k}$ lies in the $xz$ plane. 
+\todo{Reference that the COMSOL model is qualitatively the same as in \cite{BA}.} 
 
-As parameters, the simulation takes in the \emph{illumination angle}, 
-$$
-    \zeta := \measuredangle\left( \hat{z}, \hat{k} \right) \ ,
-$$
-and the incident (vacuum-) wavelength $\lambda$. 
+The model was defined as follows: 
+A polystyrene (PS) sphere ($r=\SI{0.5}{\micro\meter}$), centered at the origin, represents the core of the JP. 
+The gold cap is modelled as half of an ellipsoidal shell around the PS sphere, cut off in the $z=0$ plane. 
+Its semi major axis is parallel to $\hat{z}$ with a length of $\SI{0.55}{\micro\meter}$, its semi minor axes with length $\SI{0.51}{\micro\meter}$ lie in the $(x,y)$ plane.\footnote{$\hat{x},\hat{y},\hat{z}$ form a right-handed orthonormal basis of $\mathds{R}^3$.} 
+This gives a thickness of $\SI{50}{\nano\meter}$ at the apex and a width of $\SI{10}{\nano\meter}$ to the rim. 
+%The ellipsoid is cut off in the $(x,y)$ plane of the minor axes, its major axis coincides with the symmetry axis of the JP. 
+%The particle model is surrounded by an ambient medium with a constant, real-valued refractive index. 
+%The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis and $\hat{k}$ lies in the $xz$ plane. 
 
 For the complex refractive index of gold, the values by Johnson \& Christy \cite{Johnson1972} were used. 
 The medium surrounding the particle was modelled with a refractive index of $1.51$ to mimic the immersion oil used in the experiments. 
 
+As parameters, the simulation takes in the illumination angle $\zeta$ and the incident (vacuum-)wavelength $\lambda$, such that
+$$
+    \vec{k}_0 = \frac{2\pi \mathfrak{n}}{\lambda} \left( \cos\zeta \cdot \hat{z} + \sin\zeta \cdot \hat{x} \right)
+$$
+is the wave vector of the incident light field. 
+
 Given a plane wave 
 $$
-    \vec{E}_\mathrm{incident}(\vec{x},t) = \vec{E}_0 \cdot \exp\!\left( \mathfrak{i}\ \vec{k}\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)
+    \vec{E}_\mathrm{incident}(\vec{x},t) = \vec{E}_0 \cdot \exp\!\left( \mathfrak{i}\ \vec{k}_0\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)
 $$
-as the incident field, the solver produced a point-wise solution 
+as the incident field, the solver produces a point-wise solution 
 $$
     \vec{E}(\vec{x},t) = \vec{E}_\mathrm{incident}(\vec{x},t) + \vec{E}_\mathrm{sca}(\vec{x},t)
 $$ 
 to Maxwell's field equations on the defined geometry, where $\vec{E}_\mathrm{sca}(\vec{x},t)$ is the scattered field. 
+
+\note{I'm leaving out anything to do with polarization, because I'm only looking at unpolarized measurements and the description of how I define polarization in the simulation and subsequently get rid of it in the emulation feels redundant. $\rightarrow$ supplement?}
 
 The scattering cross-section of the particle was calculated from the scattered field as 
 $$
@@ -256,7 +265,7 @@ $$
 $$
 where $\vec{S}_\mathrm{sca}$ is the Poynting vector of the scattered field and $\langle\cdot\rangle_t$ denotes the time average. 
 
-\todo{Explanation on how the scattering intensity is resolved for $\hat{k}$} 
+%\todo{Explanation on how the scattering intensity is resolved for $\hat{k}$} 
 The scattered field can, according to Fourier's theorem, be decomposed into plane-wave components
 $$
     \mathrm{d}\vec{E}(\vec{x},t) := \vec{\mathcal{E}}(\vec{k}) 
@@ -273,7 +282,7 @@ $$
     \ .
 $$
 
-With any fixed wavelength $\lambda$, the wavevectors are conveniently expressed as $ \vec{k} = 2 \pi \lambda^{-1} \cdot \hat{k}_\mathrm{sca} $, where \mbox{$\hat{k}_\mathrm{sca} \in \mathcal{S}^2$} is a unit vector. 
+With any fixed wavelength $\lambda$, the wavevectors are conveniently expressed as $ \vec{k} = 2 \pi \lambda^{-1} \cdot \hat{k}'$, where \mbox{$\hat{k}' \in \mathcal{S}^2$} is a unit vector. 
 One obtains the spectral and angular distribution of scattered light, $\mathrm{d}\mathcal{I}(\lambda, \Omega)$, where $\Omega$ parametrizes the 2-sphere. 
 
 %Expressing $\Omega$ in spherical coordinates, we define the \emph{polar scattering angle} 
@@ -289,71 +298,51 @@ One obtains the spectral and angular distribution of scattered light, $\mathrm{d
 
 \subsubsection*{Selective Integration}
 
-In order to be able compare the simulation results to the measurements, the the limited collection angle of the objective has to be taken into account. 
-Thus, while the "true" scattering intensity is the integral over the angular distribution of scattered light, 
+%In order to be able compare the simulation results to the measurements, the the limited collection angle of the objective has to be taken into account. 
+
+In the experiment, scattered light can only contribute to recorded scattering signals if it is collected by the objective. 
+While the "true" scattering intensity is the integral over the angular distribution of scattered light, 
 $$
-    P_\mathrm{sca}(\lambda) = \oiint_{\Omega \in \mathcal{S}^2} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , % \ \mathrm{d}\Omega \ ,
+    P_\mathrm{sca}(\lambda) = \oiint_{\mathcal{S}^2} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , % \ \mathrm{d}\Omega \ ,
 $$
-the measured value corresponds to the integration over a certain angular range $\mathcal{D} \subset \mathcal{S}^2$. 
-Specifically, $\mathcal{D}$ is the interior of a small circle whose angular radius $\rho$ is defined by the numerical aperture of the objective, 
+the measured value corresponds to the integration over a certain angular range, % $\mathcal{D} \subset \mathcal{S}^2$: 
+$$
+    P_\mathrm{sca,measured}(\lambda) = \iint_{\mathcal{D}} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , 
+$$
+where $\mathcal{D} \subseteq \mathcal{S}^2$ is the set of propagation directions $\hat{k}'$, for which a plane wave component will pass through the objective aperture. %contribute to the signal on the detector. 
+Specifically, $\mathcal{D}$ is the interior of a small circle which is centered around $\hat{o}$ and whose angular radius $\rho$ is defined by the numerical aperture of the objective, 
 $$
     \rho = \mathrm{asin}\!\left( \frac{\mathrm{NA}}{n_\mathrm{medium}} \right) \ ,
 $$
-according to the Abbe sine condition. \cite{MONA-BFP-photonic-crystals,MONA-BFP-photonic-stop-bands}
-
-%Essentially, the solver is provided with an analytic expression for the incident electric field
-%$\vec{E}_\mathrm{inc}(\vec{x},t)$
-%and returns samples for the scattered field
-%$\vec{E}_\mathrm{sca}(\vec{x},t)$, 
-%such that the total electric field 
-%$$\vec{E}(\vec{x},t) = \vec{E}_\mathrm{inc}(\vec{x},t) + \vec{E}_\mathrm{sca}(\vec{x},t) $$
-%satisfies Maxwell's field equations. 
-%
-%For the incident field, a plane wave was given, wherein the illumination angle $\zeta$ is encoded as a rotation of the incident light field in the $(x,z)$ plane: 
-%$$
-%    \vec{E}_\mathrm{inc} = \vec{E}_0 \cdot \mathrm{exp}\left( \mathfrak{i} \, \vec{k} \cdot \vec{x} - \mathfrak{i} \, \omega \, t \right)
-%$$
-%with $\omega = 2\pi\,c/\lambda$, as well as
-%$$
-%    \vec{E}_0 = E_0 \cdot \boldsymbol{R}_{\hat{k}}^{\chi} \cdot \boldsymbol{R}_{\hat{y}}^{\zeta-\frac{\pi}{2}} \cdot \hat{z}
-%    \quad\text{and}\quad
-%    \vec{k} = \frac{2\pi}{\lambda} \cdot \overbrace{ \boldsymbol{R}_{\hat{y}}^{\zeta} \cdot \hat{z} }^{\hat{k}}
-%    \ ,
-%$$
-%where $\chi$ is the polarisation angle of the incident light field. % and $\boldsymbol{R}_{\hat{a}}^{\alpha}$ denotes the right-handed rotation around the angle $\phi$ and the axis defined by the unit vector $\hat{a}$. 
-%
-%The intensity of the incident field is 
-%$$I_0 = \frac{1}{2\mu_0 \mu_r} {E_0}^2 \ .$$
-%\cite{Griffiths-ED,MA}
-
-
-
-\note{I'm leaving out anything to do with polarization, because I'm only looking at unpolarized measurements and the description of how I define polarization in the simulation and subsequently get rid of it in the emulation feels redundant.}
-
-%To emulate the unpolarised light that the measurements were conducted with, $\chi$ was sampled as \mbox{$\in\left\lbrace0, \pi/2\right\rbrace$} and, in the evaluation, intensities were averaged.\footnote{This is allowed because $I\propto\left\Vert \hat{E} \right\Vert^2$.}
-%
-%Through a Fourier transform, the scattered field is decomposed into plane-wave components:
-%$$
-%    \vec{E}_\mathrm{sca}(\vec{x},t) = \iiint_{\mathds{R}^3} \vec{\mathfrak{E}}(\vec{k}) \cdot \exp\!\left( \mathfrak{i}\,\vec{k}\cdot\vec{x} - \mathfrak{i}\,\omega\,t\right) \mathrm{d}^3 \vec{k} \ .
-%$$
-
-
-The measured scattering cross-section of the JP corresponds to the sum of the intensities of all plane-wave components of the scattered field that enter the measurement optics:
-$$\sigma_\mathrm{sca,measured} \propto \iint_{\mathcal{D}} I\left( \hat{k}' \right) ~\mathrm{d}\Omega\ ,$$
-Where $\mathcal{D} \subseteq \mathcal{S}^2$ is the set of propagation directions $\hat{k}'$, for which a plane wave component will contribute to the signal on the detector. 
-In the experiment, the requirement is for it to enter the objective, and thus
+according to the Abbe sine condition. \cite{MONA-BFP-photonic-crystals,MONA-BFP-photonic-stop-bands} \todo{Sketch!}
+Analytically, this requirement can be formulated as 
 $$
-    \mathcal{D} = \left\lbrace\ \hat{k}' \in \mathcal{S}^2\ \middle\vert\ \measuredangle\!\left( \hat{k}', \hat{o}\right) < \theta_\mathrm{NA}\ \right\rbrace
-    \ ,
+    \mathcal{D} = \left\lbrace\ \hat{k}' \in \mathcal{S}^2\ \middle\vert\ \measuredangle\!\left( \hat{k}', \hat{o}\right) < \rho\ \right\rbrace
+    \ .
 $$
-where $\theta_\mathrm{NA}$ is the opening angle of the objective's collection cone, given by the numerical aperture,
-$$\theta_\mathrm{NA} = \mathrm{asin}\frac{\mathrm{NA}}{n} \ .$$
 
-\begin{itemize}
-    \item The simulation provides values of the scattered field for sampled values of $\zeta$.
-    \item The numerical aperture of the dark-field condenser defines $\measuredangle(\hat{k},\hat{o})$.
-    \item The out-of-plane angle $\alpha$ of the JP is unknown and not uniquely defined by $\zeta$ and $\measuredangle(\hat{k},\hat{o})$. We sample $\alpha\in\left[0,\pi\right]$ and weight the results by $p(\alpha) = \sin\alpha$.\footnote{$p(\alpha)$ is the probability density function for the out-of-plane angle of a randomly oriented spherical JP. For the derivation, see the supplementary material.}
-\end{itemize}
+%In the experiment, $\hat{o}$ and $\theta_o$ are fixed, and $\hat{k}_0$ is a known parameter. 
+%In the simulation, $\hat{z}$ is fixed instead, while $\zeta$ (and thus $\hat{k}_0$) is varied. 
+
+As the objective is not considered in the simulations of the scattering process per se, appropriate values for $\hat{o}$ and $\mathrm{NA}$ have to be chosen now, in order to emulate an experiment: 
+We first choose a fixed $\alpha$ and then compute a sampling of pairs $\left( \hat{k}^*_0 , \hat{o}^* \right) \in \left. \mathcal{S}^2 \right\vert_{y=0} \times \mathcal{S}^2$, such that 
+$$
+    \measuredangle\!\left(\hat{k}^*_0 , \hat{o}^*\right) = \theta_0 = \mathrm{asin}\!\left( \frac{\mathrm{NA}_\mathrm{DFC}}{n_\mathrm{oil}} \right) \ , 
+$$
+the angle between the optical axis and the illumination cone from the dark-field condenser. 
+We then choose the simulations corresponding to the illumination angles defined by $\hat{k}^*_0$ and the fixed $\hat{z}$ and integrate the simulated scattering intensities over the domains $\mathcal{D}$ defined by $\hat{o}^*$ and $\mathrm{NA}$, accumulating the results over all pairs $\left( \hat{k}^*_0 , \hat{o}^* \right)$.
+
+The end result of the selective integration is a sampled map 
+$$
+    \alpha,\mathrm{NA} \mapsto \Bigl[ \lambda \mapsto \sigma_\mathrm{sca,measured} \Bigr] \ ,
+$$
+i.e. a scattering spectrum $\lambda \mapsto \sigma_\mathrm{sca,measured}$ as measured for each sampled $\alpha,\ \mathrm{NA}$. 
+
+%\begin{itemize}
+%    \item The simulation provides values of the scattered field for sampled values of $\zeta$.
+%    \item The numerical aperture of the dark-field condenser defines $\measuredangle(\hat{k},\hat{o})$.
+%    \item The out-of-plane angle $\alpha$ of the JP is unknown and not uniquely defined by $\zeta$ and $\measuredangle(\hat{k},\hat{o})$. We sample $\alpha\in\left[0,\pi\right]$ and weight the results by $p(\alpha) = \sin\alpha$.\footnote{$p(\alpha)$ is the probability density function for the out-of-plane angle of a randomly oriented spherical JP. For the derivation, see the supplementary material.}
+%\end{itemize}
 
 
 
@@ -380,15 +369,19 @@ In the comparison of the measured spectra to the predictions of Mie theory \cite
     \centering
     %\includegraphics[width=\textwidth]{[fig] AuNP (placeholder).jpg}
     \begin{overpic}[width=\columnwidth]{AuNP Spectra}                           \put (6.5,50) {{\sffamily\textbf{A}}} \end{overpic}
-    \begin{overpic}[width=\columnwidth]{[subfig] Mieplots-rect-thcomp-Au250-SP} \put (8,50) {{\sffamily\textbf{B}}} \end{overpic}
+    \begin{overpic}[width=\columnwidth]{[subfig] Mieplots-rect-thcomp-Au250-SP} \put (8,50)   {{\sffamily\textbf{B}}} \end{overpic}
     \caption{Validation measurements. 
-    {\sffamily\bfseries A:} Scattering spectrum of 65 nm Au NPs. The shaded area corresponds to the SNR. 
-    {\sffamily\bfseries B:} Scattering intensity of a spherical Au NP, $d=\SI{250}{\nano\meter}$ versus the scattering angle for various wavelengths. The lines show the predictions of GLMT \cite{GouesbetGrehan}, the points show measurement results.
+    {\sffamily\bfseries A:} 
+    Scattering spectrum of \mbox{65 nm} Au NPs. The shaded area corresponds to the maximum noise in the measurements. 
+    {\sffamily\bfseries B:} 
+    Scattering intensity of a spherical Au NP \mbox{(d = 250 nm)} versus the scattering angle for various wavelengths. 
+    The lines show the predictions of GLMT \cite{GouesbetGrehan}, scaled by a constant factor to match the points showing the measurement results. 
     }
     \label{fig:AuNP}
 \end{figure}
 
 We find a good match between the measured and theoretical spectra. 
+Nonetheless, there is a perceptible and systematic shift of the measured scattering peaks towards the red end of the spectrum. 
 This is, in part, due to our choice of particles: 
 As they were significantly smaller than any wavelength considered, the scattered field is well-approximated by a dipole field. 
 The approximately constant shape of the angular intensity distributions meant that the fraction of scattered light being collected by the objective would also be approximately constant over the measured spectral range.
@@ -526,7 +519,7 @@ This is due to only scattered light which is emitted in such a direction that it
 By integrating the angular distributions over appropriately-chosen subsets of $\mathcal{S}^2$, this part of the measurement is accurately modelled. 
 These subsets depend on the numerical aperture of the virtual objective and the out-of-plane orientation of the JP in the virtual sample. 
 
-\note{The average of }\footnote{\todo{I mean most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
+\note{The average of }\footnote{\note{most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
 The thus computed spectra reproduce the measured dark-field spectra well. 
 Meanwhile, details such as the local maxima of the full scattering spectra are lost. \todo{with the possible exception of a small wobble at 850 nm, but it's unclear how exactly it arises. Maybe it's the $k=\pm 4$-peak?}
 Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
