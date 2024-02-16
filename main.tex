@@ -237,6 +237,7 @@ This gives a thickness of $\SI{50}{\nano\meter}$ at the apex and a width of $\SI
 %The ellipsoid is cut off in the $(x,y)$ plane of the minor axes, its major axis coincides with the symmetry axis of the JP. 
 %The particle model is surrounded by an ambient medium with a constant, real-valued refractive index. 
 %The model geometry, based on models E1 and E2 from \cite{BA}, was defined in particle-coordinates, i.e. $\hat{z}$ coincides with the $z$-axis and $\hat{k}$ lies in the $xz$ plane. 
+\todo{sketch?}
 
 For the complex refractive index of gold, the values by Johnson \& Christy \cite{Johnson1972} were used. 
 The medium surrounding the particle was modelled with a refractive index of $1.51$ to mimic the immersion oil used in the experiments. 
@@ -312,7 +313,7 @@ $$
 where $\mathcal{D} \subseteq \mathcal{S}^2$ is the set of propagation directions $\hat{k}'$, for which a plane wave component will pass through the objective aperture. %contribute to the signal on the detector. 
 Specifically, $\mathcal{D}$ is the interior of a small circle which is centered around $\hat{o}$ and whose angular radius $\rho$ is defined by the numerical aperture of the objective, 
 $$
-    \rho = \mathrm{asin}\!\left( \frac{\mathrm{NA}}{n_\mathrm{medium}} \right) \ ,
+    \rho = \mathrm{asin}\!\left( \frac{\mathrm{NA}}{n_\mathrm{oil}} \right) \ ,
 $$
 according to the Abbe sine condition. \cite{MONA-BFP-photonic-crystals,MONA-BFP-photonic-stop-bands} \todo{Sketch!}
 Analytically, this requirement can be formulated as 
@@ -417,11 +418,11 @@ Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
     \label{fig:spectra}
 \end{figure*}
 
-\todo{Broad behaviour: Intensity of the scattering signal increases with wavelength.}
+%\todo{Broad behaviour: Intensity of the scattering signal increases with wavelength.}
 
 All spectra show a sharp upward bend at $\SI{500}{\nano\meter}$, the same as can be seen in the scattering spectra of similar-sized Au spheres. 
 
-The cumulative spectra show an monotonous increase of the scattering intensity over the spectral range up to $\SI{950}{\nano\meter}$. 
+The cumulative spectra show a monotonous increase of the scattering intensity over the spectral range up to $\SI{950}{\nano\meter}$. 
 Beyond, the measured spectra diverge from one another, some dropping off, others continuing the trend of linear increase. \todo{plot} 
 This is an artifact of the signal processing in conjunction with the low efficiency of the setup at wavelengths beyond $\SI{1000}{\nano\meter}$. 
 
