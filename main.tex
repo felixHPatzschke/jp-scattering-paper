@@ -195,7 +195,7 @@ These definitions are illustrated in \reffig{fig:vectors-and-angles}{}.
 
 \begin{figure}[htbp]
     \centering
-    \begin{overpic}[width=1.0\columnwidth]{angles_sketch_larger}
+    \begin{overpic}[width=1.0\columnwidth]{angles_sketch_larger_v2}
     % subplot label
     %\put (0,96) {{\sffamily\textbf{A}}}
     % vector labels
@@ -204,10 +204,10 @@ These definitions are illustrated in \reffig{fig:vectors-and-angles}{}.
     \put (0,67.5) {\textcolor{ts_b}{$\hat{k}_0$}}
     \put (77,6) {\textcolor{ts_r}{$\hat{k}'$}}
     % angle labels
-    \put (60,74.5) {$\zeta$}
+    \put (60,74.5) {\textcolor{ts_b}{$\zeta$}}
     \put (33.5,27) {\textcolor{ts_y}{$\alpha$}}
     \put (30,80
-    ) {\textcolor{ts_b}{$\theta_o$}}
+    ) {{$\theta_o$}}
     \put (69,32) {\textcolor{ts_r}{$\theta$}}
     \end{overpic}
     \caption{
@@ -355,9 +355,9 @@ i.e. a scattering spectrum $\lambda \mapsto I_\mathrm{sca,measured}$ as measured
 
 \section*{Results}
 
-\subsection*{Experimental Results}
+\subsection*{Validation}
 
-\subsubsection*{Validation}
+%\subsubsection*{Validation}
 
 %In order to validate the experimental setup, we recorded scattering data that could be compared to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan}. 
 
@@ -406,7 +406,7 @@ To test the BFP spectroscopy, we chose larger Au particles ($d=\SI{250}{\nano\me
 The results are shown and compared to the predictions of GLMT\footnote{Generalized Lorentz-Mie Theory}\cite{BohrenHuffman, GouesbetGrehan} in \reffig{fig:AuNP}{B}. 
 Again, we find good agreement between experiment and theory. 
 
-\subsubsection*{Dark-Field Spectra}
+\subsection*{Dark-Field Spectra}
 
 
 Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
@@ -430,7 +430,8 @@ This is an artifact of the signal processing in conjunction with the low efficie
 
 The emulated spectra show the same qualititive behaviour between $500$ and $\SI{950}{\nano\meter}$, though their average\footnote{The average was weighted for the likelihood of the particular out-of-plane orientation of the particle as well as for the NA setting of the objective, both of which influence the integration sub-domain.} derivative is consistently \todo{check!} lower. 
 No obvious features can be resolved in this spectral range. 
-In the NIR, all emulated spectra continue the increasing trend. 
+In the NIR, all emulated spectra continue the increasing trend.
+ 
 
 
 Consistent between all measurements, there is a bump at $\SI{550}{\nano\meter}$. 
@@ -440,7 +441,23 @@ This is, notably, the same wavelength as the main peak of an arbitrarily small A
 
 
 
-\subsubsection*{Dark-Field Spectra under Selective Illumination}
+
+By integrating the angular distributions over appropriately-chosen subsets of $\mathcal{S}^2$, this part of the measurement is accurately modelled. 
+These subsets depend on the numerical aperture of the virtual objective and the out-of-plane orientation of the JP in the virtual sample. 
+
+\note{The average of }\footnote{\note{most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
+The thus computed spectra reproduce the measured dark-field spectra well. 
+Meanwhile, details such as the local maxima of the full scattering spectra are lost. \todo{with the possible exception of a small wobble at 850 nm, but it's unclear how exactly it arises. Maybe it's the $k=\pm 4$-peak?}
+Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
+
+
+
+
+
+
+
+
+\subsection*{Dark-Field Spectra under Selective Illumination}
 
 \begin{figure}[h]
     \centering
@@ -469,43 +486,7 @@ With the selective illumination mode, we demonstrate the dependence of the JP's 
 
 
 
-
-\subsubsection*{Fourier Plane Spectra}
-
-In the multiplexed Fourier plane spectroscopy, the angular distributions of the scattering intensity became visible. 
-We considered three settings of the selective illumination: 
-\begin{itemize}
-    \item illumination from the Au side, i.e. maximal $\zeta$,
-    \item illumination from the PS side, i.e. minimal $\zeta$ and
-    \item side-on illumination, i.e. $\zeta \approx \pi/2$.
-\end{itemize}
-
-For all illumination directions, most of the scattered light is only lightly deflected off of the propagation direction of the incident light. 
-However, there were qualitative distinctions between the distributions that hold over the entire spectral range under consideration:
-The peak brightness was highest for illumination from the Au side, while a wider peak and significant sideways scattering accumulated into a greater absolute brightness under illumination from the PS side. 
-
-Unsurprisingly, the distributions were symmetric about the axis of illumination. 
-This was not the case for the side-on illumination, where light was preferentially scattered in the direction of the Au side. 
-
-
-
-%\todo{Tighter focusing vs. isotropic baseline for Au- vs. PS side illumination + simulation shows the same}
-
-%In addition to dependencies on the illumination angle and wavelength, 
-
-
-
-
-\subsection*{Numerical Results}
-
-%We conducted numerical simulations of the scattering of light by an individual JP. 
-%From the solutions for the electromagnetic field, we computed observable quantities that correspond to those measured in the experiments. 
-
-\subsubsection*{Far-Field Patterns}
-
-The simulated far-field patterns show the same results. 
-
-\subsubsection*{Scattering Spectra}
+\subsection*{Scattering Spectra}
 
 Integrating the far-field patterns for each illumination angle and wavelength yields a family of scattering spectra. 
 Each spectrum $\lambda\mapsto\sigma_\mathrm{sca}$ corresponds to a specific illumination angle. 
@@ -531,15 +512,43 @@ This points at a polar plasmon mode that is being excited out-of-phase.
 This is due to only scattered light which is emitted in such a direction that it is collected by the objective contributing to the measured scattering intensity, while the simulated scattering spectra take into account the energy flow density of the scattered field itself. 
 
 
-\subsubsection*{Dark-Field Spectra}
 
-By integrating the angular distributions over appropriately-chosen subsets of $\mathcal{S}^2$, this part of the measurement is accurately modelled. 
-These subsets depend on the numerical aperture of the virtual objective and the out-of-plane orientation of the JP in the virtual sample. 
 
-\note{The average of }\footnote{\note{most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
-The thus computed spectra reproduce the measured dark-field spectra well. 
-Meanwhile, details such as the local maxima of the full scattering spectra are lost. \todo{with the possible exception of a small wobble at 850 nm, but it's unclear how exactly it arises. Maybe it's the $k=\pm 4$-peak?}
-Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
+
+
+\subsection*{Fourier Plane Spectra}
+
+In the multiplexed Fourier plane spectroscopy, the angular distributions of the scattering intensity became visible. 
+We considered three settings of the selective illumination: 
+\begin{itemize}
+    \item illumination from the Au side, i.e. maximal $\zeta$,
+    \item illumination from the PS side, i.e. minimal $\zeta$ and
+    \item side-on illumination, i.e. $\zeta \approx \pi/2$.
+\end{itemize}
+
+For all illumination directions, most of the scattered light is only lightly deflected off of the propagation direction of the incident light. 
+However, there were qualitative distinctions between the distributions that hold over the entire spectral range under consideration:
+The peak brightness was highest for illumination from the Au side, while a wider peak and significant sideways scattering accumulated into a greater absolute brightness under illumination from the PS side. 
+
+Unsurprisingly, the distributions were symmetric about the axis of illumination. 
+This was not the case for the side-on illumination, where light was preferentially scattered in the direction of the Au side. 
+
+
+
+%\todo{Tighter focusing vs. isotropic baseline for Au- vs. PS side illumination + simulation shows the same}
+
+%In addition to dependencies on the illumination angle and wavelength, 
+
+
+
+
+%We conducted numerical simulations of the scattering of light by an individual JP. 
+%From the solutions for the electromagnetic field, we computed observable quantities that correspond to those measured in the experiments. 
+
+The simulated far-field patterns show the same results. 
+
+
+
 
 
 
