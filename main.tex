@@ -21,7 +21,7 @@ sorting=none
 
 
 \title{\sffamily\bfseries\color{Maroon} Scattering Spectroscopy of\\Plasmonic Janus Particles}
-\author{Felix H. Patzschke, A. Markus Anton and *Frank Cichos}
+\author{Felix H. Patzschke and *Frank Cichos}
 %\date{November 2023}
 \date{}
 
@@ -409,14 +409,14 @@ Again, we find good agreement between experiment and theory.
 \subsection*{Dark-Field Spectra}
 
 
-Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra}{B}.
+Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra-measured}, along with numerical predictions. 
 
-\begin{figure*}[t]
+\begin{figure}[h]
     \centering
-    \includegraphics{[fig] spectra.PDF}
-    \caption{{\sffamily\bfseries A:} simulated scattering spectrum of the JP under illumination from the Au side (yellow), from the PS side (blue) and from the equatorial side (black). {\sffamily\bfseries B:} measured scattering spectra (orange) atop value range as determined by simulation + emulation (blue).}
-    \label{fig:spectra}
-\end{figure*}
+    \includegraphics{[fig] spectra (measured).PDF}
+    \caption{Measured scattering spectra (orange) atop value range as determined by simulation + emulation (blue).}
+    \label{fig:spectra-measured}
+\end{figure}
 
 %\todo{Broad behaviour: Intensity of the scattering signal increases with wavelength.}
 
@@ -491,6 +491,13 @@ With the selective illumination mode, we demonstrate the dependence of the JP's 
 Integrating the far-field patterns for each illumination angle and wavelength yields a family of scattering spectra. 
 Each spectrum $\lambda\mapsto\sigma_\mathrm{sca}$ corresponds to a specific illumination angle. 
 \todo{We only consider the scattering spectra for illumination directly from the Au side, from the PS side and side-on, for now. (And possibly the orientation-average curve)}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{[fig] spectra (principal).PDF}
+    \caption{Simulated scattering spectrum of the JP under illumination from the Au side (yellow), from the PS side (blue) and from the equatorial side (black).}
+    \label{fig:spectra-principal}
+\end{figure}
 
 The scattering spectra differ signifiantly from the measured dark-field spectra, though some correspondences between features can be inferred: 
 \todo{
@@ -701,7 +708,7 @@ Interesting things to do with this in the future might be...
 %\textbf{F. C.} designed the experiment, [...] and reviewed the manuscript, \textbf{F. H. P.} designed the experiment, constructed the optical setup, performed the experiment, implemented the data analysis and wrote the manuscript.
 F.C. and F.H.P. designed the experiments; 
 F.H.P. constructed the optical setup, performed the experiments, implemented the simulations and conducted the data analysis; 
-F.H.P. and A.M.A. and wrote the manuscript; 
+F.H.P. wrote the manuscript; 
 All authors reviewed the manuscript.
 
 \section*{Competing Interests}
