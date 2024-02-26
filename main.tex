@@ -89,16 +89,9 @@ Through the analysis of the simulation results, we correlate peaks in the scatte
     \caption{
     %Schematics of the imaging optics: 
     {\sffamily\bfseries (top)} Imaging light path. %The dark-field condenser directs the illumination (yellow light path) onto the sample {\sffamily (S)}; the apertures {\sffamily A1} and {\sffamily A2} restrict the direction of illumination. 
-    In the immediate surroundings of the particle under observation {\sffamily\bfseries (bottom center)}, the ambient refractive index is virtually homogenous, due to the usage of immersion oil inside the sample.  
-    %The illuminating light is intercepted by the objective's aperture {\sffamily (A3)}, while scattered light from objects in the sample is allowed through. 
-    %The lens {\sffamily L1} produces an image of the sample in the plane of the aperture {\sffamily A4} and an image of the back aperture of the objective (Fourier plane) behind {\sffamily A4}, in the plane marked by the red dashed line. 
-    %The lens {\sffamily L2} can be moved between the real-space imaging ({\sffamily RSI}, blue) and the Fourier plane imaging ({\sffamily FPI}, red) position, each propagating an image of the corresponding plane onto the slit {\sffamily A5}, which functions as the entrance aperture of the spectrograph. 
-    %Inside the spectrograph, the image from {\sffamily A5} is propagated onto the camera sensor. 
-    %A diffraction grating produces a spectrally dispersed image, from which spectral data can be read. 
-    %An optional optical long-pass filter {\sffamily LPF} can be used to remove overlap between the first- and second-order 
-    %{\sffamily\bfseries A1-A5:} Schematics of all apertures in the optical path. 
     Schematics of the apertures ({\sffamily\bfseries A1-A5}) are shown below. 
     {\sffamily A4} lies in an image plane, {\sffamily A1-A3} lay in Fourier planes. Depending on the placement of {\sffamily L2}, either the image plane or the Fourier plane may be imaged onto {\sffamily A4}, and subsequently the camera sensor. 
+    In the vicinity of the particle under observation {\sffamily\bfseries (bottom center)}, the ambient refractive index is virtually homogenous, due to the usage of immersion oil inside the sample.  
     }
     \label{fig:setup}
 \end{figure*}
@@ -143,8 +136,10 @@ The microscope and spectrograph sub-assemblies were linked by a simple propagati
 
 
 The real-space-imaging mode was used to select particles for measurement as well as for spectral measurements in which the scattering angle was not resolved. 
-The BFP-imaging mode was used to check the alignment of the dark-field illumination and to record spectrally resolved Fourier-space images of the JP under observation. 
-To that end, the front aperture of the spectrograph (i.e. the slit {\sffamily{A5}}) was slowly translated across the BFP image while recording, such that the camera would record one spectrally dispersed vertical line of the BFP image at a time. 
+The BFP-imaging mode was used to check the alignment of the dark-field illumination and to record spectrally resolved Fourier-space images of the JP under observation: 
+To that end, the front aperture of the spectrograph (i.e. the slit {\sffamily{A5}}) was slowly translated across the BFP image while recording an image sequence, such that the camera would record one spectrally dispersed vertical line of the BFP image at a time. 
+This step being the spatio-temporal multiplexing of the line-wise spectral signals, the corresponding de-multiplexing is done later, by appropriately re-arranging the intensity data from the image stack. 
+\todo{This procedure is described in detail in the supplementary material.} 
 The accumulation time for one such dataset was approximately \mbox{15 minutes}. 
 
 %The calibration data for the wavelength-dependent sensitivity of the optics was collected by allowing the illumination light to pass through the entire assembly and recording its spectrum. 
@@ -326,12 +321,12 @@ $$
 %In the simulation, $\hat{z}$ is fixed instead, while $\zeta$ (and thus $\hat{k}_0$) is varied. 
 
 As the objective is not considered in the simulations of the scattering process per se, appropriate values for $\hat{o}$ and $\mathrm{NA}$ have to be chosen now, in order to emulate an experiment: 
-We first choose a fixed $\alpha$ and then compute a sampling of pairs $\left( \hat{k}^*_0 , \hat{o}^* \right) \in \left. \mathcal{S}^2 \right\vert_{y=0} \times \mathcal{S}^2$, such that 
+We first choose a fixed $\alpha$ and then compute a sampling of pairs $\left( \hat{k}'_0 , \hat{o}' \right) \in \left. \mathcal{S}^2 \right\vert_{y=0} \times \mathcal{S}^2$, such that 
 $$
-    \measuredangle\!\left(\hat{k}^*_0 , \hat{o}^*\right) = \theta_0 = \mathrm{asin}\!\left( \frac{\mathrm{NA}_\mathrm{DFC}}{n_\mathrm{oil}} \right) \ , 
+    \measuredangle\!\left(\hat{k}'_0 , \hat{o}'\right) = \theta_0 = \mathrm{asin}\!\left( \frac{\mathrm{NA}_\mathrm{DFC}}{n_\mathrm{oil}} \right) \ , 
 $$
 the angle between the optical axis and the illumination cone from the dark-field condenser. 
-We then choose the simulations corresponding to the illumination angles defined by $\hat{k}^*_0$ and the fixed $\hat{z}$ and integrate the simulated scattering intensities over the domains $\mathcal{D}$ defined by $\hat{o}^*$ and $\mathrm{NA}$, accumulating the results over all pairs $\left( \hat{k}^*_0 , \hat{o}^* \right)$.
+We then choose the simulations corresponding to the illumination angles defined by $\hat{k}'_0$ and the fixed $\hat{z}$ and integrate the simulated scattering intensities over the domains $\mathcal{D}$ defined by $\hat{o}'$ and $\mathrm{NA}$, accumulating the results over all pairs $\left( \hat{k}'_0 , \hat{o}' \right)$.
 
 The end result of the selective integration is a sampled map 
 $$
@@ -406,7 +401,12 @@ To test the BFP spectroscopy, we chose larger Au particles ($d=\SI{250}{\nano\me
 The results are shown and compared to the predictions of GLMT\footnote{Generalized Lorentz-Mie Theory}\cite{BohrenHuffman, GouesbetGrehan} in \reffig{fig:AuNP}{B}. 
 Again, we find good agreement between experiment and theory. 
 
+
+
+
 \subsection*{Dark-Field Spectra}
+
+
 
 
 Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra-measured}, along with numerical predictions. 
@@ -493,9 +493,14 @@ With the selective illumination mode, we demonstrate the dependence of the JP's 
 
 \subsection*{Scattering Spectra}
 
-Integrating the far-field patterns for each illumination angle and wavelength yields a family of scattering spectra. 
-Each spectrum $\lambda\mapsto\sigma_\mathrm{sca}$ corresponds to a specific illumination angle. 
-\todo{We only consider the scattering spectra for illumination directly from the Au side, from the PS side and side-on, for now. (And possibly the orientation-average curve)}
+Using the real-world optical setup, it is not possible to capture all of the scattered light. 
+Yet, from the simulations, we can readily extract predicted values of the scattering cross-section of the JP: 
+With the illumination angle as a parameter, we obtain a family of scattering spectra:
+$$\zeta \mapsto \bigl[ \lambda \mapsto \sigma_\mathrm{sca} \bigr] \ ,$$ 
+each spectrum $\lambda\mapsto\sigma_\mathrm{sca}$ corresponding to a specific illumination angle $\zeta$. 
+%\todo{We only consider the scattering spectra for illumination directly from the Au side, from the PS side and side-on, for now. (And possibly the orientation-average curve)}
+\reffig{fig:spectra-principal}{} shows the scattering spectra for the maximally symmetric orientations of $\zeta = 0$ and $\zeta = \pi$, as well as for $\zeta = \pi/2$, i.e. the case wherein $\hat{k}_0 \perp \hat{z}$. 
+A scattering intensity map, taking into account other sampled illumination angles is shown in \todo{supplementary figure}.\footnote{\note{leaving this out, not because the other spectra would be trivial combinations of the principal ones (they're not), but because a discussion of those would entail a decomposition into the underlying effects, which (a) would neccessitate finding them in the high-symmetry cases first and (b) is outside the scope of this work.}} 
 
 \begin{figure}[h]
     \centering
@@ -505,14 +510,15 @@ Each spectrum $\lambda\mapsto\sigma_\mathrm{sca}$ corresponds to a specific illu
 \end{figure}
 
 The scattering spectra differ signifiantly from the measured dark-field spectra, though some correspondences between features can be inferred: 
+The previously noted increasing trend is, once again, present, as is the sharp upward bend at $\SI{500}{\nano\meter}$. 
+However, 
 \todo{
-    General upward trend is given, and sharp upward bend at 500 nm, but... 
     distinct wobbles for $\lambda > \SI{600}{\nano\meter}$, 
     decrease of scattering cross-section up to the minimum at 500 nm
 }
 
-The measured intensity increase through the visible range coincides with the increase of the scattering cross-section. 
-In the NIR range, the measured brightness increases further; here it is due to the broadening of the forward scattering peak. 
+Within the visible part of the spectral range, the increase of the scattering cross-section coincides with that of the measured intensities. 
+In the NIR range, the measured brightness increases further; this is due to the broadening of the forward scattering peak. 
 
 For wavelengths beyond $\SI{700}{\nano\meter}$, the scattering cross-sections, between illumination from the Au side and from the PS side, are virtually the same. 
 They are, moreover, on average significantly larger than that for side-on illumination. 
