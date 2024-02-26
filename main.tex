@@ -410,6 +410,7 @@ Again, we find good agreement between experiment and theory.
 
 
 Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra-measured}, along with numerical predictions. 
+The results from both methods agree reasonably well, with the measured curves falling within a standard deviation of the average\footnote{\todo{explain that average}} of the numerically obtained spectra for the most part. 
 
 \begin{figure}[h]
     \centering
@@ -421,34 +422,38 @@ Recorded scattering spectra of the JPs are shown in \reffig{fig:spectra-measured
 %\todo{Broad behaviour: Intensity of the scattering signal increases with wavelength.}
 
 All spectra show a sharp upward bend at $\SI{500}{\nano\meter}$, the same as can be seen in the scattering spectra of similar-sized Au spheres. 
+For longer incident wavelengths, we generally observe the scattering intensity to monotonously increase. 
 
-The cumulative spectra show a monotonous increase of the scattering intensity over the spectral range up to $\SI{950}{\nano\meter}$. 
-Beyond, the measured spectra diverge from one another, some dropping off, others continuing the trend of linear increase. \todo{plot} 
-This is an artifact of the signal processing in conjunction with the low efficiency of the setup at wavelengths beyond $\SI{1000}{\nano\meter}$. 
+%The cumulative spectra show a monotonous increase of the scattering intensity over the spectral range up to $\SI{950}{\nano\meter}$. 
+Between $900$ and $\SI{1000}{\nano\meter}$, the degraded efficency of the measurement setup causes the relative influence of bleed light and sensor noise to increase, rendering the measurements increasingly unreliable.\footnote{\note{I'm using the word "increase" too often, but I can't come up with anything else.}} 
+Hence, the measured spectra diverge from one another. 
+The numerical results suggest that the trend of approximately linear increase should continue. 
+
+%Beyond, the measured spectra diverge from one another, some dropping off, others continuing the trend of linear increase. \todo{plot} 
+%This is an artifact of the signal processing in conjunction with the low efficiency of the setup at wavelengths beyond $\SI{1000}{\nano\meter}$. 
 
 %In the simulated measurements, the continued trend can be seen in the overwhelming majority of sampled cases. 
 
-The emulated spectra show the same qualititive behaviour between $500$ and $\SI{950}{\nano\meter}$, though their average\footnote{The average was weighted for the likelihood of the particular out-of-plane orientation of the particle as well as for the NA setting of the objective, both of which influence the integration sub-domain.} derivative is consistently \todo{check!} lower. 
-No obvious features can be resolved in this spectral range. 
-In the NIR, all emulated spectra continue the increasing trend.
- 
+%The emulated spectra show the same qualititive behaviour between $500$ and $\SI{950}{\nano\meter}$, though their average\footnote{The average was weighted for the likelihood of the particular out-of-plane orientation of the particle as well as for the NA setting of the objective, both of which influence the integration sub-domain.} derivative is consistently \todo{check!} lower. 
 
+%No obvious features can be resolved in this spectral range. 
+%In the NIR, all emulated spectra continue the increasing trend.
 
 Consistent between all measurements, there is a bump at $\SI{550}{\nano\meter}$. 
-This is, notably, the same wavelength as the main peak of an arbitrarily small AuNP's scattering spectrum. 
+%This is, notably, the same wavelength as the main peak of an arbitrarily small AuNP's scattering spectrum. 
+We attribute this to the LSPR of gold, though the otherwise increasing characteristic of the spectra diminishes the distinct peak that it would produce in the scattering spectra of small AuNPs into a mere bump. 
+
+Neither in the measured, nor in the numerically obtained spectra were we able to discern any obvious features that we could relate to an orientational parameter of the system. 
 
 %\todo{Other accumulated measurements don't have the drop-offs at 950ish.}
 
 
 
 
-By integrating the angular distributions over appropriately-chosen subsets of $\mathcal{S}^2$, this part of the measurement is accurately modelled. 
-These subsets depend on the numerical aperture of the virtual objective and the out-of-plane orientation of the JP in the virtual sample. 
+%By integrating the angular distributions over appropriately-chosen subsets of $\mathcal{S}^2$, this part of the measurement is accurately modelled. 
+%These subsets depend on the numerical aperture of the virtual objective and the out-of-plane orientation of the JP in the virtual sample. 
 
-\note{The average of }\footnote{\note{most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
-The thus computed spectra reproduce the measured dark-field spectra well. 
-Meanwhile, details such as the local maxima of the full scattering spectra are lost. \todo{with the possible exception of a small wobble at 850 nm, but it's unclear how exactly it arises. Maybe it's the $k=\pm 4$-peak?}
-Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
+%Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
 
 
 
@@ -533,6 +538,8 @@ We considered three settings of the selective illumination:
     \item side-on illumination, i.e. $\zeta \approx \pi/2$.
 \end{itemize}
 
+Because the exact out-of-plane angle of the particle under observation is unknown and in order to allow for easier comparison of measured and numerical data, we extracted 1-dimensional intensity profiles from the Fourier plane images, along polar geodesics. 
+
 For all illumination directions, most of the scattered light is only lightly deflected off of the propagation direction of the incident light. 
 However, there were qualitative distinctions between the distributions that hold over the entire spectral range under consideration:
 The peak brightness was highest for illumination from the Au side, while a wider peak and significant sideways scattering accumulated into a greater absolute brightness under illumination from the PS side. 
@@ -566,6 +573,11 @@ The simulated far-field patterns show the same results.
 \section*{Discussion}
 
 \subsubsection*{Spectra}
+
+\note{The average of }\footnote{\note{most of the individual sample spectra fit reasonably well but there are some outliers. The average fits nicely, but ultimately one of those samples is likely the truth. And they have the same limitations in regards to details lost.}} 
+The thus computed spectra reproduce the measured dark-field spectra well. 
+Meanwhile, details such as the local maxima of the full scattering spectra are lost. \todo{with the possible exception of a small wobble at 850 nm, but it's unclear how exactly it arises. Maybe it's the $k=\pm 4$-peak?}
+
 
 \todo{We find that the scattering cross-section heavily depends on the orientation of the JP.}
 Over the spectral range that we analyzed, though decidedly not in general, the scattering efficiency of the particle was ... greater if it was illuminated from either the Au or the PS side than if it was illuminated side-on. 
