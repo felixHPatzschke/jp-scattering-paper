@@ -139,7 +139,7 @@ The real-space-imaging mode was used to select particles for measurement as well
 The BFP-imaging mode was used to check the alignment of the dark-field illumination and to record spectrally resolved Fourier-space images of the JP under observation: 
 To that end, the front aperture of the spectrograph (i.e. the slit {\sffamily{A5}}) was slowly translated across the BFP image while recording an image sequence, such that the camera would record one spectrally dispersed vertical line of the BFP image at a time. 
 This step being the spatio-temporal multiplexing of the line-wise spectral signals, the corresponding de-multiplexing is done later, by appropriately re-arranging the intensity data from the image stack. 
-\todo{This procedure is described in detail in the supplementary material.} 
+\todo{This procedure is described in detail in the supplementary material and in \cite{MA}.} 
 The accumulation time for one such dataset was approximately \mbox{15 minutes}. 
 
 %The calibration data for the wavelength-dependent sensitivity of the optics was collected by allowing the illumination light to pass through the entire assembly and recording its spectrum. 
@@ -512,20 +512,20 @@ A scattering intensity map, taking into account other sampled illumination angle
 The scattering spectra differ signifiantly from the measured dark-field spectra, though some correspondences between features can be inferred: 
 The previously noted increasing trend is, once again, present, as is the sharp upward bend at $\SI{500}{\nano\meter}$. 
 However, 
-\todo{
-    distinct wobbles for $\lambda > \SI{600}{\nano\meter}$, 
-    decrease of scattering cross-section up to the minimum at 500 nm
-}
+\todo{distinct wobbles for $\lambda > \SI{600}{\nano\meter}$, decrease of scattering cross-section up to the minimum at 500 nm} 
 
 Within the visible part of the spectral range, the increase of the scattering cross-section coincides with that of the measured intensities. 
 In the NIR range, the measured brightness increases further; this is due to the broadening of the forward scattering peak. 
 
 For wavelengths beyond $\SI{700}{\nano\meter}$, the scattering cross-sections, between illumination from the Au side and from the PS side, are virtually the same. 
-They are, moreover, on average significantly larger than that for side-on illumination. 
+They are, moreover, significantly larger than that for side-on illumination, on average. 
 However, at $\lambda=\SI{1210}{\nano\meter}$, they have a local minimum where the scattering cross-section is less than that for side-on illumination. 
 This points at a polar plasmon mode that is being excited out-of-phase. 
 \todo{Explain better what I mean.}
-\todo{Curiously, the peaks in the absorption spectra don't line up with either the valleys or the peaks in the scattering spectra.}
+\note{Curiously, the peaks in the absorption spectra don't line up with either the valleys or the peaks in the scattering spectra. 
+They don't for AuNPs either.}
+
+
 
 This is due to only scattered light which is emitted in such a direction that it is collected by the objective contributing to the measured scattering intensity, while the simulated scattering spectra take into account the energy flow density of the scattered field itself. 
 
@@ -549,6 +549,8 @@ Because the exact out-of-plane angle of the particle under observation is unknow
 For all illumination directions, most of the scattered light is only lightly deflected off of the propagation direction of the incident light. 
 However, there were qualitative distinctions between the distributions that hold over the entire spectral range under consideration:
 The peak brightness was highest for illumination from the Au side, while a wider peak and significant sideways scattering accumulated into a greater absolute brightness under illumination from the PS side. 
+
+The behaviours described also hold true for the full images. 
 
 Unsurprisingly, the distributions were symmetric about the axis of illumination. 
 This was not the case for the side-on illumination, where light was preferentially scattered in the direction of the Au side. 
