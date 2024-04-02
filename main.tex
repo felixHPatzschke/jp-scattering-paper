@@ -100,7 +100,7 @@ Through the analysis of the simulation results, we correlate peaks in the scatte
 
 \subsubsection*{Sample Preparation}
 
-The JPs were produced by \todo{cite production from Nic's work} and consist of spherical PS beads, coated with a layer of gold, $\SI{50}{\nano\meter}$ thick on average, on one side, with a $\SI{5}{\nano\meter}$ thick layer of chromium as a binding agent in between. 
+The JPs consisted of spherical PS beads, coated with a layer of gold, $\SI{50}{\nano\meter}$ thick on average, on one side, with a $\SI{5}{\nano\meter}$ thick layer of chromium as a binding agent in between. 
 A $\SI{30}{\micro\litre}$ droplet was placed on a cover slip and the JPs in solution were left to sediment for \mbox{10 minutes}. 
 Afterwards, the solvent was blown off using nitrogen gas, leaving the remaining JPs stuck on the coverslide. 
 A second cover slip was placed on top, with a droplet of $\SI{1.5}{\micro\litre}$ of immersion oil\footnote{\sffamily Immersol 518 F, Carl Zeiss Jena GmbH} in between, such as to keep the ambient refractive index constant in the vicinity of the particles.   
@@ -120,18 +120,6 @@ It consisted of
     \item a lens to propagate the image from the plane of the slit onto the camera sensor.  
 \end{itemize}
 The microscope and spectrograph sub-assemblies were linked by a simple propagating optic, with which either the image plane wherein the aperture lay or the back focal plane (BFP) of the microscope objective could be chosen to be projected onto the slit {\sffamily(A5)}. 
-
-%\begin{figure*}[t!]
-%    \centering
-%    \includegraphics[width=\textwidth]{[fig] selective illumination}
-%    \caption{Selective Illumination:   
-%    {\sffamily\bfseries A:} By rotating the aperture {\sffamily{A1}} the direction of illumination on the particle can be controlled within the range permitted by its out-of-plane orientation. 
-%    {\sffamily\bfseries B-I:} Dark-field images of a JP under restricted illumination. 
-%    The arrows signify the in-plane angle of the illumination.  
-%    {\sffamily\bfseries J:} The same JP under unrestricted (normal) dark-field illumination. 
-%    }
-%    \label{fig:selective-illumination}
-%\end{figure*}
 
 
 
@@ -252,8 +240,6 @@ $$
     \vec{E}(\vec{x},t) = \vec{E}_\mathrm{incident}(\vec{x},t) + \vec{E}_\mathrm{sca}(\vec{x},t)
 $$ 
 to Maxwell's field equations on the defined geometry, where $\vec{E}_\mathrm{sca}(\vec{x},t)$ is the scattered field. 
-
-\note{I'm leaving out anything to do with polarization, because I'm only looking at unpolarized measurements and the description of how I define polarization in the simulation and subsequently get rid of it in the emulation feels redundant. $\rightarrow$ supplement?}
 
 The scattering cross-section of the particle was calculated from the scattered field as 
 $$
@@ -621,8 +607,15 @@ For the $\SI{996}{\nano\meter}$ peaks, this means $\tilde{k}=\pm3$.
 
 Neither of these peaks is present\footnote{discernable?} in the scattering spectrum of an equivalently sized Au sphere. 
 This implies that \todo{either} the associated surface plasmon modes do not exist on a closed sphere in this form \todo{or the $\mathrm{Au}\mathcal{S}$ spectrum is more closely related to the orientation-average of the JP spectra than it is to any single one of them}. 
-\todo{The way the electric fields look, it's due to interference of the outer and inner surface plasmons, so perhaps something similar could be seen on a CoreShell?}
-%\todo{Is it due to the rim making plasmon reflection possible or the inside of the cap being available, or both?}
+
+\todo{peaks and valleys correspond to only peaks on AuNPs $\rightarrow$ proximity of peaks makes them unresolvable}
+
+The weak scattering of even-numbered resonances is due to the surface charge density having opposite signs in corresponding areas of the inside and outside of the gold cap. 
+Whether the same effect could be observed on a core-shell particle of equivalent size is unclear: 
+On one hand, it has been suggested that light interaction properties of JPs can be approximated as a mix between those of solid particles and of core-shells \todo{Citation: black paint}. 
+On the other hand, visual inspections of the time-dependent solutions for the electric field suggest that the surface charge densities on the in- and outside of the cap are coupled via the boundary of the cap rather than through transmission through it. 
+This would imply that the odd-even splitting would not happen on a CS particle, as transmission through the Au layer would be the only possible way of coupling the inside field to the outside one. 
+
 
 \todo{For side-on illumination but arbitrary polarization, there is also something happening on the cap, not just on the rim. 
 Would that be an extra class of modes? (let's call 'em longitudinal to distinguish them from the polar and azimuthal modes)
