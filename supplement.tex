@@ -126,7 +126,10 @@ $$
 $$ 
 to Maxwell's field equations on the defined geometry, where $\vec{E}_\mathrm{sca}(\vec{x},t)$ is the scattered field. 
 
-\note{I'm leaving out anything to do with polarization, because I'm only looking at unpolarized measurements and the description of how I define polarization in the simulation and subsequently get rid of it in the emulation feels redundant. $\rightarrow$ supplement?}
+
+
+
+
 
 The scattering cross-section of the particle was calculated from the scattered field as 
 $$
@@ -159,6 +162,24 @@ One obtains the spectral and angular distribution of scattered light, $\mathrm{d
 %\theta := \measuredangle \left( \hat{k}, \hat{k}_\mathrm{sca} \right)
 %$$
 %and the \emph{azimuthal scattering angle} $\phi$ s.t. 
+
+
+
+
+\subsection*{Simulation of unpolarized light}
+
+A plane wave, as it was used to simulate the LMI, is inherently polarized: 
+$$
+    \left[ \vec{E}_\mathrm{incident} \left[ \lambda, \zeta \right] \right] (\vec{x}, t) = \vec{E}_0 \cdot \exp\!\left( \mathfrak{i}\ \vec{k}_0\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)
+$$
+In contrast, measurements were conducted with unpolarized light and no polarization state was measured. 
+
+\note{In order to get rid of the inherent polarization, ...}
+
+For each fixed tuple of parameters, we simulated the system twice, the difference being the polarization of the incident plane wave: 
+$$ \vec{E}_{0,xz} \perp \vec{E}_{0,y} $$
+Then, we computed values of time-averaged observables (like scattering intensities and cross-sections) as 
+$$ X_\mathrm{average} = \frac{ X_{xz} + X_{y} }{2} \ . $$ 
 
 
 
