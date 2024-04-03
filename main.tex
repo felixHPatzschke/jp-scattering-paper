@@ -111,21 +111,21 @@ The imaging setup is sketched in \reffig{fig:setup}{C}.
 Its basis was formed by a standard dark-field microscope, constructed around an {\sffamily OLYMPUS IX71} microscope base. 
 A confocal aperture in the image plane of the dark-field microscope was used to isolate an individual particle. 
 A homebuilt spectrograph was used to extract spectral information from the microscope image. 
-It consisted of 
-%At the other end of the optical path stood a homebuilt spectrograph, consisting of 
-\begin{itemize}
-    \item an sCMOS camera \mbox{\sffamily(pco.edge 4.2)} for image acquisition, 
-    \item[{\sffamily(G)}] a transmissive diffraction grating {\sffamily(ThorLabs GTI25-03A)} in front of it, used for spectral dispersal of the image,
-    \item[{\sffamily(A5)}] a tunable slit to select only a thin vertical line from an image in order to prevent overlap of spectrally dispersed signals from different points in the original image and
-    \item a lens to propagate the image from the plane of the slit onto the camera sensor.  
-\end{itemize}
+%It consisted of 
+%%At the other end of the optical path stood a homebuilt spectrograph, consisting of 
+%\begin{itemize}
+%    \item an sCMOS camera \mbox{\sffamily(pco.edge 4.2)} for image acquisition, 
+%    \item[{\sffamily(G)}] a transmissive diffraction grating {\sffamily(ThorLabs GTI25-03A)} in front of it, used for spectral dispersal of the image,
+%    \item[{\sffamily(A5)}] a tunable slit to select only a thin vertical line from an image in order to prevent overlap of spectrally dispersed signals from different points in the original image and
+%    \item a lens to propagate the image from the plane of the slit onto the camera sensor.  
+%\end{itemize}
 The microscope and spectrograph sub-assemblies were linked by a simple propagating optic, with which either the image plane wherein the aperture lay or the back focal plane (BFP) of the microscope objective could be chosen to be projected onto the slit {\sffamily(A5)}. 
 
 
 
 The real-space-imaging mode was used to select particles for measurement as well as for spectral measurements in which the scattering angle was not resolved. 
-The BFP-imaging mode was used to check the alignment of the dark-field illumination and to record spectrally resolved Fourier-space images of the JP under observation: 
-To that end, the front aperture of the spectrograph (i.e. the slit {\sffamily{A5}}) was slowly translated across the BFP image while recording an image sequence, such that the camera would record one spectrally dispersed vertical line of the BFP image at a time. 
+The BFP-imaging mode was used to record spectrally resolved Fourier-space scattering maps of the JP under observation. 
+To that end, the slit {\sffamily{A5}} was slowly translated across the BFP image while recording an image sequence, such that the camera would record one spectrally dispersed vertical line of the BFP image at a time. 
 This step being the spatio-temporal multiplexing of the line-wise spectral signals, the corresponding de-multiplexing is done later, by appropriately re-arranging the intensity data from the image stack. 
 \todo{This procedure is described in detail in the supplementary material and in \cite{MA}.} 
 The accumulation time for one such dataset was approximately \mbox{15 minutes}. 
@@ -212,7 +212,7 @@ The finite-element simulations were performed in COMSOL \mbox{Multiphysics 6.1}.
 %Therefore, the geometric definition of the model does not depend on \mbox{$\hat{o}$-direction} or the objective aperture. 
 \todo{Reference that the COMSOL model is qualitatively the same as in \cite{BA}.} 
 
-The model was defined as follows: 
+The model was set up as follows: 
 A polystyrene (PS) sphere ($r=\SI{0.5}{\micro\meter}$), centered at the origin, represents the core of the JP. 
 The gold cap is modelled as half of an ellipsoidal shell around the PS sphere, cut off in the $z=0$ plane. 
 Its semi major axis is parallel to $\hat{z}$ with a length of $\SI{0.55}{\micro\meter}$, its semi minor axes with length $\SI{0.51}{\micro\meter}$ lie in the $(x,y)$ plane.\footnote{$\hat{x},\hat{y},\hat{z}$ form a right-handed orthonormal basis of $\mathds{R}^3$.} 
@@ -231,47 +231,7 @@ $$
 $$
 is the wave vector of the incident light field. 
 
-Given a plane wave 
-$$
-    \vec{E}_\mathrm{incident}(\vec{x},t) = \vec{E}_0 \cdot \exp\!\left( \mathfrak{i}\ \vec{k}_0\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)
-$$
-as the incident field, the solver produces a point-wise solution 
-$$
-    \vec{E}(\vec{x},t) = \vec{E}_\mathrm{incident}(\vec{x},t) + \vec{E}_\mathrm{sca}(\vec{x},t)
-$$ 
-to Maxwell's field equations on the defined geometry, where $\vec{E}_\mathrm{sca}(\vec{x},t)$ is the scattered field. 
-
-The scattering cross-section of the particle was calculated from the scattered field as 
-$$
-    \sigma_\mathrm{sca} = \frac{2 \mu_0 \mu_r}{ {\bigl\Vert \vec{E}_0 \bigr\Vert}^2 } \cdot \oint_{\partial V} {\left\langle \vec{S}_\mathrm{sca} \right\rangle}_t \cdot\mathrm{d}\vec{A} \ ,
-$$
-where $\vec{S}_\mathrm{sca}$ is the Poynting vector of the scattered field and $\langle\cdot\rangle_t$ denotes the time average. 
-
-%\todo{Explanation on how the scattering intensity is resolved for $\hat{k}$} 
-The scattered field can, according to Fourier's theorem, be decomposed into plane-wave components
-$$
-    \mathrm{d}\vec{E}(\vec{x},t) := \vec{\mathcal{E}}(\vec{k}) 
-    \cdot 
-    \exp{\!\left(\mathfrak{i}\ \vec{k}\cdot\vec{x} - \mathfrak{i}\ \omega\ t \right)}
-    \ \mathrm{d}^3 k
-    \ , 
-$$
-such that $ \vec{E}_\mathrm{sca} = \iiint_{\mathds{R}^3}\,\mathrm{d}\vec{E}$. 
-The amplitudes $\vec{\mathcal{E}}(\vec{k})$ of the components are given by the Fourier transform of $\vec{E}(\vec{x},t)$. 
-The intensities of the components are given by \cite{Griffiths-ED,MA} 
-$$
-    \mathrm{d}\mathcal{I}(\vec{k}) = \frac{ 1 }{ 2\mu_0 \mu_r }\,{\left\langle {\left\Vert \vec{\mathcal{E}}(\vec{k}) \right\Vert}^2 \right\rangle}_t \ \mathrm{d}^3k
-    \ .
-$$
-
-With any fixed wavelength $\lambda$, the wavevectors are conveniently expressed as $ \vec{k} = 2 \pi \lambda^{-1} \cdot \hat{k}'$, where \mbox{$\hat{k}' \in \mathcal{S}^2$} is a unit vector. 
-One obtains the spectral and angular distribution of scattered light, $\mathrm{d}\mathcal{I}(\lambda, \Omega)$, where $\Omega$ parametrizes the 2-sphere. 
-
-%Expressing $\Omega$ in spherical coordinates, we define the \emph{polar scattering angle} 
-%$$
-%\theta := \measuredangle \left( \hat{k}, \hat{k}_\mathrm{sca} \right)
-%$$
-%and the \emph{azimuthal scattering angle} $\phi$ s.t. 
+From the numerical solution to Maxwell's field equations for each fixed parameter vector, the far-field intensities $\mathrm{d}\mathcal{I} ~:~ \mathcal{S}^2 \ni \Omega \mapsto \mathrm{d}\mathcal{I}(\Omega)$ of the scattered field and the scattering cross-section $\sigma_\mathrm{sca}$ are calculated. 
 
 
 
@@ -343,11 +303,13 @@ i.e. a scattering spectrum $\lambda \mapsto I_\mathrm{sca,measured}$ as measured
 %In order to validate the experimental setup, we recorded scattering data that could be compared to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan}. 
 
 In order to validate the experimental setup, the scattering spectra of $\SI{65}{\nano\meter}$ AuNPs were measured. 
-Such small particles were chosen for two reasons: 
-\begin{enumerate}[label=(\alph*)]
-    \item The resonance in the expected scattering spectrum would be as narrow as possible and
-    \item the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor.
-\end{enumerate}
+%Such small particles were chosen for two reasons: 
+We decided on the use of these much smaller particles because the expected resonance peak in the scattering spectrum would be as narrow as possible, giving a good indication as to the spectral resolution of the measurement. 
+Furthermore, the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor. 
+%\begin{enumerate}[label=(\alph*)]
+%    \item The resonance in the expected scattering spectrum would be as narrow as possible and
+%    \item the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor.
+%\end{enumerate}
 In \reffig{fig:AuNP}{A}, the measured scattering spectra are shown together with the prediction from Mie theory \cite{Mie1908}, computed using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold. 
 
 \begin{figure}[htbp]
@@ -370,19 +332,22 @@ In \reffig{fig:AuNP}{A}, the measured scattering spectra are shown together with
 We find a good match between the measured and theoretical spectra. 
 %This is, in part, due to our choice of particles: 
 As the particles were significantly smaller than any wavelength considered, the scattered field is well-approximated by a dipole field. 
-The approximately constant shape of the angular intensity distributions meant that the fraction of scattered light being collected by the objective would also be approximately constant over the measured spectral range.
-
-Nonetheless, there is a perceptible and systematic shift of the measured scattering peaks towards the red end of the spectrum, caused by the slightly flatter intensity distribution that results from longer incident wavelengths.
+%The approximately constant shape of the angular intensity distributions meant that the fraction of scattered light being collected by the objective would also be approximately constant over the measured spectral range.
+Still, the shift of the measured scattering peaks towards the red end of the spectrum, caused by the slightly flatter intensity distribution at longer incident wavelengths is significant.
 
 %For the larger JPs, the comparison of measured and simulated spectra would necessitate a correction for the differing distributions. 
 
 %For the larger JPs, it would be necessary to correct for the differing distributions. 
-To test the BFP spectroscopy, we chose larger Au particles ($d=\SI{250}{\nano\meter}$), because
-\begin{enumerate}[label=(\alph*)]
-    \item as, in the BFP measurement, the scattered light is distributed over a larger area on the sensor, lowering the SNR. The greater scattering cross-section of larger particles remedies that issue. 
-    \item Moreover, with a size close to the wavelengths under consideration, a perceptible change to the angular intensity distributions could be expected. 
-    \item Nevertheless, the scattering cross-section of one such AuNP could be expected to be smaller than that of a JP as used later-on, implying that if the measurement was valid for the AuNPs, it would also be for the JPs. 
-\end{enumerate}
+To test the BFP spectroscopy, we chose larger Au particles ($d=\SI{250}{\nano\meter}$), first and foremost for their much greater brightness in the dark field: 
+In the BFP measurement, the scattered light is distributed over a larger area on the sensor, lowering the SNR. 
+The greater scattering cross-section of larger particles remedies that issue. 
+Moreover, with a size close to the wavelengths under consideration, a perceptible change to the angular intensity distributions could be expected. 
+Nevertheless, the scattering cross-section of one such AuNP could be expected to be smaller than that of a JP as used later-on, implying that if the measurement was valid for the AuNPs, it would also be for the JPs. 
+%\begin{enumerate}[label=(\alph*)]
+%    \item as, in the BFP measurement, the scattered light is distributed over a larger area on the sensor, lowering the SNR. The greater scattering cross-section of larger particles remedies that issue. 
+%    \item Moreover, with a size close to the wavelengths under consideration, a perceptible change to the angular intensity distributions could be expected. 
+%    \item Nevertheless, the scattering cross-section of one such AuNP could be expected to be smaller than that of a JP as used later-on, implying that if the measurement was valid for the AuNPs, it would also be for the JPs. 
+%\end{enumerate}
 
 The results are shown and compared to the predictions of GLMT\footnote{Generalized Lorentz-Mie Theory}\cite{BohrenHuffman, GouesbetGrehan} in \reffig{fig:AuNP}{B}. 
 Again, we find good agreement between experiment and theory. 
@@ -410,20 +375,9 @@ The results from both methods agree reasonably well, with the measured curves fa
 All spectra show a sharp upward bend at $\SI{500}{\nano\meter}$, the same as can be seen in the scattering spectra of similar-sized Au spheres. 
 For longer incident wavelengths, we generally observe the scattering intensity to monotonously increase. 
 
-%The cumulative spectra show a monotonous increase of the scattering intensity over the spectral range up to $\SI{950}{\nano\meter}$. 
 Between $900$ and $\SI{1000}{\nano\meter}$, the degraded efficency of the measurement setup causes the relative influence of bleed light and sensor noise to increase, rendering the measurements increasingly unreliable.\footnote{\note{I'm using the word "increase" too often, but I can't come up with anything else.}} 
 Hence, the measured spectra diverge from one another. 
 The numerical results suggest that the trend of approximately linear increase should continue. 
-
-%Beyond, the measured spectra diverge from one another, some dropping off, others continuing the trend of linear increase. \todo{plot} 
-%This is an artifact of the signal processing in conjunction with the low efficiency of the setup at wavelengths beyond $\SI{1000}{\nano\meter}$. 
-
-%In the simulated measurements, the continued trend can be seen in the overwhelming majority of sampled cases. 
-
-%The emulated spectra show the same qualititive behaviour between $500$ and $\SI{950}{\nano\meter}$, though their average\footnote{The average was weighted for the likelihood of the particular out-of-plane orientation of the particle as well as for the NA setting of the objective, both of which influence the integration sub-domain.} derivative is consistently \todo{check!} lower. 
-
-%No obvious features can be resolved in this spectral range. 
-%In the NIR, all emulated spectra continue the increasing trend.
 
 Consistent between all measurements, there is a bump at $\SI{550}{\nano\meter}$. 
 %This is, notably, the same wavelength as the main peak of an arbitrarily small AuNP's scattering spectrum. 
@@ -431,15 +385,7 @@ We attribute this to the LSPR of gold, though the otherwise increasing character
 
 Neither in the measured, nor in the numerically obtained spectra were we able to discern any obvious features that we could relate to an orientational parameter of the system. 
 
-%\todo{Other accumulated measurements don't have the drop-offs at 950ish.}
 
-
-
-
-%By integrating the angular distributions over appropriately-chosen subsets of $\mathcal{S}^2$, this part of the measurement is accurately modelled. 
-%These subsets depend on the numerical aperture of the virtual objective and the out-of-plane orientation of the JP in the virtual sample. 
-
-%Beyond $\SI{1000}{\nano\meter}$, the virtually measured scattering intensity continues the increasing trend.  
 
 
 
