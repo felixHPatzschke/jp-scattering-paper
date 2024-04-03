@@ -341,8 +341,8 @@ Still, the shift of the measured scattering peaks towards the red end of the spe
 To test the BFP spectroscopy, we chose larger Au particles ($d=\SI{250}{\nano\meter}$), first and foremost for their much greater brightness in the dark field: 
 In the BFP measurement, the scattered light is distributed over a larger area on the sensor, lowering the SNR. 
 The greater scattering cross-section of larger particles remedies that issue. 
-Moreover, with a size close to the wavelengths under consideration, a perceptible change to the angular intensity distributions could be expected. 
-Nevertheless, the scattering cross-section of one such AuNP could be expected to be smaller than that of a JP as used later-on, implying that if the measurement was valid for the AuNPs, it would also be for the JPs. 
+Nonetheless, the scattering cross-section of one such AuNP could be expected to be smaller than that of a JP as used later-on, implying that if the measurement was valid for the AuNPs, it would also be for the JPs. 
+In addition, with a size close to the wavelengths under consideration, a perceptible change to the angular intensity distributions could be expected. 
 %\begin{enumerate}[label=(\alph*)]
 %    \item as, in the BFP measurement, the scattered light is distributed over a larger area on the sensor, lowering the SNR. The greater scattering cross-section of larger particles remedies that issue. 
 %    \item Moreover, with a size close to the wavelengths under consideration, a perceptible change to the angular intensity distributions could be expected. 
@@ -423,6 +423,9 @@ With the selective illumination mode, we demonstrate the dependence of the JP's 
 
 
 
+
+
+
 \subsection*{Scattering Spectra}
 
 Using the real-world optical setup, it is not possible to capture all of the scattered light. 
@@ -440,6 +443,20 @@ A scattering intensity map, taking into account other sampled illumination angle
     \caption{Simulated scattering spectrum of the JP under illumination from the Au side (yellow), from the PS side (blue) and from the equatorial side (black).}
     \label{fig:spectra-principal}
 \end{figure}
+
+\begin{figure*}[htbp!]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] cartesian mieplots}
+    \caption{Scattering intensity of the JP versus scattering angle for various wavelengths. 
+    The points correspond to measured intensities while the lines are simulation results. 
+    {\sffamily\bfseries A:} PS side illumination. 
+    {\sffamily\bfseries B:} Au side illumination. %show the cylindrically symmetric cases of illumination from the PS side and from the Au side, respectively, i.e. where $\hat{k}\parallel\hat{z}$. 
+    {\sffamily\bfseries C:} side-on illumination. %, the light is incident side-on ($\hat{k}\perp\hat{z}$, $\zeta=\pi/2$). 
+    %Disregarding the local extrema, qualitatively distinct large-scale behaviour is apparent: Under illumination from the PS side {\sffamily\bfseries (A)}, the scattering intensity becomes globally minimal in the sideways direction. 
+    %Meanwhile, under illumination from the Au side {\sffamily\bfseries (B)}, it reaches a plateau and under side-on illumination {\sffamily\bfseries (C)}, the scattering intensity drops consistently between forwards and backwards.  
+    }
+    \label{fig:jp-mieplots-oneline}
+\end{figure*}
 
 The scattering spectra differ signifiantly from the measured dark-field spectra, though some correspondences between features can be inferred: 
 The previously noted increasing trend is, once again, present, as is the sharp upward bend at $\SI{500}{\nano\meter}$. 
@@ -465,18 +482,18 @@ This is due to only scattered light which is emitted in such a direction that it
 
 
 
-
 \subsection*{Fourier Plane Spectra}
 
 In the multiplexed Fourier plane spectroscopy, the angular distributions of the scattering intensity became visible. 
-We considered three settings of the selective illumination: 
-\begin{itemize}
-    \item illumination from the Au side, i.e. maximal $\zeta$,
-    \item illumination from the PS side, i.e. minimal $\zeta$ and
-    \item side-on illumination, i.e. $\zeta \approx \pi/2$.
-\end{itemize}
-
-Because the exact out-of-plane angle of the particle under observation is unknown and in order to allow for easier comparison of measured and numerical data, we extracted 1-dimensional intensity profiles from the Fourier plane images, along polar geodesics. 
+%We considered three settings of the selective illumination: 
+%\begin{itemize}
+%    \item illumination from the Au side, i.e. maximal $\zeta$,
+%    \item illumination from the PS side, i.e. minimal $\zeta$ and
+%    \item side-on illumination, i.e. $\zeta \approx \pi/2$.
+%\end{itemize}
+We performed measurements under three different settings of the selective illumination, each chosen to match as closely as possible the cases of Au-side, PS-side and side-on illumination. 
+Because the exact out-of-plane angle of the particle under observation is unknown and in order to allow for easier comparison of measured and numerical data, we extracted 1-dimensional intensity profiles along the polar coordinate from the Fourier plane images. 
+Measured and simulated scattering profiles are shown in \reffig{fig:jp-mieplots-oneline}{}.  
 
 For all illumination directions, most of the scattered light is only lightly deflected off of the propagation direction of the incident light. 
 However, there were qualitative distinctions between the distributions that hold over the entire spectral range under consideration:
@@ -580,18 +597,7 @@ Both parameter changes can, from a Mie-theoretical point of view, be understood 
 
 
 
-\begin{figure*}[t!]
-    \centering
-    \includegraphics[width=\textwidth]{[fig] cartesian mieplots}
-    \caption{Scattering intensity of the JP versus scattering angle. 
-    The points signify measured intensities while the lines are simulation results.  
-    {\sffamily\bfseries A} and {\sffamily\bfseries B} show the cylindrically symmetric cases of illumination from the PS side and from the Au side, respectively, i.e. where $\hat{k}\parallel\hat{z}$. 
-    In {\sffamily\bfseries C}, the light is incident side-on ($\hat{k}\perp\hat{z}$, $\zeta=\pi/2$). 
-    Disregarding the local extrema, qualitatively distinct large-scale behaviour is apparent: Under illumination from the PS side {\sffamily\bfseries (A)}, the scattering intensity becomes globally minimal in the sideways direction. 
-    Meanwhile, under illumination from the Au side {\sffamily\bfseries (B)}, it reaches a plateau and under side-on illumination {\sffamily\bfseries (C)}, the scattering intensity drops consistently between forwards and backwards.  
-    }
-    \label{fig:jp-mieplots-oneline}
-\end{figure*}
+
 
 \todo{The out-of-plane orientation of the JP is not easy to infer: 
 None of the spectral features that signify a specific illumination angle are resolvable. 
