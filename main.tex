@@ -172,7 +172,8 @@ Scattering angles are defined for each plane-wave contribution to the scattered 
 Let that contribution have a propagation direction $\hat{k}'$. 
 Then, \mbox{$\theta := \measuredangle( \hat{k}', \hat{k} )$} is the \emph{polar} component of the \emph{scattering angle}. 
 Additionally, there is an azimuthal component $\phi$, the choice of reference point for which being somewhat arbitrary. 
-In the following, it will be chosen such that if $\hat{k}'$ lies in the $(\hat{k},\hat{z})$ plane, then $\phi=0$.
+In the following, it will be chosen such that if $\hat{k}'$ lies in the $(\hat{k},\hat{z})$ plane, then $\phi=0$. 
+
 
 These definitions are illustrated in \reffig{fig:vectors-and-angles}{}. 
 
@@ -245,16 +246,16 @@ From the numerical solution to Maxwell's field equations for each fixed paramete
 In the experiment, scattered light can only contribute to recorded scattering signals if it is collected by the objective. 
 While the "true" scattering intensity is the integral over the angular distribution of scattered light, 
 $$
-    I_\mathrm{sca}(\lambda) = \oiint_{\mathcal{S}^2} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , % \ \mathrm{d}\Omega \ ,
+    I_\mathrm{sca} = \oiint_{\mathcal{S}^2} \,\mathrm{d}\mathcal{I}(\Omega) \ , % \ \mathrm{d}\Omega \ ,
 $$
 the measured value corresponds to the integration over a certain angular range, % $\mathcal{D} \subset \mathcal{S}^2$: 
 $$
-    I_\mathrm{sca,measured}(\lambda) = \iint_{\mathcal{D}} \,\mathrm{d}\mathcal{I}(\lambda, \Omega) \ , 
+    I_\mathrm{sca,measured} = \iint_{\mathcal{D}} \,\mathrm{d}\mathcal{I}(\Omega) \ , 
 $$
 where $\mathcal{D} \subseteq \mathcal{S}^2$ is the set of propagation directions $\hat{k}'$, for which a plane wave component will pass through the objective aperture. %contribute to the signal on the detector. 
 Specifically, $\mathcal{D}$ is the interior of a small circle which is centered around $\hat{o}$ and whose angular radius $\rho$ is defined by the numerical aperture of the objective, 
 $$
-    \rho = \mathrm{asin}\!\left( \frac{\mathrm{NA}}{n_\mathrm{oil}} \right) \ ,
+    \rho = \mathrm{asin}\!\left( \frac{\mathrm{NA}_\mathrm{obj}}{n_\mathrm{oil}} \right) \ ,
 $$
 according to the Abbe sine condition. \cite{MONA-BFP-photonic-crystals,MONA-BFP-photonic-stop-bands} \todo{Sketch!}
 Analytically, this requirement can be formulated as 
@@ -266,19 +267,25 @@ $$
 %In the experiment, $\hat{o}$ and $\theta_o$ are fixed, and $\hat{k}_0$ is a known parameter. 
 %In the simulation, $\hat{z}$ is fixed instead, while $\zeta$ (and thus $\hat{k}_0$) is varied. 
 
-As the objective is not considered in the simulations of the scattering process per se, appropriate values for $\hat{o}$ and $\mathrm{NA}$ have to be chosen now, in order to emulate an experiment: 
-We first choose a fixed $\alpha$ and then compute a sampling of pairs $\left( \hat{k}'_0 , \hat{o}' \right) \in \left. \mathcal{S}^2 \right\vert_{y=0} \times \mathcal{S}^2$, such that 
+As the objective is not considered in the simulations of the scattering process per se, appropriate values for $\hat{o}$ and $\mathrm{NA}_\mathrm{obj}$ have to be chosen now, in order to emulate an experiment: 
+%We first choose a fixed $\alpha$ and then compute a sampling of pairs $\left( \hat{k}'_0 , \hat{o}' \right) \in \left. \mathcal{S}^2 \right\vert_{y=0} \times \mathcal{S}^2$, such that 
+We first choose a fixed $\alpha$ and then compute a sampling of pairs $\bigl( \hat{k}'_0 , \hat{o}' \bigr) \in \mathcal{S}^1_{xz} \times \mathcal{S}^2$, such that 
 $$
-    \measuredangle\!\left(\hat{k}'_0 , \hat{o}'\right) = \theta_0 = \mathrm{asin}\!\left( \frac{\mathrm{NA}_\mathrm{DFC}}{n_\mathrm{oil}} \right) \ , 
+    \measuredangle\!\left(\hat{z} , \hat{o}'\right) = \alpha
+    \quad \text{and} \quad 
+    \measuredangle\!\left(\hat{k}'_0 , \hat{o}'\right) = \mathrm{asin}\!\left( \frac{\mathrm{NA}_\mathrm{DFC}}{n_\mathrm{oil}} \right) 
+    \ . 
 $$
-the angle between the optical axis and the illumination cone from the dark-field condenser. 
-We then choose the simulations corresponding to the illumination angles defined by $\hat{k}'_0$ and the fixed $\hat{z}$ and integrate the simulated scattering intensities over the domains $\mathcal{D}$ defined by $\hat{o}'$ and $\mathrm{NA}$, accumulating the results over all pairs $\left( \hat{k}'_0 , \hat{o}' \right)$.
+%the angle between the optical axis and the illumination cone from the dark-field condenser. 
+We then choose the simulation datasets corresponding to the illumination angles defined by $\hat{k}'_0$ and the fixed $\hat{z}$ and integrate the far-field intensities over the domains $\mathcal{D}$ defined by $\hat{o}'$ and $\mathrm{NA}_\mathrm{obj}$, accumulating the results over all pairs $\bigl( \hat{k}'_0 , \hat{o}' \bigr)$.
 
-The end result of the selective integration is a sampled map 
+%The end result of the selective integration is a sampled map 
+This algorithm of selective integration yields a sampled map 
 $$
-    \alpha,\mathrm{NA} \mapsto \bigl[ \lambda \mapsto I_\mathrm{sca,measured} \bigr] \ ,
+    \alpha,\mathrm{NA}_\mathrm{obj} \mapsto \bigl[ \lambda \mapsto I_\mathrm{sca,measured} \bigr] \ ,
 $$
-i.e. a scattering spectrum $\lambda \mapsto I_\mathrm{sca,measured}$ as measured for each sampled $\alpha,\ \mathrm{NA}$. 
+where each $\bigl( \alpha, \mathrm{NA}_\mathrm{obj} \bigr)$ encodes a possible configuration of the system and $\lambda \mapsto I_\mathrm{sca,measured}$ is the measured scattering spectrum resulting from that configuration.  
+%i.e. a scattering spectrum $\lambda \mapsto I_\mathrm{sca,measured}$ as measured for each sampled $\alpha,\ \mathrm{NA}$. 
 
 %\begin{itemize}
 %    \item The simulation provides values of the scattered field for sampled values of $\zeta$.
@@ -303,13 +310,6 @@ i.e. a scattering spectrum $\lambda \mapsto I_\mathrm{sca,measured}$ as measured
 %In order to validate the experimental setup, we recorded scattering data that could be compared to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan}. 
 
 In order to validate the experimental setup, the scattering spectra of $\SI{65}{\nano\meter}$ AuNPs were measured. 
-%Such small particles were chosen for two reasons: 
-We decided on the use of these much smaller particles because the expected resonance peak in the scattering spectrum would be as narrow as possible, giving a good indication as to the spectral resolution of the measurement. 
-Furthermore, the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor. 
-%\begin{enumerate}[label=(\alph*)]
-%    \item The resonance in the expected scattering spectrum would be as narrow as possible and
-%    \item the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor.
-%\end{enumerate}
 In \reffig{fig:AuNP}{A}, the measured scattering spectra are shown together with the prediction from Mie theory \cite{Mie1908}, computed using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold. 
 
 \begin{figure}[htbp]
@@ -329,6 +329,9 @@ In \reffig{fig:AuNP}{A}, the measured scattering spectra are shown together with
 
 %In the comparison of the measured spectra to the predictions of Mie theory \cite{Mie1908, BohrenHuffman, GouesbetGrehan} using the values by Johnson \& Christy \cite{Johnson1972} for the complex refractive index of gold shows a strong agreement. 
 
+We decided on the use of these much smaller particles because the expected resonance peak in the scattering spectrum would be as narrow as possible, giving a good indication as to the spectral resolution of the measurement. 
+Furthermore, the shape of the angular distribution of scattered light would not change appreciably over the spectral range of interest, causing the measured and full scattering cross-sections to only differ by a constant factor. 
+
 We find a good match between the measured and theoretical spectra. 
 %This is, in part, due to our choice of particles: 
 As the particles were significantly smaller than any wavelength considered, the scattered field is well-approximated by a dipole field. 
@@ -338,7 +341,11 @@ Still, the shift of the measured scattering peaks towards the red end of the spe
 %For the larger JPs, the comparison of measured and simulated spectra would necessitate a correction for the differing distributions. 
 
 %For the larger JPs, it would be necessary to correct for the differing distributions. 
-To test the BFP spectroscopy, we chose larger Au particles ($d=\SI{250}{\nano\meter}$), first and foremost for their much greater brightness in the dark field: 
+To test the BFP spectroscopy, we chose larger Au particles ($d=\SI{250}{\nano\meter}$). 
+The results are shown and compared to the predictions of GLMT\footnote{Generalized Lorentz-Mie Theory}\cite{BohrenHuffman, GouesbetGrehan} in \reffig{fig:AuNP}{B}. 
+Again, we find good agreement between experiment and theory. 
+
+The choice of these larger particles is due, first and foremost, to their much greater brightness in the dark field: 
 In the BFP measurement, the scattered light is distributed over a larger area on the sensor, lowering the SNR. 
 The greater scattering cross-section of larger particles remedies that issue. 
 Nonetheless, the scattering cross-section of one such AuNP could be expected to be smaller than that of a JP as used later-on, implying that if the measurement was valid for the AuNPs, it would also be for the JPs. 
@@ -349,8 +356,6 @@ In addition, with a size close to the wavelengths under consideration, a percept
 %    \item Nevertheless, the scattering cross-section of one such AuNP could be expected to be smaller than that of a JP as used later-on, implying that if the measurement was valid for the AuNPs, it would also be for the JPs. 
 %\end{enumerate}
 
-The results are shown and compared to the predictions of GLMT\footnote{Generalized Lorentz-Mie Theory}\cite{BohrenHuffman, GouesbetGrehan} in \reffig{fig:AuNP}{B}. 
-Again, we find good agreement between experiment and theory. 
 
 
 
@@ -561,7 +566,8 @@ For the $\SI{996}{\nano\meter}$ peaks, this means $\tilde{k}=\pm3$.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\columnwidth]{[fig] polar plasmon dispersion relation}
+    %\includegraphics[width=\columnwidth]{[fig] polar plasmon dispersion relation}
+    \includegraphics[width=\columnwidth]{[fig] SP dispersion relation + polar resonance}
     \caption{
         Excitation wavelengths of peaks and valleys in the axial illumination scattering spectra vs. spatial frequency of the electric field on the surface of the Au cap. 
     }
