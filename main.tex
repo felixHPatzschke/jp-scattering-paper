@@ -375,6 +375,20 @@ The results from both methods agree reasonably well, with the measured curves fa
     \label{fig:spectra-measured}
 \end{figure}
 
+\begin{figure*}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{[fig] cartesian mieplots}
+    \caption{Scattering intensity of the JP versus scattering angle for various wavelengths. 
+    The points correspond to measured intensities while the lines are simulation results. 
+    {\sffamily\bfseries A:} PS side illumination. 
+    {\sffamily\bfseries B:} Au side illumination. %show the cylindrically symmetric cases of illumination from the PS side and from the Au side, respectively, i.e. where $\hat{k}\parallel\hat{z}$. 
+    {\sffamily\bfseries C:} side-on illumination. %, the light is incident side-on ($\hat{k}\perp\hat{z}$, $\zeta=\pi/2$). 
+    %Disregarding the local extrema, qualitatively distinct large-scale behaviour is apparent: Under illumination from the PS side {\sffamily\bfseries (A)}, the scattering intensity becomes globally minimal in the sideways direction. 
+    %Meanwhile, under illumination from the Au side {\sffamily\bfseries (B)}, it reaches a plateau and under side-on illumination {\sffamily\bfseries (C)}, the scattering intensity drops consistently between forwards and backwards.  
+    }
+    \label{fig:jp-mieplots-oneline}
+\end{figure*}
+
 %\todo{Broad behaviour: Intensity of the scattering signal increases with wavelength.}
 
 All spectra show a sharp upward bend at $\SI{500}{\nano\meter}$, the same as can be seen in the scattering spectra of similar-sized Au spheres. 
@@ -429,64 +443,6 @@ With the selective illumination mode, we demonstrate the dependence of the JP's 
 
 
 
-
-
-\subsection*{Scattering Spectra}
-
-Using the real-world optical setup, it is not possible to capture all of the scattered light. 
-Yet, from the simulations, we can readily extract predicted values of the scattering cross-section of the JP: 
-With the illumination angle as a parameter, we obtain a family of scattering spectra:
-$$\zeta \mapsto \bigl[ \lambda \mapsto \sigma_\mathrm{sca} \bigr] \ ,$$ 
-each spectrum $\lambda\mapsto\sigma_\mathrm{sca}$ corresponding to a specific illumination angle $\zeta$. 
-%\todo{We only consider the scattering spectra for illumination directly from the Au side, from the PS side and side-on, for now. (And possibly the orientation-average curve)}
-\reffig{fig:spectra-principal}{} shows the scattering spectra for the maximally symmetric orientations of $\zeta = 0$ and $\zeta = \pi$, as well as for $\zeta = \pi/2$, i.e. the case wherein $\hat{k}_0 \perp \hat{z}$. 
-A scattering intensity map, taking into account other sampled illumination angles is shown in \todo{supplementary figure}.\footnote{\note{leaving this out, not because the other spectra would be trivial combinations of the principal ones (they're not), but because a discussion of those would entail a decomposition into the underlying effects, which (a) would neccessitate finding them in the high-symmetry cases first and (b) is outside the scope of this work.}} 
-
-\begin{figure}[h]
-    \centering
-    \includegraphics{[fig] spectra (principal).PDF}
-    \caption{Simulated scattering spectrum of the JP under illumination from the Au side (yellow), from the PS side (blue) and from the equatorial side (black).}
-    \label{fig:spectra-principal}
-\end{figure}
-
-\begin{figure*}[htbp!]
-    \centering
-    \includegraphics[width=\textwidth]{[fig] cartesian mieplots}
-    \caption{Scattering intensity of the JP versus scattering angle for various wavelengths. 
-    The points correspond to measured intensities while the lines are simulation results. 
-    {\sffamily\bfseries A:} PS side illumination. 
-    {\sffamily\bfseries B:} Au side illumination. %show the cylindrically symmetric cases of illumination from the PS side and from the Au side, respectively, i.e. where $\hat{k}\parallel\hat{z}$. 
-    {\sffamily\bfseries C:} side-on illumination. %, the light is incident side-on ($\hat{k}\perp\hat{z}$, $\zeta=\pi/2$). 
-    %Disregarding the local extrema, qualitatively distinct large-scale behaviour is apparent: Under illumination from the PS side {\sffamily\bfseries (A)}, the scattering intensity becomes globally minimal in the sideways direction. 
-    %Meanwhile, under illumination from the Au side {\sffamily\bfseries (B)}, it reaches a plateau and under side-on illumination {\sffamily\bfseries (C)}, the scattering intensity drops consistently between forwards and backwards.  
-    }
-    \label{fig:jp-mieplots-oneline}
-\end{figure*}
-
-The scattering spectra differ signifiantly from the measured dark-field spectra, though some correspondences between features can be inferred: 
-The previously noted increasing trend is, once again, present, as is the sharp upward bend at $\SI{500}{\nano\meter}$. 
-However, 
-\todo{distinct wobbles for $\lambda > \SI{600}{\nano\meter}$, decrease of scattering cross-section up to the minimum at 500 nm} 
-
-Within the visible part of the spectral range, the increase of the scattering cross-section coincides with that of the measured intensities. 
-In the NIR range, the measured brightness increases further; this is due to the broadening of the forward scattering peak. 
-
-For wavelengths beyond $\SI{700}{\nano\meter}$, the scattering cross-sections, between illumination from the Au side and from the PS side, are virtually the same. 
-They are, moreover, significantly larger than that for side-on illumination, on average. 
-However, at $\lambda=\SI{1210}{\nano\meter}$, they have a local minimum where the scattering cross-section is less than that for side-on illumination. 
-This points at a polar plasmon mode that is being excited out-of-phase. 
-\todo{Explain better what I mean.}
-\note{Curiously, the peaks in the absorption spectra don't line up with either the valleys or the peaks in the scattering spectra. 
-They don't for AuNPs either.}
-
-
-
-This is due to only scattered light which is emitted in such a direction that it is collected by the objective contributing to the measured scattering intensity, while the simulated scattering spectra take into account the energy flow density of the scattered field itself. 
-
-
-
-
-
 \subsection*{Fourier Plane Spectra}
 
 In the multiplexed Fourier plane spectroscopy, the angular distributions of the scattering intensity became visible. 
@@ -522,6 +478,51 @@ This was not the case for the side-on illumination, where light was preferential
 %From the solutions for the electromagnetic field, we computed observable quantities that correspond to those measured in the experiments. 
 
 The simulated far-field patterns show the same results. 
+
+
+
+
+\subsection*{Scattering Spectra}
+
+Using the real-world optical setup, it is not possible to capture all of the scattered light. 
+Yet, from the simulations, we can readily extract predicted values of the scattering cross-section of the JP: 
+With the illumination angle as a parameter, we obtain a family of scattering spectra:
+$$\zeta \mapsto \bigl[ \lambda \mapsto \sigma_\mathrm{sca} \bigr] \ ,$$ 
+each spectrum $\lambda\mapsto\sigma_\mathrm{sca}$ corresponding to a specific illumination angle $\zeta$. 
+%\todo{We only consider the scattering spectra for illumination directly from the Au side, from the PS side and side-on, for now. (And possibly the orientation-average curve)}
+\reffig{fig:spectra-principal}{} shows the scattering spectra for the maximally symmetric orientations of $\zeta = 0$ and $\zeta = \pi$, as well as for $\zeta = \pi/2$, i.e. the case wherein $\hat{k}_0 \perp \hat{z}$. 
+A scattering intensity map, taking into account other sampled illumination angles is shown in \todo{supplementary figure}.\footnote{\note{leaving this out, not because the other spectra would be trivial combinations of the principal ones (they're not), but because a discussion of those would entail a decomposition into the underlying effects, which (a) would neccessitate finding them in the high-symmetry cases first and (b) is outside the scope of this work.}} 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{[fig] spectra (principal).PDF}
+    \caption{Simulated scattering spectrum of the JP under illumination from the Au side (yellow), from the PS side (blue) and from the equatorial side (black).}
+    \label{fig:spectra-principal}
+\end{figure}
+
+The scattering spectra differ signifiantly from the measured dark-field spectra, though some correspondences between features can be inferred: 
+The previously noted increasing trend is, once again, present, as is the sharp upward bend at $\SI{500}{\nano\meter}$. 
+However, 
+\todo{distinct wobbles for $\lambda > \SI{600}{\nano\meter}$, decrease of scattering cross-section up to the minimum at 500 nm} 
+
+Within the visible part of the spectral range, the increase of the scattering cross-section coincides with that of the measured intensities. 
+In the NIR range, the measured brightness increases further; this is due to the broadening of the forward scattering peak. 
+
+For wavelengths beyond $\SI{700}{\nano\meter}$, the scattering cross-sections, between illumination from the Au side and from the PS side, are virtually the same. 
+They are, moreover, significantly larger than that for side-on illumination, on average. 
+However, at $\lambda=\SI{1210}{\nano\meter}$, they have a local minimum where the scattering cross-section is less than that for side-on illumination. 
+This points at a polar plasmon mode that is being excited out-of-phase. 
+\todo{Explain better what I mean.}
+\note{Curiously, the peaks in the absorption spectra don't line up with either the valleys or the peaks in the scattering spectra. 
+They don't for AuNPs either.}
+
+
+
+This is due to only scattered light which is emitted in such a direction that it is collected by the objective contributing to the measured scattering intensity, while the simulated scattering spectra take into account the energy flow density of the scattered field itself. 
+
+
+
+
 
 
 
